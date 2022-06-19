@@ -342,10 +342,11 @@ namespace Scool_cash_manager
                     InsertedInscription();
 
                     CreerRecu();
-                }
-                else
-                {
-                    MessageBox.Show("Le frais d'inscription n'est pas encore configuré pour cette classe");
+                MessageBox.Show("imprimer");
+                   }
+                    else
+                    {
+                MessageBox.Show("Le frais d'inscription n'est pas encore configuré pour cette classe");
                 }
 
             }
@@ -627,10 +628,12 @@ namespace Scool_cash_manager
             DocRecu pdf = new DocRecu(DocRecu.TypeRecu.Inscription)
             {
                 Designation = "Inscription",
-                Noms = $"{txt_nom.Text} {txt_postnom.Text} {txt_prenom.Text}",
-                Montant =nupMontant.Value
+                Noms = $"{txt_nom.Text} {txt_postnom.Text} ",
+                Montant = nupMontant.Value,
+                Classe= cbx_classe.Text
             };
 
+            pdf.CreerRecu();
 
         }
 
