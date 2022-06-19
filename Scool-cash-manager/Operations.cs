@@ -555,7 +555,40 @@ namespace Scool_cash_manager
             }
         }
 
+        /// <summary>
+        /// cette méthode permet de retounet le numéro ud dernier réçu....
+        /// </summary>
+        /// <returns></returns>
+        public static string ObtenirNumeroRecuExamen()
+        {
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    Connexion.Connecter();
+                    cmd.Connection = Connexion.con;
+                    cmd.CommandText = "PS_DernierNumeroRecuExamen";
+                    cmd.CommandType = CommandType.StoredProcedure;
 
+                    MySqlParameter p_numero_recu = new MySqlParameter("@p_numero_recu", MySqlDbType.Int64)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(p_numero_recu);
+
+                    //on exécute la requete 
+                    cmd.ExecuteNonQuery();
+                    return p_numero_recu.Value.ToString();
+
+
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return "0";
+            }
+        }
 
         #endregion
     }

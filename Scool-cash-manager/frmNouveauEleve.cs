@@ -1,6 +1,7 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using MySql.Data.MySqlClient;
+using Scool_cash_manager.Common;
 using System;
 using System.Data;
 using System.Drawing;
@@ -616,211 +617,21 @@ namespace Scool_cash_manager
 
         #region Reçu du paiement mensuel
 
-        /// <summary>
-        /// cette méthode permet de retounet le numéro ud dernier réçu....
-        /// </summary>
-        /// <returns></returns>
-        private string ObtenirNumeroRecuMensuel()
-        {
-            try
-            {
-                using (MySqlCommand cmd = new MySqlCommand())
-                {
-                    Connexion.Connecter();
-                    cmd.Connection = Connexion.con;
-                    cmd.CommandText = "PS_DernierNumeroRecuMensuel";
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    MySqlParameter p_numero_recu = new MySqlParameter("@p_numero_recu", MySqlDbType.Int64)
-                    {
-                        Direction = ParameterDirection.Output
-                    };
-                    cmd.Parameters.Add(p_numero_recu);
-
-                    //on exécute la requete 
-                    cmd.ExecuteNonQuery();
-                    return p_numero_recu.Value.ToString();
-
-
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                return "0";
-            }
-        }
+        
 
         /// <summary>
         /// cette méthode permet de créer les document qui contient les infos du réçu
         /// </summary>
         private void CreerRecu()
         {
-            #region Création du document
-            this.Cursor = Cursors.WaitCursor;
-
-            iTextSharp.text.Rectangle taille = new iTextSharp.text.Rectangle(new iTextSharp.text.Rectangle(288, 720)); // le format(longueur et largueur) du récu
-            Document doc = new Document(taille);
-            doc.SetMargins(30, 30, 7, 30);
-            try
+            DocRecu pdf = new DocRecu(DocRecu.TypeRecu.Inscription)
             {
-                string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ficher_rapport.pdf");
-                FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write);
-                PdfWriter.GetInstance(doc, fs);
-
-            }
-            catch (IOException ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }
-
-
-            doc.Open(); //ouverture du document pour y écrire
-
-            #endregion Création du document
-
-            #region les polices utilisées et les couleurs
-
-            BaseColor couleur_cellule = new BaseColor(0, 0, 0);
-            BaseColor couleur_noms = new BaseColor(1, 101, 201);
-
-            Font police_cellule = FontFactory.GetFont("TIMES NEW ROMAN", 12, couleur_cellule);
-            Font police_noms_eleve = FontFactory.GetFont("TIMES NEW ROMAN", 14,1, couleur_noms);
-            Font police_nom_ecole = FontFactory.GetFont("TIMES NEW ROMAN", 14,1, new BaseColor(255, 140, 0));
-
-            #endregion les polices utilisées et les couleurs
-
-            #region les en-têtes
-
-            #region en-tête date et annee scolaire
-
-            //On récupére le jour actuel Et l'annéé scolaire
-
-            string date_du_jour = DateTime.Now.ToString("dd/mm/yy hh:mm");
-            string numero_recu =  Operations.ObtenirIDdernierEleve();
-
-            Chunk chunk_date_du_jour = new Chunk("Date du jour ", police_cellule);
-            Chunk chunk_numero_recu = new Chunk("N° du reçu", police_cellule);
-
-            //les paragraphes
-            Paragraph p_date_du_jour = new Paragraph(chunk_date_du_jour);
-            Paragraph p_numero_recu = new Paragraph(chunk_numero_recu);
-
-
-            //on crée le petit table qui va prendre les en-tête (date du jour et année scolaire)
-            PdfPTable tableau_entete = new PdfPTable(2); //deux colonns
-
-            tableau_entete.SetWidths(new float[] { 40, 60 });
-            //on ajoute les en-entetes au tableaux
-            tableau_entete.AddCell(p_numero_recu);
-            tableau_entete.AddCell(p_date_du_jour);
-
-            //les paragraphes des mes chunks
-            Paragraph p_chunk_annee_scolaire = new Paragraph(new Chunk(numero_recu, police_cellule));
-            Paragraph p_chunk_date_du_jour = new Paragraph(new Chunk(date_du_jour.ToString(), police_cellule));
-
-
-            //on ajoute les valeurs aux tableau
-            tableau_entete.AddCell(p_chunk_annee_scolaire);
-            tableau_entete.AddCell(p_chunk_date_du_jour);
-
-            #endregion en-tête date et annee scolaire
-
-            #region les en-têtes nom école, id et noms élèves
-
-            string nom_ecole = Operations.ObtenirNomEtablissement()+"\n";
-            string noms_eleve = txt_nom.Text + " " + txt_postnom.Text+" "+txt_prenom.Text +" "+"\n"+cbx_classe.Text ;
-            string adresse_ecole = Operations.ObtenirAdresse();
-
-
-            Chunk chunk_nom_ecole = new Chunk(nom_ecole, police_nom_ecole);
-            Chunk chunk_noms_eleve = new Chunk(noms_eleve, police_noms_eleve);
-            Chunk chunk_id_eleve = new Chunk(numero_recu, police_cellule);
-            Chunk chunk_adresse_ecole = new Chunk(adresse_ecole, police_cellule);
-
-            
-            //les paragraphes
-
-            Paragraph p_chunk_nom_ecole = new Paragraph(chunk_nom_ecole);
-            Paragraph p_chunk_noms_eleve = new Paragraph(chunk_noms_eleve);
-            Paragraph p_chunk_numero_recu = new Paragraph(chunk_numero_recu);
-            Paragraph p_chunk_adresse_ecole = new Paragraph(chunk_adresse_ecole);
-            Paragraph p_chunk_id_eleve = new Paragraph(chunk_id_eleve);
-
-            
-            //alignement
-
-            p_chunk_nom_ecole.Alignment = 1;
-            p_chunk_adresse_ecole.Alignment = 1;
-            p_chunk_noms_eleve.Alignment = 1;
-            p_chunk_numero_recu.Alignment = 1;
-            p_chunk_id_eleve.Alignment = 1;
-            
-
-            #endregion les en-têtes nom école, id et noms élèves
-
-            #endregion les en-têtes
-
-            #region le tableau principal
-
-            PdfPTable tableau_principal = new PdfPTable(2); //déclarer le tableau de deux colonnes
-            Chunk chunk_frais = new Chunk("Frais payés", police_cellule);
-            Chunk chunk_frais_valeur = new Chunk("Inscription", police_cellule);
-
-            //les paragraphes
-            PdfPCell colspan = new PdfPCell(new Phrase("Information sur le paiement", police_cellule))
-            {
-                Colspan = 2,
-                HorizontalAlignment = 1,
-                PaddingBottom = 5,
-                PaddingTop = 5
+                Designation = "Inscription",
+                Noms = $"{txt_nom.Text} {txt_postnom.Text} {txt_prenom.Text}",
+                Montant =nupMontant.Value
             };
-            Paragraph p_chunck_frais = new Paragraph(chunk_frais);
-            Paragraph p_chunck_montant = new Paragraph(chunk_frais_valeur);
-
-            tableau_principal.AddCell(colspan);
-            tableau_principal.AddCell(p_chunck_frais);
-            tableau_principal.AddCell(p_chunck_montant);
-            //on ajoute les en-têtes
-
-            //on ajoute les valeurs
-            Chunk chunk_montant = new Chunk("Montant payé", police_cellule);
-            Chunk chunk_montant_valeur = new Chunk(Operations.ObtenirMontantInscription(cbx_classe.Text) + " CDF", police_cellule);
-            //les paragraphes des mes chunks
-            Paragraph p_chunk_montant = new Paragraph(chunk_montant);
-            Paragraph p_chunk_montant_valeur = new Paragraph(chunk_montant_valeur);
 
 
-            tableau_principal.AddCell(p_chunk_montant);
-            tableau_principal.AddCell(p_chunk_montant_valeur);
-
-            #endregion le tableau principal
-
-            #region ajout des en-têtes et tableau aux document
-
-            //on ajoutes les élèments de l'en-entête
-            Paragraph passerligne = new Paragraph("\n", police_cellule);
-            doc.Add(p_chunk_nom_ecole);
-            doc.Add(p_chunk_adresse_ecole);
-            doc.Add(p_chunk_noms_eleve);
-            doc.Add(p_chunk_numero_recu);
-            doc.Add(passerligne); //on passe à la ligne
-
-            //on ajoutes le tableau en-tête
-            doc.Add(tableau_entete);
-
-            doc.Add(passerligne); //on passe à la ligne
-            //on ajoute le tableau principal
-            doc.Add(tableau_principal);
-
-            #endregion ajout des en-têtes et tableau aux document
-
-            //on ferme le document après écriture
-            doc.Close();
-            new FrmApercuAvantImpression().ShowDialog();
-
-            this.Cursor = Cursors.Default;
         }
 
        

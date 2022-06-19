@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Scool_cash_manager.Common
 {
-    internal class DocRapport : PDocument
+    internal class DocRapport 
     {
         public DocRapport()
         {
