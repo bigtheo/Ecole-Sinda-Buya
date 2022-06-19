@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -474,6 +475,88 @@ namespace Scool_cash_manager
         }
         #endregion
 
+        #region méthodes de la classe recu
+        public static string ObtenirAdresse()
+        {
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                Connexion.Connecter();
+                cmd.Connection = Connexion.con;
+                cmd.CommandText = "select adresse from configuration limit 1";
+                return cmd.ExecuteScalar().ToString();
+            }
+        }
 
+        /// <summary>
+        /// cette méthode permet de retounet le numéro ud dernier réçu....
+        /// </summary>
+        /// <returns></returns>
+        public static string ObtenirNumeroRecuMensuel()
+        {
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    Connexion.Connecter();
+                    cmd.Connection = Connexion.con;
+                    cmd.CommandText = "PS_DernierNumeroRecuMensuel";
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    MySqlParameter p_numero_recu = new MySqlParameter("@p_numero_recu", MySqlDbType.Int64)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(p_numero_recu);
+
+                    //on exécute la requete
+                    cmd.ExecuteNonQuery();
+                    return p_numero_recu.Value.ToString();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return "0";
+            }
+        }
+
+        /// <summary>
+        /// cette méthode permet de retounet le numéro ud dernier réçu....
+        /// </summary>
+        /// <returns></returns>
+        public static string ObtenirNumeroRecuExetat()
+        {
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    Connexion.Connecter();
+                    cmd.Connection = Connexion.con;
+                    cmd.CommandText = "PS_DernierNumeroRecuExetat";
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    MySqlParameter p_numero_recu = new MySqlParameter("@p_numero_recu", MySqlDbType.Int64)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(p_numero_recu);
+
+                    //on exécute la requete 
+                    cmd.ExecuteNonQuery();
+                    return p_numero_recu.Value.ToString();
+
+
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return "0";
+            }
+        }
+
+
+
+        #endregion
     }
 }

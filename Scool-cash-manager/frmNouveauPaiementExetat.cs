@@ -298,40 +298,7 @@ namespace Scool_cash_manager
 
         #region Reçu du paiement EXETAT
 
-        /// <summary>
-        /// cette méthode permet de retounet le numéro ud dernier réçu....
-        /// </summary>
-        /// <returns></returns>
-        private string ObtenirNumeroRecuMensuel()
-        {
-            try
-            {
-                using (MySqlCommand cmd = new MySqlCommand())
-                {
-                    Connexion.Connecter();
-                    cmd.Connection = Connexion.con;
-                    cmd.CommandText = "PS_DernierNumeroRecuExetat";
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    MySqlParameter p_numero_recu = new MySqlParameter("@p_numero_recu", MySqlDbType.Int64)
-                    {
-                        Direction = ParameterDirection.Output
-                    };
-                    cmd.Parameters.Add(p_numero_recu);
-
-                    //on exécute la requete 
-                    cmd.ExecuteNonQuery();
-                    return p_numero_recu.Value.ToString();
-
-
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                return "0";
-            }
-        }
+        
 
         /// <summary>
         /// cette méthode permet de créer les document qui contient les infos du réçu
@@ -411,7 +378,7 @@ namespace Scool_cash_manager
 
             string nom_ecole = Operations.ObtenirNomEtablissement() + "\n";
             string noms_eleve = nupdown_id.Value.ToString() + " " + txt_noms.Text + " " + txt_classe.Text;
-            string numero_recu = "Paiment EXETAT,réçu N° " + ObtenirNumeroRecuMensuel();
+            string numero_recu = "Paiment EXETAT,réçu N° " + Operations.ObtenirNumeroRecuExetat();
 
             Chunk chunk_nom_ecole = new Chunk(nom_ecole, police_nom_ecole);
             Chunk chunk_noms_eleve = new Chunk(noms_eleve, police_noms_eleve);
