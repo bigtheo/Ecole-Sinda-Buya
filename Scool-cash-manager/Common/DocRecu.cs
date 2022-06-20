@@ -28,7 +28,7 @@ namespace Scool_cash_manager.Common
         }
 
 
-        public enum TypeRecu { Inscription, Mensuel, Etat, Accompte, Examen, Manuel, Autre }
+        public enum TypeRecu { Inscription, Mensuel, Etat,exEtat, Accompte, Examen, Manuel, Autre }
         public long IdEleve { get; set; }
         public string Noms { get; set; }
         public string Classe { get; set; }
@@ -80,6 +80,10 @@ namespace Scool_cash_manager.Common
                 case TypeRecu.Accompte:
                     Entete = "Paiement Accompte";
                     Numero = Operations.ObtenirNumeroRecuAccompte();
+                    break;
+                case TypeRecu.exEtat:
+                    Entete = "Paiement EXETAT";
+                    Numero = Operations.ObtenirNumeroRecuExetat();
                     break;
                 case TypeRecu.Autre:
                     Entete = "Paiement autres frais";

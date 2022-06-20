@@ -320,6 +320,7 @@ namespace Scool_cash_manager
             {
                 Designation = txt_frais_mensuel.Text,
                 Noms = $"{txt_noms.Text}  ",
+                IdEleve=long.Parse(nupdown_id.Value.ToString()),
                 Montant = nupdown_montant.Value,
                 Classe = txt_classe.Text
             };

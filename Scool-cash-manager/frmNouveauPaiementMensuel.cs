@@ -370,15 +370,19 @@ namespace Scool_cash_manager
         /// </summary>
         private void CreerRecu()
         {
+            this.Cursor = Cursors.WaitCursor;
             DocRecu pdf = new DocRecu(DocRecu.TypeRecu.Mensuel)
             {
                 Designation = txt_frais_mensuel.Text,
                 Noms = $"{txt_nom.Text}  ",
+                IdEleve=long.Parse(nupdown_id.Value.ToString()),
                 Montant = nupdown_montant.Value,
                 Classe = txt_classe.Text
             };
 
             pdf.CreerRecu();
+
+            this.Cursor = Cursors.Default;
         }
 
         private string ObtenirAdresse()
