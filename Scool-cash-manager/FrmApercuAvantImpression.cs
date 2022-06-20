@@ -6,16 +6,19 @@ namespace Scool_cash_manager
 {
     public partial class FrmApercuAvantImpression : Form
     {
-        public FrmApercuAvantImpression()
+        public FrmApercuAvantImpression(string filename)
         {
             InitializeComponent();
-            AfficherLeFichier();
+            AfficherLeFichier(filename);
         }
 
-        private void AfficherLeFichier()
+        private void AfficherLeFichier(string filename)
         {
-            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ficher_rapport.pdf");
-            axFoxitCtl1.OpenFile(fileName);
+            
+            axFoxitCtl1.OpenFile(filename);
+      
         }
+
+
     }
 }

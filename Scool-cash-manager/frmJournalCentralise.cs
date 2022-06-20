@@ -1,6 +1,7 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using MySql.Data.MySqlClient;
+using Scool_cash_manager.Common;
 using System;
 using System.Data;
 using System.IO;
@@ -170,7 +171,7 @@ namespace Scool_cash_manager
             doc.Add(tableau);
             doc.Close();
             this.Cursor = Cursors.Default;
-            new FrmApercuAvantImpression().Show();
+            new FrmApercuAvantImpression(DocRecu.RapportfileName).Show();
         }
 
 

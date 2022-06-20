@@ -1,6 +1,7 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using MySql.Data.MySqlClient;
+using Scool_cash_manager.Common;
 using System;
 using System.Data;
 using System.IO;
@@ -455,7 +456,7 @@ namespace Scool_cash_manager
 
             //on ferme le document après écriture
             doc.Close();
-            new FrmApercuAvantImpression().ShowDialog();
+            new FrmApercuAvantImpression(DocRecu.RapportfileName).ShowDialog();
 
             this.Cursor = Cursors.Default;
         }

@@ -16,6 +16,8 @@ namespace Scool_cash_manager.Common
     {
         public static string Folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\SchoolCashManager";
         public static string Filename = Path.Combine(Folder, "fichier_rapport.pdf");
+        public static string RapportfileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ficher_rapport.pdf");
+        
         #region Propriété de la classe
         private string _numero;
 
@@ -213,7 +215,7 @@ namespace Scool_cash_manager.Common
 
             //on ferme le document après écriture
             doc.Close();
-           // new FrmApercuAvantImpression().ShowDialog();
+            new FrmApercuAvantImpression(Filename).ShowDialog();
 
         }
 

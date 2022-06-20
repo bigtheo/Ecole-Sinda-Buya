@@ -342,7 +342,7 @@ namespace Scool_cash_manager
                     InsertedInscription();
 
                     CreerRecu();
-                MessageBox.Show("imprimer");
+                
                    }
                     else
                     {
