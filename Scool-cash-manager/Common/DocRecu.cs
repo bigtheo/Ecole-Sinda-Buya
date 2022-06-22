@@ -4,6 +4,7 @@ using iTextSharp.text.pdf.draw;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace Scool_cash_manager.Common
         public static string Folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\SchoolCashManager";
         public static string Filename = Path.Combine(Folder, "fichier_rapport.pdf");
         public static string RapportfileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ficher_rapport.pdf");
-        
+
         #region Propriété de la classe
         private string _numero;
 
@@ -28,7 +29,7 @@ namespace Scool_cash_manager.Common
         }
 
 
-        public enum TypeRecu { Inscription, Mensuel, Etat,exEtat, Accompte, Examen, Manuel, Autre }
+        public enum TypeRecu { Inscription, Mensuel, Etat, exEtat, Accompte, Examen, Manuel, Autre }
         public long IdEleve { get; set; }
         public string Noms { get; set; }
         public string Classe { get; set; }
@@ -104,12 +105,12 @@ namespace Scool_cash_manager.Common
 
             Rectangle taille = new Rectangle(297, 720);
             Document doc = new Document(taille);
-           
+
             try
             {
-                 
+
                 Directory.CreateDirectory(Folder);
-                
+
                 FileStream fs = new FileStream(Filename, FileMode.Create, FileAccess.Write);
                 PdfWriter.GetInstance(doc, fs);
 
@@ -125,8 +126,8 @@ namespace Scool_cash_manager.Common
             #region les polices utilisées
 
             Font fontA = new Font(Font.FontFamily.COURIER, 18, 1, BaseColor.BLACK);
-            Font fontB = new Font(Font.FontFamily.TIMES_ROMAN, 10, 2,BaseColor.BLACK);
-            Font fontC = new Font(Font.FontFamily.HELVETICA, 14, 2,BaseColor.BLUE);
+            Font fontB = new Font(Font.FontFamily.TIMES_ROMAN, 10, 2, BaseColor.BLACK);
+            Font fontC = new Font(Font.FontFamily.HELVETICA, 14, 2, BaseColor.BLUE);
 
 
             #endregion les polices utilisées
@@ -158,22 +159,19 @@ namespace Scool_cash_manager.Common
             table.WidthPercentage = 90;
             table.SetWidths(new float[] { 35, 65 });
 
-            PdfPCell cell_libelle = new PdfPCell(new Phrase("Libellé", fontC));
-            PdfPCell cell_valeur = new PdfPCell(new Phrase("Valeur", fontC));
-            
+
+
             Paragraph p_Titre = new Paragraph(Entete)
             {
                 Alignment = 1
             };
 
             Font font = new Font(Font.FontFamily.HELVETICA, 14, 1);
-            table.AddCell(cell_libelle);
-            table.AddCell(cell_valeur);
 
-            table.AddCell("ID élève");
+            table.AddCell("N° élève");
             table.AddCell(new Paragraph(IdEleve.ToString(), font));
 
-           
+
 
             table.AddCell("N° Reçu.");
             table.AddCell(Numero);
@@ -193,24 +191,22 @@ namespace Scool_cash_manager.Common
 
             #endregion tableau principle
 
+            #region ajout des composants au documents
             /*ajaout de l'en-tête du bordereau */
 
             doc.Add(p_Titre);
-            
-            Paragraph p_noms= new Paragraph(Noms, font);
+
+            Paragraph p_noms = new Paragraph(Noms, font);
             p_noms.Alignment = 1;
 
             doc.Add(p_noms);
-            Paragraph p_classe = new Paragraph(Classe);
-            p_classe.Alignment = 1;
 
-            doc.Add(p_classe);           
             doc.Add(passerLigne);
             doc.Add(table);
 
             doc.Add(passerLigne);
             doc.Add(new DottedLineSeparator());
-            Paragraph p_signature = new Paragraph("Designed by LSE-L'Shi Software Eng. ", fontB);
+            Paragraph p_signature = new Paragraph("Designed by LSE-L'Shi Software Eng.\n+243 99 55 03 440 ", fontB);
             p_signature.Alignment = 1;
             doc.Add(p_signature);
 
@@ -219,11 +215,65 @@ namespace Scool_cash_manager.Common
 
             //on ferme le document après écriture
             doc.Close();
-            new FrmApercuAvantImpression(Filename).ShowDialog();
+
+
+            #endregion 
+
+            PrintPDFToDefaultPrinter();
 
         }
 
-        #endregion
+        public static void PrintPDFToDefaultPrinter()
+        {
+            try
+            {
+                using (Process p = new Process())
+                {
+                    p.StartInfo = new ProcessStartInfo()
+                    {
+                        CreateNoWindow = true,
+                        Verb = "print",
+                        FileName = Filename
+                    };
+
+                    p.Start();
+
+                    p.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            #endregion
+
+        }
+        public static void PrintPDFToASpecificPrinter()
+        {
+            using (PrintDialog printDialog = new PrintDialog())
+            {
+                printDialog.AllowSomePages = true;
+                printDialog.AllowSelection = true;
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var StartInfo = new ProcessStartInfo
+                    {
+                        CreateNoWindow = true,
+                        UseShellExecute = true,
+                        Verb = "printTo",
+                        Arguments = "\"" + printDialog.PrinterSettings.PrinterName + "\"",
+                        WindowStyle = ProcessWindowStyle.Hidden,
+                        FileName = Filename
+                    };
+
+                    Process.Start(StartInfo);
+                }
+
+            }
+
+
+        }
 
     }
 }

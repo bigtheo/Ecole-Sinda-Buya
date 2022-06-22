@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Users\kapap\Desktop\KILIMA ECOLE CHANGER BASE UPDATE\</PublishUrl>
+    <PublishUrl>C:\Users\kapap\Desktop\INITIAL SINDA BUYA\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -26,10 +26,10 @@
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>fr</TargetCulture>
     <ProductName>School Cash-manger</ProductName>
-    <PublisherName>kapapa</PublisherName>
+    <PublisherName>LSE - Lubumashi Software Engineering</PublisherName>
     <SuiteName>cash-manager</SuiteName>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>9</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

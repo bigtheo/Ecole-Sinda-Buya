@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Scool_cash_manager.Common;
 using System;
 using System.Data;
 using System.Diagnostics;
@@ -331,7 +332,7 @@ namespace Scool_cash_manager
         {
             string nomDelaDbase = $"{new FrmMenuPrincipal().cbx_databases.Text}";
             string nom_du_fichier = DateTime.Now.Date.ToString($"backup  dd MMM yyyy HH mm") + ".sql";
-            string file = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + $"\\{nomDelaDbase} " + nom_du_fichier;
+            string file = DocRecu.Folder + $"\\{nomDelaDbase} " + nom_du_fichier;
 
    
             using (MySqlCommand cmd = new MySqlCommand())
