@@ -208,7 +208,7 @@ namespace Scool_cash_manager.Common
 
             doc.Add(passerLigne);
             doc.Add(new DottedLineSeparator());
-            Paragraph p_signature = new Paragraph("Designed by LSE-L'Shi Software Eng.\n+243 99 55 03 440 ", fontB);
+            Paragraph p_signature = new Paragraph($"Designed by Big Hope Software\n{Operations.ObtenirTelephone()} ", fontB);
             p_signature.Alignment = 1;
             doc.Add(p_signature);
 

@@ -217,6 +217,36 @@ namespace Scool_cash_manager
                 return "";
             }
         }
+
+        internal static string ObtenirTelephone()
+        {
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    Connexion.Connecter();
+                    cmd.Connection = Connexion.con;
+                    cmd.CommandText = "SELECT Telephone from configuration limit 1";
+                    string telephone = cmd.ExecuteScalar().ToString();
+
+                    if (telephone != null)
+                    {
+                        return telephone;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return "";
+            }
+        }
+
         /// <summary>
         /// cette méthode trouve l'id de la dernière dans la table;
         /// </summary>
