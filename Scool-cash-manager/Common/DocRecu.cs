@@ -105,7 +105,7 @@ namespace Scool_cash_manager.Common
 
             Rectangle taille = new Rectangle(297, 720);
             Document doc = new Document(taille);
-
+            doc.SetMargins(doc.LeftMargin, doc.RightMargin, -17, doc.Bottom);
             try
             {
 
@@ -171,6 +171,8 @@ namespace Scool_cash_manager.Common
             table.AddCell("N° élève");
             table.AddCell(new Paragraph(IdEleve.ToString(), font));
 
+            table.AddCell("Classe");
+            table.AddCell(new Paragraph(Classe, font));
 
 
             table.AddCell("N° Reçu.");
