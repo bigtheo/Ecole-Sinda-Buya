@@ -12,7 +12,7 @@ namespace Scool_cash_manager
 
         private void FrmManuel_Load(object sender, EventArgs e)
         {
-            Views.AfficherTout("v_paiementManuelsJournalier", dgvliste);
+            Views.AfficherTout("v_autres_paiements_journalier", dgvliste);
             if (dgvliste.Rows.Count == 0)
             {
                 dgvliste.Hide();

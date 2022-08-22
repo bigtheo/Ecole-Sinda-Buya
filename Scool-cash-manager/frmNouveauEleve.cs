@@ -630,7 +630,8 @@ namespace Scool_cash_manager
                 Designation = "Inscription",
                 Noms = $"{txt_nom.Text} {txt_postnom.Text} ",
                 Montant = nupMontant.Value,
-                Classe = cbx_classe.Text
+                Classe = cbx_classe.Text,
+                Numero = Operations.ObtenirNumeroRecuMensuel()
             };
 
             pdf.CreerRecu();

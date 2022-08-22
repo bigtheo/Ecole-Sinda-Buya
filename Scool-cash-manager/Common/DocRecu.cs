@@ -40,7 +40,7 @@ namespace Scool_cash_manager.Common
         #endregion
 
         #region propriétés privées
-        private string Entete { get; set; }
+        public string Entete { get; set; }
         private string Etablissement
         {
             get;
@@ -92,7 +92,7 @@ namespace Scool_cash_manager.Common
                     break;
             }
 
-
+            CreerRecu();
 
         }
         #endregion
@@ -225,7 +225,7 @@ namespace Scool_cash_manager.Common
 
         }
 
-        public static void PrintPDFToDefaultPrinter()
+        public void PrintPDFToDefaultPrinter()
         {
             try
             {
@@ -235,7 +235,7 @@ namespace Scool_cash_manager.Common
                     {
                         CreateNoWindow = true,
                         Verb = "print",
-                        FileName = Filename
+                        FileName = RapportfileName
                     };
 
                     p.Start();
@@ -257,6 +257,8 @@ namespace Scool_cash_manager.Common
             {
                 printDialog.AllowSomePages = true;
                 printDialog.AllowSelection = true;
+                printDialog.PrinterSettings.ToPage = 1;
+                printDialog.PrinterSettings.FromPage = 1;
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
                     var StartInfo = new ProcessStartInfo
@@ -266,7 +268,8 @@ namespace Scool_cash_manager.Common
                         Verb = "printTo",
                         Arguments = "\"" + printDialog.PrinterSettings.PrinterName + "\"",
                         WindowStyle = ProcessWindowStyle.Hidden,
-                        FileName = Filename
+                        FileName = Filename,
+                       
                     };
 
                     Process.Start(StartInfo);

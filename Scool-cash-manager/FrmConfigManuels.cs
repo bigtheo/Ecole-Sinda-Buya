@@ -14,42 +14,52 @@ namespace Scool_cash_manager
         #region enregistrement
         private void BtnEnregistrer_Click(object sender, EventArgs e)
         {
-            if(ChampsOk())
-            using (MySqlCommand cmd=new MySqlCommand ())
+            if (!ChampsOk())
+                return;
+
+            string sql = "Insert into autres_frais(intitule,montant) values(@intitule,@montant)";
+
+            using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
             {
-                Connexion.Connecter();
-                cmd.Connection = Connexion.con;
+                MySqlParameter p_intitule = new MySqlParameter("@intitule", MySqlDbType.VarChar)
+                {
+                    Value = CbxFrais.Text
+                };
+
+                MySqlParameter p_montant = new MySqlParameter("@montant", MySqlDbType.Decimal)
+                {
+                    Value = nupdownMontant.Value
+                };
+
+                cmd.Parameters.Add(p_intitule);
+                cmd.Parameters.Add(p_montant);
+
                 try
                 {
-                    cmd.CommandText = "Insert into manuels(id,intitule,auteur,prix_unitaire) values(@id,@intitule,@auteur,@prix_unitaire)";
-                    cmd.Parameters.Add("@id", MySqlDbType.Int32);
-                    cmd.Parameters.Add("@auteur", MySqlDbType.VarChar,45);
-                    cmd.Parameters.Add("@intitule", MySqlDbType.Text);
-                    cmd.Parameters.Add("@prix_unitaire", MySqlDbType.Double);
+                    int rowsAffected = cmd.ExecuteNonQuery();
 
-                    cmd.Parameters["@id"].Value = null;
-                    cmd.Parameters["@auteur"].Value = txt_auteur.Text ;
-                    cmd.Parameters["@intitule"].Value = txt_intitule_manuel.Text ;
-                    cmd.Parameters["@prix_unitaire"].Value = nupdownMontant.Value;
-
-                    DialogResult result = MessageBox.Show("Voulez-vous vraiment enregistrer ?","confirmer",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-                    if(result==DialogResult.Yes)
+                    if(rowsAffected > 0)
                     {
-                        if (cmd.ExecuteNonQuery() == 1)
-                        {
-                            MessageBox.Show("Enregistrement éffectué avec succès !!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        MessageBox.Show("Frais ajouté avec succès.", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CbxFrais.Text = String.Empty;
+                        nupdownMontant.Value = 0;
                     }
-                }catch(MySqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
                 }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show($"une erreur s'est produit : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
             }
+
+
+           
         }
 
         private bool ChampsOk()
         {
-            if (!String.IsNullOrEmpty(txt_auteur.Text.Trim()) && !String.IsNullOrEmpty(txt_intitule_manuel.Text.Trim()) && nupdownMontant.Value != 0)
+            if (!String.IsNullOrEmpty(CbxFrais.Text.Trim()) && nupdownMontant.Value!=0)
             {
                 return true;
             }else
@@ -64,12 +74,12 @@ namespace Scool_cash_manager
 
         private void FrmConfigManuels_Load(object sender, EventArgs e)
         {
-            Views.AfficherTout("v_manuels", dgvliste);
+            Views.AfficherTout("v_autres_frais", dgvliste);
         }
 
         private void TabControl1_MouseClick(object sender, MouseEventArgs e)
         {
-            Views.AfficherTout("v_manuels", dgvliste);
+            Views.AfficherTout("v_autres_frais", dgvliste);
         }
         #endregion
     }

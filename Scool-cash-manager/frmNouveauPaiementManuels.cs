@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Scool_cash_manager.Common;
 using System;
 using System.Data;
 using System.Runtime.InteropServices;
@@ -8,6 +9,9 @@ namespace Scool_cash_manager
 {
     public partial class frmNouveauPaiementManuels : Form
     {
+        public int FraisId { get; set; }
+        public string NumeroRecu { get; set; }
+
         public frmNouveauPaiementManuels()
         {
             InitializeComponent();
@@ -16,10 +20,10 @@ namespace Scool_cash_manager
         #region barre de titre
 
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
+        private static extern void ReleaseCapture();
 
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(IntPtr intPtr, int lparam, int hwparam, int rparam);
+        private static extern void SendMessage(IntPtr intPtr, int lparam, int hwparam, int rparam);
 
         private void PanelBarreDeTitre_MouseDown(object sender, MouseEventArgs e)
         {
@@ -38,6 +42,16 @@ namespace Scool_cash_manager
 
         private void FrmNouveauPaiementManuels_Load(object sender, EventArgs e)
         {
+            Connexion.Connecter();
+            string sql = "select distinct intitule from autres_frais";
+            using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
+            {
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    cbxFrais.Items.Add(dr.GetString(0));
+                }
+            }
         }
 
         #endregion au chargement du formulaire...
@@ -52,33 +66,6 @@ namespace Scool_cash_manager
 
         private void GetInfoManuels()
         {
-            using (MySqlCommand cmd = new MySqlCommand())
-            {
-                SetMaxValueNumericUpDown(nupd_id_manuel);
-                Connexion.Connecter();
-                cmd.Connection = Connexion.con;
-
-                cmd.CommandText = "SELECT intitule,prix_unitaire from manuels WHERE id=@id";
-                cmd.Parameters.Add("@id", MySqlDbType.Int32);
-                cmd.Parameters["@id"].Value = nupd_id_manuel.Value;
-
-                if (!nupd_id_manuel.Value.Equals(0))
-                {
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        txt_Intitule.Text = reader.GetValue(0).ToString();
-                        txt_montant.Text = reader.GetValue(1).ToString();
-                        
-                    }
-                }
-                else
-                {
-                    txt_Intitule.Text = "0";
-                    txt_montant.Text = "0";
-                }
-
-            }
         }
 
         private void SetMaxValueNumericUpDown(NumericUpDown numericUpDown)
@@ -104,6 +91,7 @@ namespace Scool_cash_manager
 
         private void TrouverNomClasseEleveParID()
         {
+            this.Cursor = Cursors.WaitCursor;
             using (MySqlCommand cmd = new MySqlCommand())
             {
                 try
@@ -142,87 +130,107 @@ namespace Scool_cash_manager
                 {
                     MessageBox.Show(ex.Message);
                 }
+
+                this.Cursor = Cursors.Default;
             }
         }
 
         //au changement de l'id de l'élève
         private void Nupdown_id_ValueChanged(object sender, EventArgs e)
         {
-            SetMaxValueNumericUpDown(nupdown_id);
+            this.Cursor = Cursors.WaitCursor;
             TrouverNomClasseEleveParID();
+            this.Cursor = Cursors.Default;
         }
 
         #endregion Recherche des infos
 
         #region Enregistrement de l'achat du(es) manuel(s)
+
         private void BtnEnregistrer_Click(object sender, EventArgs e)
         {
-            using (MySqlCommand cmd=new MySqlCommand ())
+            this.Cursor = Cursors.WaitCursor;
+            using (MySqlCommand cmd = new MySqlCommand())
             {
                 Connexion.Connecter();
                 cmd.Connection = Connexion.con;
-                cmd.CommandText = "INSERT INTO PAIEMENT_MANUELS(id,date_paie,quantite,eleve_id,manuel_id) VALUES(@id,@date_paie,@quantite,@eleve_id,@manuel_id)";
-                
-                //les parametres Mysql
-                MySqlParameter p_id = new MySqlParameter("@id", MySqlDbType.Int32);
-                MySqlParameter p_date_date = new MySqlParameter("@date_paie", MySqlDbType.DateTime);
-                MySqlParameter p_quantite = new MySqlParameter("@quantite", MySqlDbType.Int32);
-                MySqlParameter p_eleve_id = new MySqlParameter("@eleve_id", MySqlDbType.Int32);
-                MySqlParameter p_manuel_id = new MySqlParameter("@manuel_id", MySqlDbType.Int32);
+                cmd.CommandText = "INSERT INTO autres_paiements(eleve_id,user_id,frais_id) VALUES(@eleve_id,@userId,@fraisId)";
 
-                //les valeurs des nos parametres
-                p_id.Value = null;
-                p_date_date.Value = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-                p_quantite.Value = nup_Quantite.Value;
-                p_eleve_id.Value = nupdown_id.Value;
-                p_manuel_id.Value = nupd_id_manuel.Value;
+                MySqlParameter p_user_id = new MySqlParameter("@userId", MySqlDbType.Int32)
+                {
+                    Value = 1,
+                };
+                MySqlParameter p_frais = new MySqlParameter("@fraisId", MySqlDbType.Int32)
+                {
+                    Value = 1//FraisId
+                };
+                MySqlParameter p_eleve_id = new MySqlParameter("@eleve_id", MySqlDbType.Int32)
+                {
+                    Value = nupdown_id.Value
+                };
 
-                //assignation des parametres à MySqlCommand
-                cmd.Parameters.Add(p_id);
-                cmd.Parameters.Add(p_date_date);
-                cmd.Parameters.Add(p_quantite);
+                cmd.Parameters.Add(p_user_id);
+                cmd.Parameters.Add(p_frais);
                 cmd.Parameters.Add(p_eleve_id);
-                cmd.Parameters.Add(p_manuel_id);
 
-                //exécution de la requete..
                 try
                 {
                     if (cmd.ExecuteNonQuery() == 1)
                     {
+                        
+                        cmd.CommandText = "select last_insert_id()";
+                        NumeroRecu = cmd.ExecuteScalar().ToString();
                         MessageBox.Show("Enregistrement éffectué avec succès !");
+                        CreerRecu();
+
                     }
                 }
                 catch (MySqlException ex)
                 {
-
                     MessageBox.Show(ex.Message);
                 }
-
             }
-        }
-        #endregion
 
-        #region calcul du prix total
-        private void Nup_Quantite_ValueChanged(object sender, EventArgs e)
-        {
-            CalculerPrixTotal(nup_Quantite.Value, txt_montant.Text);
+            
+            this.Cursor = Cursors.Default;
         }
 
-        private void CalculerPrixTotal(decimal value, string text)
+        private void CreerRecu()
         {
-            if (!txt_montant.Text.Equals(String.Empty))
+            DocRecu pdf = new DocRecu(DocRecu.TypeRecu.Inscription)
             {
-                decimal _prix_unitaire = Decimal.Parse(text);
-                decimal _prix_total = _prix_unitaire * value;
-                txt_prix_total.Text = _prix_total.ToString();
-            }
-          
+                Designation = cbxFrais.Text,
+                Noms = txt_noms.Text,
+                Montant = Convert.ToDecimal(txt_montant.Text),
+                Classe = txt_classe.Text,
+                Numero = NumeroRecu,
+                Entete = "Paiement scolaire"
+            };
+
+            pdf.CreerRecu();
+            pdf.PrintPDFToDefaultPrinter();
         }
 
-        private void Txt_montant_TextChanged(object sender, EventArgs e)
+        #endregion Enregistrement de l'achat du(es) manuel(s)
+
+        private void cbxFrais_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CalculerPrixTotal(nup_Quantite.Value, txt_montant.Text);
+            Connexion.Connecter();
+            string sql = "select montant from autres_frais where intitule=@frais";
+            using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
+            {
+                MySqlParameter p_frais = new MySqlParameter("@frais", MySqlDbType.VarChar)
+                {
+                    Value = cbxFrais.Text
+                };
+                cmd.Parameters.Add(p_frais);
+
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    txt_montant.Text = dr.GetString(0);
+                }
+            };
         }
-        #endregion
     }
 }

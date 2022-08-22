@@ -109,7 +109,7 @@
             this.BtnEnseignat.Margin = new System.Windows.Forms.Padding(4);
             this.BtnEnseignat.Name = "BtnEnseignat";
             this.BtnEnseignat.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.BtnEnseignat.Size = new System.Drawing.Size(223, 40);
+            this.BtnEnseignat.Size = new System.Drawing.Size(219, 40);
             this.BtnEnseignat.TabIndex = 10;
             this.BtnEnseignat.Text = "Enseignants && enfants";
             this.BtnEnseignat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -130,7 +130,7 @@
             this.btnParametre.Margin = new System.Windows.Forms.Padding(4);
             this.btnParametre.Name = "btnParametre";
             this.btnParametre.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnParametre.Size = new System.Drawing.Size(223, 40);
+            this.btnParametre.Size = new System.Drawing.Size(219, 40);
             this.btnParametre.TabIndex = 9;
             this.btnParametre.Text = "  Parametres";
             this.btnParametre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -149,7 +149,7 @@
             this.panelSousMenuJournal.Location = new System.Drawing.Point(0, 792);
             this.panelSousMenuJournal.Margin = new System.Windows.Forms.Padding(4);
             this.panelSousMenuJournal.Name = "panelSousMenuJournal";
-            this.panelSousMenuJournal.Size = new System.Drawing.Size(223, 144);
+            this.panelSousMenuJournal.Size = new System.Drawing.Size(219, 144);
             this.panelSousMenuJournal.TabIndex = 8;
             // 
             // BtnAnnulations
@@ -162,7 +162,7 @@
             this.BtnAnnulations.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAnnulations.Name = "BtnAnnulations";
             this.BtnAnnulations.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.BtnAnnulations.Size = new System.Drawing.Size(223, 35);
+            this.BtnAnnulations.Size = new System.Drawing.Size(219, 35);
             this.BtnAnnulations.TabIndex = 7;
             this.BtnAnnulations.Text = "Annulations";
             this.BtnAnnulations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -179,7 +179,7 @@
             this.BntEcheance.Margin = new System.Windows.Forms.Padding(4);
             this.BntEcheance.Name = "BntEcheance";
             this.BntEcheance.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.BntEcheance.Size = new System.Drawing.Size(223, 35);
+            this.BntEcheance.Size = new System.Drawing.Size(219, 35);
             this.BntEcheance.TabIndex = 6;
             this.BntEcheance.Text = "Echéances";
             this.BntEcheance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -196,7 +196,7 @@
             this.btnJournalFrais.Margin = new System.Windows.Forms.Padding(4);
             this.btnJournalFrais.Name = "btnJournalFrais";
             this.btnJournalFrais.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnJournalFrais.Size = new System.Drawing.Size(223, 35);
+            this.btnJournalFrais.Size = new System.Drawing.Size(219, 35);
             this.btnJournalFrais.TabIndex = 5;
             this.btnJournalFrais.Text = "Par frais";
             this.btnJournalFrais.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -213,7 +213,7 @@
             this.btnJournalCentralise.Margin = new System.Windows.Forms.Padding(4);
             this.btnJournalCentralise.Name = "btnJournalCentralise";
             this.btnJournalCentralise.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnJournalCentralise.Size = new System.Drawing.Size(223, 35);
+            this.btnJournalCentralise.Size = new System.Drawing.Size(219, 35);
             this.btnJournalCentralise.TabIndex = 1;
             this.btnJournalCentralise.Text = "Centralisé";
             this.btnJournalCentralise.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -233,7 +233,7 @@
             this.btnJournal.Margin = new System.Windows.Forms.Padding(4);
             this.btnJournal.Name = "btnJournal";
             this.btnJournal.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnJournal.Size = new System.Drawing.Size(223, 40);
+            this.btnJournal.Size = new System.Drawing.Size(219, 40);
             this.btnJournal.TabIndex = 7;
             this.btnJournal.Text = "  Journal";
             this.btnJournal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -251,7 +251,7 @@
             this.panelSousMenuSolvabilite.Location = new System.Drawing.Point(0, 637);
             this.panelSousMenuSolvabilite.Margin = new System.Windows.Forms.Padding(4);
             this.panelSousMenuSolvabilite.Name = "panelSousMenuSolvabilite";
-            this.panelSousMenuSolvabilite.Size = new System.Drawing.Size(223, 115);
+            this.panelSousMenuSolvabilite.Size = new System.Drawing.Size(219, 115);
             this.panelSousMenuSolvabilite.TabIndex = 6;
             // 
             // BtnVuDensemble
@@ -264,7 +264,7 @@
             this.BtnVuDensemble.Margin = new System.Windows.Forms.Padding(4);
             this.BtnVuDensemble.Name = "BtnVuDensemble";
             this.BtnVuDensemble.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.BtnVuDensemble.Size = new System.Drawing.Size(223, 35);
+            this.BtnVuDensemble.Size = new System.Drawing.Size(219, 35);
             this.BtnVuDensemble.TabIndex = 6;
             this.BtnVuDensemble.Text = "Vue d\'ensemble";
             this.BtnVuDensemble.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -281,7 +281,7 @@
             this.btnSolvables.Margin = new System.Windows.Forms.Padding(4);
             this.btnSolvables.Name = "btnSolvables";
             this.btnSolvables.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnSolvables.Size = new System.Drawing.Size(223, 35);
+            this.btnSolvables.Size = new System.Drawing.Size(219, 35);
             this.btnSolvables.TabIndex = 5;
             this.btnSolvables.Text = "Solvables";
             this.btnSolvables.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -298,7 +298,7 @@
             this.btnInsolvables.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsolvables.Name = "btnInsolvables";
             this.btnInsolvables.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnInsolvables.Size = new System.Drawing.Size(223, 35);
+            this.btnInsolvables.Size = new System.Drawing.Size(219, 35);
             this.btnInsolvables.TabIndex = 1;
             this.btnInsolvables.Text = "Insolvables";
             this.btnInsolvables.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -318,7 +318,7 @@
             this.btnSolvabilite.Margin = new System.Windows.Forms.Padding(4);
             this.btnSolvabilite.Name = "btnSolvabilite";
             this.btnSolvabilite.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnSolvabilite.Size = new System.Drawing.Size(223, 40);
+            this.btnSolvabilite.Size = new System.Drawing.Size(219, 40);
             this.btnSolvabilite.TabIndex = 5;
             this.btnSolvabilite.Text = "  Solvabilité";
             this.btnSolvabilite.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -339,7 +339,7 @@
             this.panelSousMenuConfigurationFrais.Location = new System.Drawing.Point(0, 385);
             this.panelSousMenuConfigurationFrais.Margin = new System.Windows.Forms.Padding(4);
             this.panelSousMenuConfigurationFrais.Name = "panelSousMenuConfigurationFrais";
-            this.panelSousMenuConfigurationFrais.Size = new System.Drawing.Size(223, 212);
+            this.panelSousMenuConfigurationFrais.Size = new System.Drawing.Size(219, 212);
             this.panelSousMenuConfigurationFrais.TabIndex = 4;
             // 
             // btnConfigExetat
@@ -352,7 +352,7 @@
             this.btnConfigExetat.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfigExetat.Name = "btnConfigExetat";
             this.btnConfigExetat.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnConfigExetat.Size = new System.Drawing.Size(223, 35);
+            this.btnConfigExetat.Size = new System.Drawing.Size(219, 35);
             this.btnConfigExetat.TabIndex = 7;
             this.btnConfigExetat.Text = "Frais d\'examen d\'état";
             this.btnConfigExetat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -369,7 +369,7 @@
             this.btnConfigClasse.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfigClasse.Name = "btnConfigClasse";
             this.btnConfigClasse.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnConfigClasse.Size = new System.Drawing.Size(223, 35);
+            this.btnConfigClasse.Size = new System.Drawing.Size(219, 35);
             this.btnConfigClasse.TabIndex = 6;
             this.btnConfigClasse.Text = "Classes";
             this.btnConfigClasse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -386,7 +386,7 @@
             this.btnConfigFraisEtat.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfigFraisEtat.Name = "btnConfigFraisEtat";
             this.btnConfigFraisEtat.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnConfigFraisEtat.Size = new System.Drawing.Size(223, 35);
+            this.btnConfigFraisEtat.Size = new System.Drawing.Size(219, 35);
             this.btnConfigFraisEtat.TabIndex = 5;
             this.btnConfigFraisEtat.Text = "Frais de l\'etat";
             this.btnConfigFraisEtat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -403,9 +403,9 @@
             this.btnManuels.Margin = new System.Windows.Forms.Padding(4);
             this.btnManuels.Name = "btnManuels";
             this.btnManuels.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnManuels.Size = new System.Drawing.Size(223, 35);
+            this.btnManuels.Size = new System.Drawing.Size(219, 35);
             this.btnManuels.TabIndex = 4;
-            this.btnManuels.Text = "Manuels";
+            this.btnManuels.Text = "Autres frais";
             this.btnManuels.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnManuels.UseVisualStyleBackColor = true;
             this.btnManuels.Click += new System.EventHandler(this.BtnManuels_Click);
@@ -420,7 +420,7 @@
             this.btnConfigExamen.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfigExamen.Name = "btnConfigExamen";
             this.btnConfigExamen.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnConfigExamen.Size = new System.Drawing.Size(223, 35);
+            this.btnConfigExamen.Size = new System.Drawing.Size(219, 35);
             this.btnConfigExamen.TabIndex = 2;
             this.btnConfigExamen.Text = "Examens";
             this.btnConfigExamen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -437,7 +437,7 @@
             this.btnConfigMensuel.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfigMensuel.Name = "btnConfigMensuel";
             this.btnConfigMensuel.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnConfigMensuel.Size = new System.Drawing.Size(223, 35);
+            this.btnConfigMensuel.Size = new System.Drawing.Size(219, 35);
             this.btnConfigMensuel.TabIndex = 1;
             this.btnConfigMensuel.Text = "Frais mensuel";
             this.btnConfigMensuel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -457,7 +457,7 @@
             this.btnConfiguirationFrais.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfiguirationFrais.Name = "btnConfiguirationFrais";
             this.btnConfiguirationFrais.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnConfiguirationFrais.Size = new System.Drawing.Size(223, 40);
+            this.btnConfiguirationFrais.Size = new System.Drawing.Size(219, 40);
             this.btnConfiguirationFrais.TabIndex = 3;
             this.btnConfiguirationFrais.Text = "  Configuration des frais";
             this.btnConfiguirationFrais.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -479,7 +479,7 @@
             this.panelSousMenuPaiement.Location = new System.Drawing.Point(0, 89);
             this.panelSousMenuPaiement.Margin = new System.Windows.Forms.Padding(4);
             this.panelSousMenuPaiement.Name = "panelSousMenuPaiement";
-            this.panelSousMenuPaiement.Size = new System.Drawing.Size(223, 256);
+            this.panelSousMenuPaiement.Size = new System.Drawing.Size(219, 256);
             this.panelSousMenuPaiement.TabIndex = 2;
             // 
             // BtnAccompte
@@ -492,7 +492,7 @@
             this.BtnAccompte.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAccompte.Name = "BtnAccompte";
             this.BtnAccompte.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.BtnAccompte.Size = new System.Drawing.Size(223, 35);
+            this.BtnAccompte.Size = new System.Drawing.Size(219, 35);
             this.BtnAccompte.TabIndex = 6;
             this.BtnAccompte.Text = "Accomptes mensuels";
             this.BtnAccompte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -509,7 +509,7 @@
             this.btnPaiementFraisEtat.Margin = new System.Windows.Forms.Padding(4);
             this.btnPaiementFraisEtat.Name = "btnPaiementFraisEtat";
             this.btnPaiementFraisEtat.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnPaiementFraisEtat.Size = new System.Drawing.Size(223, 35);
+            this.btnPaiementFraisEtat.Size = new System.Drawing.Size(219, 35);
             this.btnPaiementFraisEtat.TabIndex = 5;
             this.btnPaiementFraisEtat.Text = "Frais de l\'état";
             this.btnPaiementFraisEtat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -526,9 +526,9 @@
             this.btnAchatManuel.Margin = new System.Windows.Forms.Padding(4);
             this.btnAchatManuel.Name = "btnAchatManuel";
             this.btnAchatManuel.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnAchatManuel.Size = new System.Drawing.Size(223, 35);
+            this.btnAchatManuel.Size = new System.Drawing.Size(219, 35);
             this.btnAchatManuel.TabIndex = 4;
-            this.btnAchatManuel.Text = "Achat menuel";
+            this.btnAchatManuel.Text = "Autres paiements";
             this.btnAchatManuel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAchatManuel.UseVisualStyleBackColor = true;
             this.btnAchatManuel.Click += new System.EventHandler(this.BtnAchatManuel_Click);
@@ -543,7 +543,7 @@
             this.btnPaiementExetat.Margin = new System.Windows.Forms.Padding(4);
             this.btnPaiementExetat.Name = "btnPaiementExetat";
             this.btnPaiementExetat.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnPaiementExetat.Size = new System.Drawing.Size(223, 35);
+            this.btnPaiementExetat.Size = new System.Drawing.Size(219, 35);
             this.btnPaiementExetat.TabIndex = 3;
             this.btnPaiementExetat.Text = "Exetat";
             this.btnPaiementExetat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -560,7 +560,7 @@
             this.btnPaiementExamens.Margin = new System.Windows.Forms.Padding(4);
             this.btnPaiementExamens.Name = "btnPaiementExamens";
             this.btnPaiementExamens.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnPaiementExamens.Size = new System.Drawing.Size(223, 35);
+            this.btnPaiementExamens.Size = new System.Drawing.Size(219, 35);
             this.btnPaiementExamens.TabIndex = 2;
             this.btnPaiementExamens.Text = "Examens";
             this.btnPaiementExamens.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -577,7 +577,7 @@
             this.btnFraisPaiementMensuel.Margin = new System.Windows.Forms.Padding(4);
             this.btnFraisPaiementMensuel.Name = "btnFraisPaiementMensuel";
             this.btnFraisPaiementMensuel.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnFraisPaiementMensuel.Size = new System.Drawing.Size(223, 35);
+            this.btnFraisPaiementMensuel.Size = new System.Drawing.Size(219, 35);
             this.btnFraisPaiementMensuel.TabIndex = 1;
             this.btnFraisPaiementMensuel.Text = "Frais mensuel";
             this.btnFraisPaiementMensuel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -594,7 +594,7 @@
             this.btnPaiemlentInscription.Margin = new System.Windows.Forms.Padding(4);
             this.btnPaiemlentInscription.Name = "btnPaiemlentInscription";
             this.btnPaiemlentInscription.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnPaiemlentInscription.Size = new System.Drawing.Size(223, 35);
+            this.btnPaiemlentInscription.Size = new System.Drawing.Size(219, 35);
             this.btnPaiemlentInscription.TabIndex = 0;
             this.btnPaiemlentInscription.Text = "Inscription";
             this.btnPaiemlentInscription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -614,7 +614,7 @@
             this.btnMenuPaiement.Margin = new System.Windows.Forms.Padding(4);
             this.btnMenuPaiement.Name = "btnMenuPaiement";
             this.btnMenuPaiement.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnMenuPaiement.Size = new System.Drawing.Size(223, 40);
+            this.btnMenuPaiement.Size = new System.Drawing.Size(219, 40);
             this.btnMenuPaiement.TabIndex = 1;
             this.btnMenuPaiement.Text = "  Paiements";
             this.btnMenuPaiement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -630,7 +630,7 @@
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Margin = new System.Windows.Forms.Padding(4);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(223, 49);
+            this.panelLogo.Size = new System.Drawing.Size(219, 49);
             this.panelLogo.TabIndex = 0;
             // 
             // label1
@@ -640,7 +640,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(17, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 28);
+            this.label1.Size = new System.Drawing.Size(238, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Cash-Manager";
             // 
@@ -663,7 +663,7 @@
             this.lbl_selectedDB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.lbl_selectedDB.Location = new System.Drawing.Point(284, 539);
             this.lbl_selectedDB.Name = "lbl_selectedDB";
-            this.lbl_selectedDB.Size = new System.Drawing.Size(78, 16);
+            this.lbl_selectedDB.Size = new System.Drawing.Size(95, 20);
             this.lbl_selectedDB.TabIndex = 8;
             this.lbl_selectedDB.Text = "selected db";
             // 
@@ -673,7 +673,7 @@
             this.cbx_databases.FormattingEnabled = true;
             this.cbx_databases.Location = new System.Drawing.Point(830, 536);
             this.cbx_databases.Name = "cbx_databases";
-            this.cbx_databases.Size = new System.Drawing.Size(217, 24);
+            this.cbx_databases.Size = new System.Drawing.Size(217, 28);
             this.cbx_databases.TabIndex = 7;
             this.cbx_databases.SelectedIndexChanged += new System.EventHandler(this.cbx_databases_SelectedIndexChanged);
             // 
@@ -683,13 +683,13 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(722, 540);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 16);
+            this.label2.Size = new System.Drawing.Size(126, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "selection année";
             // 
             // FrmMenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1059, 573);
             this.Controls.Add(this.lbl_selectedDB);

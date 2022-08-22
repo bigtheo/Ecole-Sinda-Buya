@@ -518,6 +518,25 @@ namespace Scool_cash_manager
             }
         }
 
+
+        public static string LastInsertId()
+        {
+            var sql = "select last_insert_id()";
+            using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
+            {
+                try
+                {
+                    return cmd.ExecuteScalar().ToString();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return default;
+                }
+            }
+
+        }
+
         /// <summary>
         /// cette méthode permet de retounet le numéro ud dernier réçu....
         /// </summary>
