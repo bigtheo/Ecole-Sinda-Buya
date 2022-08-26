@@ -208,7 +208,7 @@ namespace Scool_cash_manager
             };
 
             pdf.CreerRecu();
-            pdf.PrintPDFToDefaultPrinter();
+            
         }
 
         #endregion Enregistrement de l'achat du(es) manuel(s)

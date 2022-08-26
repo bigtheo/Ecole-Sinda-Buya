@@ -635,6 +635,7 @@ namespace Scool_cash_manager
             };
 
             pdf.CreerRecu();
+            
 
         }
 

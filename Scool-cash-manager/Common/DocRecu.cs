@@ -92,7 +92,6 @@ namespace Scool_cash_manager.Common
                     break;
             }
 
-            CreerRecu();
 
         }
         #endregion
@@ -219,8 +218,9 @@ namespace Scool_cash_manager.Common
             doc.Close();
 
 
-            #endregion 
+            #endregion
 
+            
             PrintPDFToDefaultPrinter();
 
         }
@@ -235,7 +235,7 @@ namespace Scool_cash_manager.Common
                     {
                         CreateNoWindow = true,
                         Verb = "print",
-                        FileName = RapportfileName
+                        FileName = Filename
                     };
 
                     p.Start();
