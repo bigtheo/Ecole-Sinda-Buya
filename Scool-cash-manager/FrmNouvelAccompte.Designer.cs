@@ -96,7 +96,7 @@
             this.label1.Location = new System.Drawing.Point(20, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 20);
+            this.label1.Size = new System.Drawing.Size(195, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Perception accompte";
             // 
@@ -105,7 +105,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(100, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 21);
+            this.label2.Size = new System.Drawing.Size(134, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "Id de l\'élève";
             // 
@@ -114,7 +114,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(151, 106);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 21);
+            this.label3.Size = new System.Drawing.Size(65, 23);
             this.label3.TabIndex = 3;
             this.label3.Text = "Noms";
             // 
@@ -123,7 +123,7 @@
             this.txt_noms.Enabled = false;
             this.txt_noms.Location = new System.Drawing.Point(241, 103);
             this.txt_noms.Name = "txt_noms";
-            this.txt_noms.Size = new System.Drawing.Size(252, 27);
+            this.txt_noms.Size = new System.Drawing.Size(252, 32);
             this.txt_noms.TabIndex = 5;
             // 
             // nupMontantPaye
@@ -136,7 +136,7 @@
             0,
             0});
             this.nupMontantPaye.Name = "nupMontantPaye";
-            this.nupMontantPaye.Size = new System.Drawing.Size(251, 27);
+            this.nupMontantPaye.Size = new System.Drawing.Size(251, 32);
             this.nupMontantPaye.TabIndex = 6;
             // 
             // label4
@@ -144,7 +144,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(80, 241);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 21);
+            this.label4.Size = new System.Drawing.Size(150, 23);
             this.label4.TabIndex = 7;
             this.label4.Text = "Montant payé";
             // 
@@ -153,7 +153,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(60, 274);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(144, 21);
+            this.label5.Size = new System.Drawing.Size(176, 23);
             this.label5.TabIndex = 9;
             this.label5.Text = "Montant à payer";
             // 
@@ -166,7 +166,7 @@
             0,
             0});
             this.nupdown_id.Name = "nupdown_id";
-            this.nupdown_id.Size = new System.Drawing.Size(252, 27);
+            this.nupdown_id.Size = new System.Drawing.Size(252, 32);
             this.nupdown_id.TabIndex = 8;
             this.nupdown_id.ValueChanged += new System.EventHandler(this.NupId_ValueChanged);
             // 
@@ -175,7 +175,7 @@
             this.txt_frais_mensuel.Enabled = false;
             this.txt_frais_mensuel.Location = new System.Drawing.Point(241, 172);
             this.txt_frais_mensuel.Name = "txt_frais_mensuel";
-            this.txt_frais_mensuel.Size = new System.Drawing.Size(252, 27);
+            this.txt_frais_mensuel.Size = new System.Drawing.Size(252, 32);
             this.txt_frais_mensuel.TabIndex = 11;
             // 
             // label6
@@ -183,7 +183,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(93, 175);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 21);
+            this.label6.Size = new System.Drawing.Size(137, 23);
             this.label6.TabIndex = 10;
             this.label6.Text = "Frais Mensuel";
             // 
@@ -192,7 +192,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(101, 209);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(103, 21);
+            this.label7.Size = new System.Drawing.Size(127, 23);
             this.label7.TabIndex = 14;
             this.label7.Text = "Prix Mensuel";
             // 
@@ -227,7 +227,7 @@
             0,
             0});
             this.nupmontantApayer.Name = "nupmontantApayer";
-            this.nupmontantApayer.Size = new System.Drawing.Size(251, 27);
+            this.nupmontantApayer.Size = new System.Drawing.Size(251, 32);
             this.nupmontantApayer.TabIndex = 17;
             // 
             // txt_classe
@@ -235,7 +235,7 @@
             this.txt_classe.Enabled = false;
             this.txt_classe.Location = new System.Drawing.Point(241, 138);
             this.txt_classe.Name = "txt_classe";
-            this.txt_classe.Size = new System.Drawing.Size(250, 27);
+            this.txt_classe.Size = new System.Drawing.Size(250, 32);
             this.txt_classe.TabIndex = 18;
             // 
             // label8
@@ -243,7 +243,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(145, 141);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 21);
+            this.label8.Size = new System.Drawing.Size(74, 23);
             this.label8.TabIndex = 19;
             this.label8.Text = "Classe";
             // 
@@ -257,7 +257,7 @@
             0,
             0});
             this.nup_prix.Name = "nup_prix";
-            this.nup_prix.Size = new System.Drawing.Size(251, 27);
+            this.nup_prix.Size = new System.Drawing.Size(251, 32);
             this.nup_prix.TabIndex = 20;
             // 
             // lbl_frais_mensuel_id
@@ -265,7 +265,7 @@
             this.lbl_frais_mensuel_id.AutoSize = true;
             this.lbl_frais_mensuel_id.Location = new System.Drawing.Point(241, 302);
             this.lbl_frais_mensuel_id.Name = "lbl_frais_mensuel_id";
-            this.lbl_frais_mensuel_id.Size = new System.Drawing.Size(0, 21);
+            this.lbl_frais_mensuel_id.Size = new System.Drawing.Size(0, 23);
             this.lbl_frais_mensuel_id.TabIndex = 21;
             this.lbl_frais_mensuel_id.Visible = false;
             // 
@@ -274,7 +274,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(73, 302);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(131, 21);
+            this.label9.Size = new System.Drawing.Size(164, 23);
             this.label9.TabIndex = 22;
             this.label9.Text = "Frais mensuel Id";
             this.label9.Visible = false;
@@ -291,7 +291,7 @@
             // 
             // FrmNouvelAccompte
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(557, 455);

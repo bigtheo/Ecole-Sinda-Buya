@@ -161,6 +161,10 @@ namespace Scool_cash_manager
                     cmd.CommandText = "INSERT INTO eleve(id,nom,postnom,prenom,genre,date_naissance,lieu_naissance,adresse,classe_id,pere_id,mere_id) values(@id,@nom,@postnom,@prenom,@genre,@date_naissance,@lieu_naissance,@adresse,@classe_id,@pere_id,@mere_id)";
 
                     //ajout des parametres
+                    MySqlParameter p_class_id = new MySqlParameter("@classe_id", MySqlDbType.Int64)
+                    {
+                        Value = Operations.TrouverClasse_idParNomClasse(cbx_classe.Text)
+                };
                     cmd.Parameters.Add("@id", MySqlDbType.Int32);
                     cmd.Parameters.Add("@nom", MySqlDbType.VarChar, 45);
                     cmd.Parameters.Add("@postnom", MySqlDbType.VarChar, 45);
@@ -169,7 +173,6 @@ namespace Scool_cash_manager
                     cmd.Parameters.Add("@lieu_naissance", MySqlDbType.VarChar, 45);
                     cmd.Parameters.Add("@date_naissance", MySqlDbType.Date);
                     cmd.Parameters.Add("@adresse", MySqlDbType.Text);
-                    cmd.Parameters.Add("@classe_id", MySqlDbType.Int32);
                     cmd.Parameters.Add("@pere_id", MySqlDbType.Int32);
                     cmd.Parameters.Add("@mere_id", MySqlDbType.Int32);
 
@@ -183,15 +186,17 @@ namespace Scool_cash_manager
                     cmd.Parameters["@adresse"].Value = txt_adresse.Text;
                     cmd.Parameters["@lieu_naissance"].Value = cbx_lieu_naissance.Text;
                     cmd.Parameters["@date_naissance"].Value = dtp_date_naissance.Value.ToString("yyyy-MM-dd");
-                    cmd.Parameters["@classe_id"].Value = classe_id;
+     
+
                     //appel des méthôde qui récupèrent les id des parents d'élèves
                     cmd.Parameters["@pere_id"].Value = Operations.ObtenirDernierIdPere();
                     cmd.Parameters["@mere_id"].Value = Operations.ObtenirDernierIdMere();
+                    cmd.Parameters.Add(p_class_id);
                     cmd.ExecuteNonQuery();
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Erreur "+ ex.Message);
                 }
             }
         }
@@ -388,9 +393,14 @@ namespace Scool_cash_manager
                 cbx_section.Focus();
                 return false;
             }
+            if(nupMontant.Value==0)
             {
-                return true;
+                MessageBox.Show("Veuillez déterminer la montant", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                nupMontant.Focus();
+                return false;
             }
+            return true;
+
         }
 
         #endregion appel des méthodes d'enregiostrement...
@@ -524,62 +534,7 @@ namespace Scool_cash_manager
         private void Txt_nom_TextChanged(object sender, EventArgs e)
         {
         }
-    /*    private void TrouverMontantParClasseFraisMensuelID()
-        {
-            using (MySqlCommand cmd = new MySqlCommand())
-            {
-                try
-                {
-                    Connexion.connecter();
-                    cmd.Connection = Connexion.con;
-                    cmd.CommandText = "ps_ObtenirMontantMensuel";
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    //decalaration des paramtres...
-                    MySqlParameter p_classe = new MySqlParameter("@p_classe", MySqlDbType.VarChar, 20);
-                    MySqlParameter p_frais_mensuel_id = new MySqlParameter("@p_designation_frais", MySqlDbType.VarChar, 20);
-                    MySqlParameter p_montant_frais_mensuel = new MySqlParameter("@p_montant", MySqlDbType.Decimal);
-                    MySqlParameter p_montant_frais_mensuel_id = new MySqlParameter("@p_frais_mensuel_id", MySqlDbType.Int32);
-
-
-                    //direction des parametres...
-                    p_classe.Direction = ParameterDirection.Input;
-                    p_montant_frais_mensuel.Direction = ParameterDirection.Input;
-                    p_montant_frais_mensuel.Direction = ParameterDirection.Output;
-                    p_montant_frais_mensuel_id.Direction = ParameterDirection.Output;
-
-                    //assignattion de params a la cmd
-
-                    cmd.Parameters.Add(p_frais_mensuel_id);
-                    cmd.Parameters.Add(p_classe);
-                    cmd.Parameters.Add(p_montant_frais_mensuel);
-                    cmd.Parameters.Add(p_montant_frais_mensuel_id);
-
-                    //les valeurs des parametres...
-
-                    p_classe.Value = cbx_classe.Text;
-                    p_frais_mensuel_id.Value = cbx_frais_mensuel.Text;
-
-                    //exécution de la requette
-                    try
-                    {
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch (FormatException ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-
-                    //récuperation du montant...
-                    nupdown_montant.Value = Convert.ToDecimal(p_montant_frais_mensuel.Value);
-                    lbl_frais_mensuel_id.Text = p_montant_frais_mensuel_id.Value.ToString();
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }*/
+   
 
         private void Cbx_section_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -595,7 +550,7 @@ namespace Scool_cash_manager
         /// <param name="e"></param>
         private void Cbx_classe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            classe_id = Operations.TrouverClasse_idParNomClasse(cbx_classe.Text);
+           
             nupMontant.Value =decimal.Parse( Operations.ObtenirMontantInscription(cbx_classe.Text));
         }
 
@@ -627,7 +582,7 @@ namespace Scool_cash_manager
         {
             DocRecu pdf = new DocRecu(DocRecu.TypeRecu.Inscription)
             {
-                Designation = "Inscription",
+                Designation = "Démarrage",
                 Noms = $"{txt_nom.Text} {txt_postnom.Text} ",
                 Montant = nupMontant.Value,
                 Classe = cbx_classe.Text,
@@ -639,17 +594,23 @@ namespace Scool_cash_manager
 
         }
 
-       
+
 
         #endregion Reçu du paiement mensuel
 
 
         //les attributs de la classe (formulaires)....
-        private string classe_id = "0";
+        private static string Classe_id { get; set; }
 
         private void Txt_nom_pere_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Ck_Accompte_CheckedChanged(object sender, EventArgs e)
+        {
+            nupMontant.Enabled = Ck_Accompte.Checked;
+            nupMontant.Value = 0;
         }
     }
 }

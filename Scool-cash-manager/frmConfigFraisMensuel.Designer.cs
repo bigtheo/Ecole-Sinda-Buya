@@ -64,7 +64,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(991, 46);
             this.panel1.TabIndex = 2;
@@ -89,7 +89,7 @@
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(0, 46);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(991, 596);
@@ -100,9 +100,9 @@
             this.tabPage1.Controls.Add(this.panel3);
             this.tabPage1.Controls.Add(this.dgvliste);
             this.tabPage1.Location = new System.Drawing.Point(4, 37);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(983, 555);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Configurations";
@@ -113,7 +113,7 @@
             this.panel3.Controls.Add(this.btnImprimer);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(4, 488);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(975, 63);
             this.panel3.TabIndex = 24;
@@ -127,7 +127,7 @@
             this.btnImprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimer.ForeColor = System.Drawing.Color.White;
             this.btnImprimer.Location = new System.Drawing.Point(7, 18);
-            this.btnImprimer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImprimer.Margin = new System.Windows.Forms.Padding(4);
             this.btnImprimer.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnImprimer.Name = "btnImprimer";
             this.btnImprimer.Size = new System.Drawing.Size(128, 38);
@@ -168,7 +168,7 @@
             this.dgvliste.EnableHeadersVisualStyles = false;
             this.dgvliste.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvliste.Location = new System.Drawing.Point(4, 4);
-            this.dgvliste.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvliste.Margin = new System.Windows.Forms.Padding(4);
             this.dgvliste.MultiSelect = false;
             this.dgvliste.Name = "dgvliste";
             this.dgvliste.ReadOnly = true;
@@ -185,10 +185,10 @@
             // 
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Location = new System.Drawing.Point(4, 37);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage2.Size = new System.Drawing.Size(983, 556);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(983, 555);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ajouter";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -205,15 +205,16 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(4, 4);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(975, 548);
+            this.panel2.Size = new System.Drawing.Size(975, 547);
             this.panel2.TabIndex = 23;
             // 
             // cbx_frais_mensuel
             // 
             this.cbx_frais_mensuel.FormattingEnabled = true;
             this.cbx_frais_mensuel.Items.AddRange(new object[] {
+            "Inscription",
             "Janvier",
             "Février",
             "Mars",
@@ -227,7 +228,7 @@
             "Novembre",
             "Décembre"});
             this.cbx_frais_mensuel.Location = new System.Drawing.Point(47, 71);
-            this.cbx_frais_mensuel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbx_frais_mensuel.Margin = new System.Windows.Forms.Padding(4);
             this.cbx_frais_mensuel.Name = "cbx_frais_mensuel";
             this.cbx_frais_mensuel.Size = new System.Drawing.Size(345, 36);
             this.cbx_frais_mensuel.TabIndex = 38;
@@ -241,7 +242,7 @@
             0,
             0});
             this.nupdownMontant.Location = new System.Drawing.Point(47, 209);
-            this.nupdownMontant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nupdownMontant.Margin = new System.Windows.Forms.Padding(4);
             this.nupdownMontant.Maximum = new decimal(new int[] {
             500000,
             0,
@@ -261,7 +262,7 @@
             this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifier.ForeColor = System.Drawing.Color.White;
             this.btnModifier.Location = new System.Drawing.Point(224, 250);
-            this.btnModifier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModifier.Margin = new System.Windows.Forms.Padding(4);
             this.btnModifier.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(169, 38);
@@ -278,7 +279,7 @@
             this.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrer.ForeColor = System.Drawing.Color.White;
             this.btnEnregistrer.Location = new System.Drawing.Point(47, 250);
-            this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnregistrer.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(169, 38);
@@ -292,7 +293,7 @@
             this.cbx_classe.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_classe.FormattingEnabled = true;
             this.cbx_classe.Location = new System.Drawing.Point(47, 140);
-            this.cbx_classe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbx_classe.Margin = new System.Windows.Forms.Padding(4);
             this.cbx_classe.Name = "cbx_classe";
             this.cbx_classe.Size = new System.Drawing.Size(345, 31);
             this.cbx_classe.TabIndex = 24;
@@ -339,7 +340,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmConfigFraisMensuel";
             this.Text = "7000/8";
             this.Load += new System.EventHandler(this.FrmConfigFraisMensuel_Load);
