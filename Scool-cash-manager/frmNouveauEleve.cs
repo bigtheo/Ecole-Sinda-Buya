@@ -1,6 +1,4 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Scool_cash_manager.Common;
 using System;
 using System.Data;
@@ -8,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Font = iTextSharp.text.Font;
 
 namespace Scool_cash_manager
 {
@@ -103,7 +100,7 @@ namespace Scool_cash_manager
 
                 try
                 {
-                    cmd.ExecuteNonQuery();                  
+                    cmd.ExecuteNonQuery();
                 }
                 catch (MySqlException ex)
                 {
@@ -164,7 +161,7 @@ namespace Scool_cash_manager
                     MySqlParameter p_class_id = new MySqlParameter("@classe_id", MySqlDbType.Int64)
                     {
                         Value = Operations.TrouverClasse_idParNomClasse(cbx_classe.Text)
-                };
+                    };
                     cmd.Parameters.Add("@id", MySqlDbType.Int32);
                     cmd.Parameters.Add("@nom", MySqlDbType.VarChar, 45);
                     cmd.Parameters.Add("@postnom", MySqlDbType.VarChar, 45);
@@ -186,7 +183,6 @@ namespace Scool_cash_manager
                     cmd.Parameters["@adresse"].Value = txt_adresse.Text;
                     cmd.Parameters["@lieu_naissance"].Value = cbx_lieu_naissance.Text;
                     cmd.Parameters["@date_naissance"].Value = dtp_date_naissance.Value.ToString("yyyy-MM-dd");
-     
 
                     //appel des méthôde qui récupèrent les id des parents d'élèves
                     cmd.Parameters["@pere_id"].Value = Operations.ObtenirDernierIdPere();
@@ -196,7 +192,7 @@ namespace Scool_cash_manager
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Erreur "+ ex.Message);
+                    MessageBox.Show("Erreur " + ex.Message);
                 }
             }
         }
@@ -205,6 +201,47 @@ namespace Scool_cash_manager
 
         #region enregistrement de la Photo del'élève
 
+        private void EnregistrerAccompte()
+        {
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                Connexion.Connecter();
+                cmd.Connection = Connexion.con;
+                cmd.CommandText = "Insert into Accompte(Id,date_paie,montant,frais_mensuel_id,eleve_id) values(@Id,@date_paie,@montant,@frais_mensuel_id,@eleve_id)";
+
+                MySqlParameter p_Id = new MySqlParameter("@Id", MySqlDbType.Int32);
+                MySqlParameter p_date = new MySqlParameter("@date_paie", MySqlDbType.DateTime);
+                MySqlParameter p_montant = new MySqlParameter("@montant", MySqlDbType.Decimal);
+                MySqlParameter p_frais_mensuel_id = new MySqlParameter("@frais_mensuel_id", MySqlDbType.Int32);
+                MySqlParameter p_eleve_id = new MySqlParameter("@eleve_id", MySqlDbType.Int32);
+
+                //les valeurs des parametres
+
+                p_Id.Value = null;
+                p_date.Value = DateTime.Now;
+                p_montant.Value = nupMontant.Value;
+                p_frais_mensuel_id.Value = Operations.ObtenirFraisInscrptionID(cbx_classe.Text);
+                p_eleve_id.Value = Operations.ObtenirIDdernierEleve();
+
+                //assignation des valeurs
+
+                cmd.Parameters.Add(p_Id);
+                cmd.Parameters.Add(p_date);
+                cmd.Parameters.Add(p_montant);
+                cmd.Parameters.Add(p_frais_mensuel_id);
+                cmd.Parameters.Add(p_eleve_id);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Accompte enregistré avec succès !!!", "Infromation");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message + "" + ex.Number);
+                }
+            }
+        }
+
         private void InsertedPhoto()
         {
             using (MySqlCommand cmd = new MySqlCommand())
@@ -212,8 +249,6 @@ namespace Scool_cash_manager
                 byte[] image;
                 if (pbxPhoto.Image != null)
                 {
-
-
                     MemoryStream memory = new MemoryStream();
                     pbxPhoto.Image.Save(memory, pbxPhoto.Image.RawFormat);
                     image = memory.ToArray();
@@ -233,7 +268,7 @@ namespace Scool_cash_manager
                 }
                 try
                 {
-                    int dernier_eleve_id = int.Parse(Operations.ObtenirIDdernierEleve());//récuperation du dernier id dans la table élève                   
+                    int dernier_eleve_id = int.Parse(Operations.ObtenirIDdernierEleve());//récuperation du dernier id dans la table élève
                     cmd.Connection = Connexion.con;
                     cmd.CommandText = "INSERT INTO IMAGES_ELEVES(id,nom,image,eleve_id) values(@id,@nom,@image,@eleve_id)";
                     cmd.Parameters.Add("@id", MySqlDbType.Int32);
@@ -242,7 +277,7 @@ namespace Scool_cash_manager
                     cmd.Parameters.Add("@eleve_id", MySqlDbType.Int32);
 
                     cmd.Parameters["@id"].Value = 0;
-                    cmd.Parameters["@nom"].Value = txt_nom.Text +txt_postnom.Text +txt_prenom.Text ;
+                    cmd.Parameters["@nom"].Value = txt_nom.Text + txt_postnom.Text + txt_prenom.Text;
                     cmd.Parameters["@image"].Value = image;
                     cmd.Parameters["@eleve_id"].Value = dernier_eleve_id;
                     cmd.ExecuteNonQuery();
@@ -252,7 +287,6 @@ namespace Scool_cash_manager
                     MessageBox.Show(ex.Message);
                 }
             }
-            
         }
 
         #endregion enregistrement de la Photo del'élève
@@ -298,7 +332,16 @@ namespace Scool_cash_manager
                     cmd.Parameters["@p_eleve_id"].Value = Operations.ObtenirIDdernierEleve();
                     cmd.Parameters["@p_frais_mensuel_id"].Value = Operations.ObtenirFraisInscrptionID(cbx_classe.Text);
                     cmd.Parameters["@p_user_id"].Value = 1;
-                    cmd.Parameters["@p_paye"].Value = 1;
+
+                    if (!Ck_Accompte.Checked)
+                        cmd.Parameters["@p_paye"].Value = 1;
+                    else
+                    {
+                        cmd.Parameters["@p_paye"].Value = 0;
+
+                        //enregistrement de l'accompte
+                        EnregistrerAccompte();
+                    }
 
                     #endregion la region des requete et commandes pour enregistrer l'inscription
 
@@ -306,9 +349,6 @@ namespace Scool_cash_manager
                     {
                         MessageBox.Show("Inscription reussie !!!  ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                     }
-                
-
-                  
                 }
                 catch (MySqlException ex) ///EN CAS D'ERREUR
                 {
@@ -338,7 +378,7 @@ namespace Scool_cash_manager
         {
             if (ChampsOk())
             {
-                if(decimal.Parse(Operations.ObtenirMontantInscription(cbx_classe.Text)) > 0 && Operations.ObtenirFraisInscrptionID(cbx_classe.Text)>0)
+                if (decimal.Parse(Operations.ObtenirMontantInscription(cbx_classe.Text)) > 0 && Operations.ObtenirFraisInscrptionID(cbx_classe.Text) > 0)
                 {
                     InsertedPere();
                     InsertedMere();
@@ -347,13 +387,11 @@ namespace Scool_cash_manager
                     InsertedInscription();
 
                     CreerRecu();
-                
-                   }
-                    else
-                    {
-                MessageBox.Show("Le frais d'inscription n'est pas encore configuré pour cette classe");
                 }
-
+                else
+                {
+                    MessageBox.Show("Le frais d'inscription n'est pas encore configuré pour cette classe");
+                }
             }
         }
 
@@ -393,14 +431,13 @@ namespace Scool_cash_manager
                 cbx_section.Focus();
                 return false;
             }
-            if(nupMontant.Value==0)
+            if (nupMontant.Value == 0)
             {
                 MessageBox.Show("Veuillez déterminer la montant", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 nupMontant.Focus();
                 return false;
             }
             return true;
-
         }
 
         #endregion appel des méthodes d'enregiostrement...
@@ -534,7 +571,6 @@ namespace Scool_cash_manager
         private void Txt_nom_TextChanged(object sender, EventArgs e)
         {
         }
-   
 
         private void Cbx_section_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -550,8 +586,7 @@ namespace Scool_cash_manager
         /// <param name="e"></param>
         private void Cbx_classe_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-            nupMontant.Value =decimal.Parse( Operations.ObtenirMontantInscription(cbx_classe.Text));
+            nupMontant.Value = decimal.Parse(Operations.ObtenirMontantInscription(cbx_classe.Text));
         }
 
         #endregion recherche Infos
@@ -573,8 +608,6 @@ namespace Scool_cash_manager
 
         #region Reçu du paiement mensuel
 
-        
-
         /// <summary>
         /// cette méthode permet de créer les document qui contient les infos du réçu
         /// </summary>
@@ -590,21 +623,15 @@ namespace Scool_cash_manager
             };
 
             pdf.CreerRecu();
-            
-
         }
 
-
-
         #endregion Reçu du paiement mensuel
-
 
         //les attributs de la classe (formulaires)....
         private static string Classe_id { get; set; }
 
         private void Txt_nom_pere_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void Ck_Accompte_CheckedChanged(object sender, EventArgs e)
