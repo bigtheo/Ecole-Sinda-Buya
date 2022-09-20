@@ -78,7 +78,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(56, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 30);
+            this.label1.Size = new System.Drawing.Size(84, 37);
             this.label1.TabIndex = 2;
             this.label1.Text = "Login";
             // 
@@ -103,7 +103,7 @@
             this.txt_username.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.txt_username.Location = new System.Drawing.Point(82, 151);
             this.txt_username.Name = "txt_username";
-            this.txt_username.Size = new System.Drawing.Size(333, 29);
+            this.txt_username.Size = new System.Drawing.Size(333, 34);
             this.txt_username.TabIndex = 1;
             // 
             // txt_password
@@ -112,7 +112,7 @@
             this.txt_password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_password.Location = new System.Drawing.Point(82, 186);
             this.txt_password.Name = "txt_password";
-            this.txt_password.Size = new System.Drawing.Size(333, 29);
+            this.txt_password.Size = new System.Drawing.Size(333, 34);
             this.txt_password.TabIndex = 2;
             this.txt_password.UseSystemPasswordChar = true;
             // 
@@ -122,7 +122,7 @@
             this.cbx_database.FormattingEnabled = true;
             this.cbx_database.Location = new System.Drawing.Point(82, 116);
             this.cbx_database.Name = "cbx_database";
-            this.cbx_database.Size = new System.Drawing.Size(333, 29);
+            this.cbx_database.Size = new System.Drawing.Size(333, 36);
             this.cbx_database.TabIndex = 3;
             // 
             // BtnConnexion
@@ -174,13 +174,13 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(106, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(205, 25);
+            this.label2.Size = new System.Drawing.Size(256, 32);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Veuillez vous identifiez";
+            this.label2.Text = "Veuillez vous identifier";
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(456, 328);

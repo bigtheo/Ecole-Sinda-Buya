@@ -56,7 +56,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1067, 80);
             this.panel1.TabIndex = 8;
@@ -79,7 +79,7 @@
             this.dtp_date.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_date.Location = new System.Drawing.Point(931, 43);
-            this.dtp_date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtp_date.Margin = new System.Windows.Forms.Padding(4);
             this.dtp_date.Name = "dtp_date";
             this.dtp_date.Size = new System.Drawing.Size(124, 29);
             this.dtp_date.TabIndex = 5;
@@ -109,7 +109,7 @@
             "Manuels",
             "Frais de l\'état"});
             this.cbx_frais.Location = new System.Drawing.Point(931, 10);
-            this.cbx_frais.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbx_frais.Margin = new System.Windows.Forms.Padding(4);
             this.cbx_frais.Name = "cbx_frais";
             this.cbx_frais.Size = new System.Drawing.Size(119, 28);
             this.cbx_frais.TabIndex = 3;
@@ -135,7 +135,7 @@
             this.panel2.Controls.Add(this.btnImprimer);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 492);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1067, 62);
             this.panel2.TabIndex = 22;
@@ -150,7 +150,7 @@
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.ForeColor = System.Drawing.Color.White;
             this.btnAnnuler.Location = new System.Drawing.Point(152, 16);
-            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(4);
             this.btnAnnuler.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(128, 32);
@@ -168,7 +168,7 @@
             this.btnImprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimer.ForeColor = System.Drawing.Color.White;
             this.btnImprimer.Location = new System.Drawing.Point(16, 16);
-            this.btnImprimer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImprimer.Margin = new System.Windows.Forms.Padding(4);
             this.btnImprimer.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnImprimer.Name = "btnImprimer";
             this.btnImprimer.Size = new System.Drawing.Size(128, 32);
@@ -221,7 +221,7 @@
             this.dgvliste.EnableHeadersVisualStyles = false;
             this.dgvliste.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvliste.Location = new System.Drawing.Point(0, 80);
-            this.dgvliste.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvliste.Margin = new System.Windows.Forms.Padding(4);
             this.dgvliste.MultiSelect = false;
             this.dgvliste.Name = "dgvliste";
             this.dgvliste.ReadOnly = true;
@@ -244,7 +244,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmJournalFrais";
             this.Text = "frmJournalFrais";
             this.Load += new System.EventHandler(this.FrmJournalFrais_Load);
