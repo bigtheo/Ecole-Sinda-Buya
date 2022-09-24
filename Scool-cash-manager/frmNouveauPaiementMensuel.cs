@@ -1,11 +1,8 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Scool_cash_manager.Common;
 using System;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -259,16 +256,7 @@ namespace Scool_cash_manager
         {
             if (!EnfantAcharge())
             {
-                if (!AUnaccompteAfinir())
-                {
-                    SavePaiementMensuel();
-                }
-                else
-                {
-                    MessageBox.Show("Cet(te) élève a déjà payé un accompte pour ce  mois,\nCliquez sur ok aller à page des accomptes", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    this.Close();
-                    new FrmNouvelAccompte().ShowDialog();
-                }
+                SavePaiementMensuel();
             }
             else
             {
@@ -363,8 +351,6 @@ namespace Scool_cash_manager
 
         #region Reçu du paiement mensuel
 
-       
-
         /// <summary>
         /// cette méthode permet de créer les document qui contient les infos du réçu
         /// </summary>
@@ -375,7 +361,7 @@ namespace Scool_cash_manager
             {
                 Designation = txt_frais_mensuel.Text,
                 Noms = $"{txt_noms.Text}",
-                IdEleve=long.Parse(nupdown_id.Value.ToString()),
+                IdEleve = long.Parse(nupdown_id.Value.ToString()),
                 Montant = nupdown_montant.Value,
                 Classe = txt_classe.Text
             };
@@ -415,28 +401,27 @@ namespace Scool_cash_manager
         {
         }
 
-
         #region Rechercher des informations sur les élèves
 
         private void PopulateItem()
         {
             try
             {
-                using (MySqlCommand cmd=new MySqlCommand ())
+                using (MySqlCommand cmd = new MySqlCommand())
                 {
                     Connexion.Connecter();
                     cmd.Connection = Connexion.con;
                     cmd.CommandText = "select concat_ws(' ',e.id,e.nom,e.postnom,e.prenom) as noms,c.nom,s.nom_section from eleve as e inner join classe c on c.id=e.classe_id inner join section as s on s.id=c.section_id where e.nom like @nom or e.postnom like @nom or e.prenom like @nom limit 50";
-                    
-                    cmd.Parameters.AddWithValue("@nom","%"+txt_nom.Text+"%");
 
-                    using (MySqlDataAdapter adapter=new MySqlDataAdapter (cmd))
+                    cmd.Parameters.AddWithValue("@nom", "%" + txt_nom.Text + "%");
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                     {
                         layout_panel.Controls.Clear();
                         DataTable table = new DataTable();
                         adapter.Fill(table);
                         int i = 1;
-                        foreach(DataRow row in table.Rows)
+                        foreach (DataRow row in table.Rows)
                         {
                             ListeItem element = new ListeItem();
                             element.Noms = row[0].ToString();
@@ -454,18 +439,17 @@ namespace Scool_cash_manager
                         }
                     }
                 }
-
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-        #endregion
+
+        #endregion Rechercher des informations sur les élèves
 
         private void txt_nom_TextChanged(object sender, EventArgs e)
         {
-            
         }
 
         private void BtnRechercher_Click(object sender, EventArgs e)

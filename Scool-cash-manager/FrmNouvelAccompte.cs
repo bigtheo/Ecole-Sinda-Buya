@@ -1,5 +1,6 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.qrcode;
 using MySql.Data.MySqlClient;
 using Scool_cash_manager.Common;
 using System;
@@ -291,9 +292,10 @@ namespace Scool_cash_manager
         /// </summary>
         private void CreerRecu()
         {
-            DocRecu pdf = new DocRecu(DocRecu.TypeRecu.Inscription)
+            DocRecu pdf = new DocRecu(DocRecu.TypeRecu.Accompte)
             {
-                Designation = "Accompte",
+                Designation = txt_frais_mensuel.Text,
+                IdEleve =Convert.ToInt64(nupdown_id.Value),
                 Noms = $"{txt_noms.Text} ",
                 Montant = nupMontantPaye.Value,
                 Classe = txt_classe.Text,
