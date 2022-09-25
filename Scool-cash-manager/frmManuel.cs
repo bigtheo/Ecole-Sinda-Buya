@@ -22,7 +22,7 @@ namespace Scool_cash_manager
 
         private void BtnNouveau_Click(object sender, EventArgs e)
         {
-            new frmNouveauPaiementManuels().ShowDialog();
+            new frmNouveauPaiementAutresFrais().ShowDialog();
         }
     }
 }

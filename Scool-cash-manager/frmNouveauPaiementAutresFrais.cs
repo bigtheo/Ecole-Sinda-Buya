@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace Scool_cash_manager
 {
-    public partial class frmNouveauPaiementManuels : Form
+    public partial class frmNouveauPaiementAutresFrais : Form
     {
         public int FraisId { get; set; }
         public string NumeroRecu { get; set; }
 
-        public frmNouveauPaiementManuels()
+        public frmNouveauPaiementAutresFrais()
         {
             InitializeComponent();
         }
@@ -140,6 +140,7 @@ namespace Scool_cash_manager
         {
             this.Cursor = Cursors.WaitCursor;
             TrouverNomClasseEleveParID();
+            GetTotalDejaPaye();
             this.Cursor = Cursors.Default;
         }
 
@@ -147,7 +148,89 @@ namespace Scool_cash_manager
 
         #region Enregistrement de l'achat du(es) manuel(s)
 
-        private void BtnEnregistrer_Click(object sender, EventArgs e)
+        private void EnregisterAcompteAutresFrais()
+        {
+            this.Cursor = Cursors.WaitCursor;
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                Connexion.Connecter();
+                cmd.Connection = Connexion.con;
+                cmd.CommandText = "INSERT INTO accomptes_autres_paiements(eleve_id,user_id,montant,frais_id) VALUES(@eleve_id,@userId,@montant,@fraisId)";
+
+                MySqlParameter p_user_id = new MySqlParameter("@userId", MySqlDbType.Int32)
+                {
+                    Value = 1,
+                };
+                MySqlParameter p_frais = new MySqlParameter("@fraisId", MySqlDbType.Int32)
+                {
+                    Value = GetFraisId(cbxFrais.Text.Trim())
+                };
+                MySqlParameter p_eleve_id = new MySqlParameter("@eleve_id", MySqlDbType.Int32)
+                {
+                    Value = nupdown_id.Value
+                };
+                MySqlParameter p_montant_a_payer = new MySqlParameter("@montant", MySqlDbType.Int32)
+                {
+                    Value = Convert.ToDecimal(txt_montant_accompte.Text)
+                };
+                cmd.Parameters.Add(p_user_id);
+                cmd.Parameters.Add(p_montant_a_payer);
+                cmd.Parameters.Add(p_frais);
+                cmd.Parameters.Add(p_eleve_id);
+
+                try
+                {
+                    if (cmd.ExecuteNonQuery() == 1)
+                    {
+
+                        cmd.CommandText = "select last_insert_id()";
+                        NumeroRecu = cmd.ExecuteScalar().ToString();
+                        MessageBox.Show("Enregistrement éffectué avec succès !");
+                        CreerRecu();
+
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+
+       
+
+        Cursor = Cursors.Default;
+        }
+
+
+        private Int64 GetFraisId(string intituleFrais)
+        {
+            Connexion.Connecter();
+            string sql = "select id from autres_frais where intitule=@frais";
+            using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
+            {
+                MySqlParameter p_frais = new MySqlParameter("@frais", MySqlDbType.VarChar)
+                {
+                    Value = cbxFrais.Text
+                };
+                cmd.Parameters.Add(p_frais);
+
+                Int64 fraisId = 0;
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    fraisId = dr.GetInt64(0);
+                }
+
+                dr.Close();
+
+                return fraisId;
+
+               
+            };
+        }
+
+        private void EnregistrerTotalAutresFrais()
         {
             this.Cursor = Cursors.WaitCursor;
             using (MySqlCommand cmd = new MySqlCommand())
@@ -160,9 +243,9 @@ namespace Scool_cash_manager
                 {
                     Value = 1,
                 };
-                MySqlParameter p_frais = new MySqlParameter("@fraisId", MySqlDbType.Int32)
+                MySqlParameter p_frais = new MySqlParameter("@fraisId", MySqlDbType.Int64)
                 {
-                    Value = 1//FraisId
+                    Value = GetFraisId(cbxFrais.Text.Trim())
                 };
                 MySqlParameter p_eleve_id = new MySqlParameter("@eleve_id", MySqlDbType.Int32)
                 {
@@ -177,7 +260,7 @@ namespace Scool_cash_manager
                 {
                     if (cmd.ExecuteNonQuery() == 1)
                     {
-                        
+
                         cmd.CommandText = "select last_insert_id()";
                         NumeroRecu = cmd.ExecuteScalar().ToString();
                         MessageBox.Show("Enregistrement éffectué avec succès !");
@@ -191,8 +274,23 @@ namespace Scool_cash_manager
                 }
             }
 
-            
+
             this.Cursor = Cursors.Default;
+        }
+
+
+        private void BtnEnregistrer_Click(object sender, EventArgs e)
+        {
+            if (!Ck_Accompte.Checked)
+            {
+                EnregistrerTotalAutresFrais();
+
+            }
+            else
+            {
+                EnregisterAcompteAutresFrais();
+            }
+        
         }
 
         private void CreerRecu()
@@ -213,7 +311,7 @@ namespace Scool_cash_manager
 
         #endregion Enregistrement de l'achat du(es) manuel(s)
 
-        private void cbxFrais_SelectedIndexChanged(object sender, EventArgs e)
+        private void GetMontantApayer()
         {
             Connexion.Connecter();
             string sql = "select montant from autres_frais where intitule=@frais";
@@ -231,6 +329,71 @@ namespace Scool_cash_manager
                     txt_montant.Text = dr.GetString(0);
                 }
             };
+        }
+
+        private void GetTotalDejaPaye()
+        {
+            Connexion.Connecter();
+            string sql = "SELECT IFNULL(sum(a.montant),0) Total from accomptes_autres_paiements a INNER JOIN autres_frais af on af.id = a.frais_id where a.eleve_id =@eleve_id and af.intitule=@frais";
+            using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
+            {
+                MySqlParameter p_frais = new MySqlParameter("@frais", MySqlDbType.VarChar)
+                {
+                    Value = cbxFrais.Text
+                };
+                MySqlParameter p_eleve_id = new MySqlParameter("@eleve_id", MySqlDbType.Int64)
+                {
+                    Value = nupdown_id.Value
+                };
+                cmd.Parameters.Add(p_frais);
+                cmd.Parameters.Add(p_eleve_id);
+
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Txt_total_deja_paye.Text = Convert.ToString(dr.GetDecimal(0));
+                }
+            };
+        }
+        private void CbxFrais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetMontantApayer();
+            GetTotalDejaPaye();
+        }
+
+        private void Ck_Accompte_CheckedChanged(object sender, EventArgs e)
+        {
+            if(Ck_Accompte.Checked)
+            {
+                txt_montant_accompte.Enabled = true;
+                txt_montant_accompte.Text = "0";
+            }
+            else
+            {
+                txt_montant_accompte.Enabled = false;
+                txt_montant_accompte.Text = "0";
+            }
+        }
+
+        private void Txt_montant_accompte_TextChanged(object sender, EventArgs e)
+        {
+            decimal montantAccompte = 0;
+            decimal montantApayer=0;
+
+            if(decimal.TryParse(txt_montant_accompte.Text, out montantAccompte)
+               &&decimal.TryParse(txt_montant.Text,out montantApayer))
+            {
+                if(montantAccompte > montantApayer)
+                {
+                    MessageBox.Show("le montant de l'accompte ne peut-être superieur au montant à payer", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txt_montant_accompte.Text = "0";
+                }
+            }
+            else
+            {
+                txt_montant_accompte.Clear();
+            }
+            
         }
     }
 }

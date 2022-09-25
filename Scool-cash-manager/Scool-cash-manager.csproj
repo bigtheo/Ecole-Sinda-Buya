@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Users\IT-ENGINEERING\Desktop\SINDABUYA RECU ACCOMPTE UPDATED\</PublishUrl>
+    <PublishUrl>C:\Users\IT-ENGINEERING\Desktop\SINDABUYA 25 09 2022\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -371,11 +371,11 @@
     <Compile Include="FrmNouveauPaiementFraisEtat.Designer.cs">
       <DependentUpon>FrmNouveauPaiementFraisEtat.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNouveauPaiementManuels.cs">
+    <Compile Include="frmNouveauPaiementAutresFrais.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNouveauPaiementManuels.Designer.cs">
-      <DependentUpon>frmNouveauPaiementManuels.cs</DependentUpon>
+    <Compile Include="frmNouveauPaiementAutresFrais.Designer.cs">
+      <DependentUpon>frmNouveauPaiementAutresFrais.cs</DependentUpon>
     </Compile>
     <Compile Include="frmNouveauPaiementMensuel.cs">
       <SubType>Form</SubType>
@@ -517,8 +517,8 @@
     <EmbeddedResource Include="FrmNouveauPaiementFraisEtat.resx">
       <DependentUpon>FrmNouveauPaiementFraisEtat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNouveauPaiementManuels.resx">
-      <DependentUpon>frmNouveauPaiementManuels.cs</DependentUpon>
+    <EmbeddedResource Include="frmNouveauPaiementAutresFrais.resx">
+      <DependentUpon>frmNouveauPaiementAutresFrais.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNouveauPaiementMensuel.resx">
       <DependentUpon>frmNouveauPaiementMensuel.cs</DependentUpon>
