@@ -8,8 +8,8 @@ namespace Scool_cash_manager
 {
     public partial class frmLogin : Form
     {
-       private static MySqlConnection connection;
-       
+        private static MySqlConnection connection;
+
         public frmLogin()
         {
             InitializeComponent();
@@ -48,12 +48,11 @@ namespace Scool_cash_manager
                 }
                 else
                 {
-                    MessageBox.Show("password/username incorrect", "Information", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("password/username incorrect", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
             this.Cursor = Cursors.Default;
-            
         }
 
         #region proprietés
@@ -98,10 +97,10 @@ namespace Scool_cash_manager
         {
             if (Connecter())
             {
-                cbx_database.DataSource =DatabaseList();
+                cbx_database.DataSource = DatabaseList();
             }
-            
         }
+
         //connexion à information_schema
         public static bool Connecter()
         {
@@ -127,6 +126,7 @@ namespace Scool_cash_manager
                 return false;
             }
         }
+
         public static List<string> DatabaseList()
         {
             Connecter();
@@ -141,17 +141,14 @@ namespace Scool_cash_manager
                     {
                         databases.Add(dataReader.GetString(0));
                     }
-
                 }
                 return databases;
             }
             catch (MySqlException ex)
             {
-
                 MessageBox.Show(ex.Message);
                 return default;
             }
-
         }
     }
 }

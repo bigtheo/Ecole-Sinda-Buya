@@ -28,6 +28,7 @@ namespace Scool_cash_manager
             con.Open();
             try
             {
+               
                 return true;
             }
             catch (MySqlException ex)
@@ -44,7 +45,7 @@ namespace Scool_cash_manager
         }
         public static bool Connecter(string database)
         {
-            string serveur = "127.0.0.1";
+            string serveur = "192.168.1.2";
             pwd = "1993";
             uid = "root";
             string constring = "persistsecurityinfo=True; server=" + serveur + "; database=" + database + ";uid=" + uid + ";password=" + pwd + "";

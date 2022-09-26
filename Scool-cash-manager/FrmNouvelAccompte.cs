@@ -297,7 +297,7 @@ namespace Scool_cash_manager
                 Designation = txt_frais_mensuel.Text,
                 IdEleve =Convert.ToInt64(nupdown_id.Value),
                 Noms = $"{txt_noms.Text} ",
-                Montant = nupMontantPaye.Value,
+                Montant = nupmontantApayer.Value,
                 Classe = txt_classe.Text,
                 Numero = Operations.ObtenirNumeroRecuMensuel()
             };

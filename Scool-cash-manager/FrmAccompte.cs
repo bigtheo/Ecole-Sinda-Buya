@@ -47,9 +47,11 @@ namespace Scool_cash_manager
             {
                 Connexion.Connecter();
                 cmd.Connection = Connexion.con;
-                cmd.CommandText = $"select a.Id as 'N°',a.date_paie as 'Date et Heure',e.id,concat_ws(' ',e.nom,e.postnom) as Noms,f.designation,a.montant "
-                    + "from accompte as a inner join frais_mensuel as f on a.frais_mensuel_id = f.id "
-                    + "Inner join eleve as e on a.eleve_id = e.id where date(a.date_paie)=@date_paie";
+                cmd.CommandText = $"select a.Id as 'N°',a.date_paie as 'Date et Heure',e.id,concat_ws(' ',e.nom,e.postnom) as Noms,c.nom as classe,f.designation,a.montant "
+                    + "from accompte as a inner join frais_mensuel as f on a.frais_mensuel_id = f.id " +
+                     " Inner join eleve as e on a.eleve_id = e.id " +
+                     " inner join classe c on c.id = e.classe_id " +
+                     "where date(a.date_paie)=@date_paie";
                 MySqlParameter p_date_paie = new MySqlParameter("@date_paie", MySqlDbType.Date)
                 {
                     Value = dtp_date.Value
@@ -148,15 +150,16 @@ namespace Scool_cash_manager
 
             #region le tableau
 
-            PdfPTable tableau = new PdfPTable(6)
+            PdfPTable tableau = new PdfPTable(7)
             {
                 WidthPercentage = 100
             }; //un tableau de 5 colonnes N°, nom, postnom et prenom
-            tableau.SetWidths(new float[] { 6, 10, 6, 20, 10, 6 });
+            tableau.SetWidths(new float[] { 4, 10, 6, 20,6, 10, 7 });
 
             Phrase p_numero = new Phrase("N°", police_entete_tableau);
             Phrase p_date_heure = new Phrase("Date et Heure", police_entete_tableau);
             Phrase p_Id = new Phrase("Id", police_entete_tableau);
+            Phrase p_classe = new Phrase("Classe", police_entete_tableau);
             Phrase p_noms = new Phrase("Noms", police_entete_tableau);
             Phrase p_designation = new Phrase("Mois", police_entete_tableau);
             Phrase p_montant = new Phrase("Montant", police_entete_tableau);
@@ -165,6 +168,7 @@ namespace Scool_cash_manager
             tableau.AddCell(p_date_heure);
             tableau.AddCell(p_Id);
             tableau.AddCell(p_noms);
+            tableau.AddCell(p_classe);
             tableau.AddCell(p_designation);
             tableau.AddCell(p_montant);
             int nombre_ligne = dgvliste.Rows.Count;
@@ -177,9 +181,11 @@ namespace Scool_cash_manager
                 tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[3].Value.ToString(), police_Cellule));
                 tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[4].Value.ToString(), police_Cellule));
                 tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[5].Value.ToString(), police_Cellule));
+                tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[6].Value.ToString(), police_Cellule));
             }
 
             tableau.AddCell(new Phrase("01", police_Cellule));
+            tableau.AddCell(new Phrase("-", police_Cellule));
             tableau.AddCell(new Phrase("-", police_Cellule));
             tableau.AddCell(new Phrase("-", police_Cellule));
             tableau.AddCell(new Phrase("-", police_Cellule));
