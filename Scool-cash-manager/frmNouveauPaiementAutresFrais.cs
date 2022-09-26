@@ -299,11 +299,20 @@ namespace Scool_cash_manager
             {
                 Designation = cbxFrais.Text,
                 Noms = txt_noms.Text,
-                Montant = Convert.ToDecimal(txt_montant.Text),
+                
                 Classe = txt_classe.Text,
                 Numero = NumeroRecu,
                 Entete = "Paiement scolaire"
             };
+
+            if(decimal.TryParse(txt_montant_accompte.Text,out decimal montantAccompte) && montantAccompte>0)
+            {
+                pdf.Montant = Convert.ToDecimal(txt_montant_accompte.Text);
+            }
+            else
+            {
+                pdf.Montant = Convert.ToDecimal(txt_montant.Text);
+            }
 
             pdf.CreerRecu();
             
