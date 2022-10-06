@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Users\IT-ENGINEERING\Desktop\KILIMA LOCAL\</PublishUrl>
+    <PublishUrl>C:\Users\IT-ENGINEERING\Desktop\SETUPS\SINDABUYA-SETUP\Derrogations\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -29,7 +29,7 @@
     <PublisherName>LSE - Lubumashi Software Engineering</PublisherName>
     <SuiteName>cash-manager</SuiteName>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
-    <ApplicationRevision>29</ApplicationRevision>
+    <ApplicationRevision>30</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -287,6 +287,12 @@
     <Compile Include="FrmModifierEleve.Designer.cs">
       <DependentUpon>FrmModifierEleve.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNouveauDeroge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNouveauDeroge.Designer.cs">
+      <DependentUpon>FrmNouveauDeroge.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmNouveauEnseigant.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -401,6 +407,12 @@
     <Compile Include="FrmSolvables.Designer.cs">
       <DependentUpon>FrmSolvables.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSplashScreen.Designer.cs">
+      <DependentUpon>FrmSplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTableauDeBord.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -475,6 +487,9 @@
     <EmbeddedResource Include="FrmModifierEleve.resx">
       <DependentUpon>FrmModifierEleve.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmNouveauDeroge.resx">
+      <DependentUpon>FrmNouveauDeroge.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmNouveauEnseigant.resx">
       <DependentUpon>FrmNouveauEnseigant.cs</DependentUpon>
     </EmbeddedResource>
@@ -531,6 +546,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSolvables.resx">
       <DependentUpon>FrmSolvables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSplashScreen.resx">
+      <DependentUpon>FrmSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTableauDeBord.resx">
       <DependentUpon>FrmTableauDeBord.cs</DependentUpon>

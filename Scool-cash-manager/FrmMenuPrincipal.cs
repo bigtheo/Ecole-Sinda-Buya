@@ -314,7 +314,6 @@ namespace Scool_cash_manager
         }
         #endregion
 
-     
         #region Lors de change de la base de données
         private void cbx_databases_SelectedIndexChanged(object sender, EventArgs e)
         {

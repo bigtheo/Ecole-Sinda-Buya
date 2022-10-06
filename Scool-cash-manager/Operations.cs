@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Google.Protobuf.WellKnownTypes;
+using MySql.Data.MySqlClient;
 using Scool_cash_manager.Common;
 using System;
 using System.Data;
@@ -11,12 +12,6 @@ namespace Scool_cash_manager
     internal class Operations
     {
         public static string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ficher_rapport.pdf");
-
-        #region les méthôdes sur la table frais (frais mensuel, de l'état...)
-
-
-
-        #endregion les méthôdes sur la table frais (frais mensuel, de l'état...)
 
         #region les méthôdes sur la table classe
 
@@ -78,6 +73,7 @@ namespace Scool_cash_manager
                 }
             }
         }
+
         /// <summary>
         /// Cette méthôde permet de trouver l'id de la classe par le nom de la celle-ci
         /// </summary>
@@ -85,12 +81,12 @@ namespace Scool_cash_manager
         /// <returns>l'id de la classe</returns>
         public static string TrouverClasse_idParNomClasse(string classe)
         {
-            using(MySqlCommand cmd=new MySqlCommand())
+            using (MySqlCommand cmd = new MySqlCommand())
             {
                 try
                 {
                     Connexion.Connecter();
-                    cmd.Connection=Connexion.con;
+                    cmd.Connection = Connexion.con;
                     cmd.CommandText = "SELECT id FROM classe where nom=@nom";
                     MySqlParameter p_nom_classe = new MySqlParameter("@nom", MySqlDbType.VarChar, 15);
                     cmd.Parameters.Add(p_nom_classe);
@@ -106,17 +102,15 @@ namespace Scool_cash_manager
                     {
                         return "";
                     }
-
                 }
-                catch(MySqlException ex)
+                catch (MySqlException ex)
                 {
                     MessageBox.Show(ex.Message);
                     return "";
                 }
-                
-
             }
         }
+
         /// <summary>
         /// Cette méthode permet de trouver l'id de la classe par son nom
         /// </summary>
@@ -138,7 +132,6 @@ namespace Scool_cash_manager
                         return cmd.ExecuteScalar().ToString();
                     else
                         return "";
-
                 }
                 catch (MySqlException ex)
                 {
@@ -146,18 +139,19 @@ namespace Scool_cash_manager
                     return "";
                 }
             }
-
         }
+
         #endregion les méthôdes sur la table classe
 
         #region méthôde sur la table élève...
+
         /// <summary>
         /// cette méthôde permet de retourné l'id du dernier élève inscrit
         /// </summary>
         /// <returns></returns>
         public static string ObtenirIDdernierEleve()
         {
-            using(MySqlCommand cmd=new MySqlCommand())
+            using (MySqlCommand cmd = new MySqlCommand())
             {
                 try
                 {
@@ -174,18 +168,19 @@ namespace Scool_cash_manager
                     {
                         return "";
                     }
-
                 }
-                catch(MySqlException ex)
+                catch (MySqlException ex)
                 {
                     MessageBox.Show(ex.Message);
                     return "";
                 }
             }
         }
-        #endregion
+
+        #endregion méthôde sur la table élève...
 
         #region méthôdes sur la table pere et mere
+
         /// <summary>
         /// cette méthode permet de trouver l'id du dernier père
         /// </summary>
@@ -194,7 +189,7 @@ namespace Scool_cash_manager
         {
             try
             {
-                using (MySqlCommand cmd=new MySqlCommand ())
+                using (MySqlCommand cmd = new MySqlCommand())
                 {
                     Connexion.Connecter();
                     cmd.Connection = Connexion.con;
@@ -209,9 +204,9 @@ namespace Scool_cash_manager
                     {
                         return "";
                     }
-
                 }
-            }catch(MySqlException ex)
+            }
+            catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
                 return "";
@@ -237,7 +232,6 @@ namespace Scool_cash_manager
                     {
                         return "";
                     }
-
                 }
             }
             catch (MySqlException ex)
@@ -270,7 +264,6 @@ namespace Scool_cash_manager
                     {
                         return "";
                     }
-
                 }
             }
             catch (MySqlException ex)
@@ -279,6 +272,7 @@ namespace Scool_cash_manager
                 return "";
             }
         }
+
         /// <summary>
         /// Cette méthode permet de touver l'id du père par l'id de l'élève
         /// </summary>
@@ -306,7 +300,6 @@ namespace Scool_cash_manager
                     {
                         return "";
                     }
-
                 }
             }
             catch (MySqlException ex)
@@ -315,6 +308,7 @@ namespace Scool_cash_manager
                 return "";
             }
         }
+
         /// <summary>
         /// Cette méthode permet de touver l'id de la mère par l'id de l'élève
         /// </summary>
@@ -342,7 +336,6 @@ namespace Scool_cash_manager
                     {
                         return "";
                     }
-
                 }
             }
             catch (MySqlException ex)
@@ -351,20 +344,17 @@ namespace Scool_cash_manager
                 return "";
             }
         }
-        #endregion
 
-        #region les méthodes sur la tabke frais examen
-
-        #endregion
+        #endregion méthôdes sur la table pere et mere
 
         #region la sauvergarde de la base des données
+
         public static void Backup()
         {
             string nomDelaDbase = $"{new FrmMenuPrincipal().cbx_databases.Text}";
             string nom_du_fichier = DateTime.Now.Date.ToString($"backup  dd MMM yyyy HH mm") + ".sql";
             string file = DocRecu.Folder + $"\\{nomDelaDbase} " + nom_du_fichier;
 
-   
             using (MySqlCommand cmd = new MySqlCommand())
             {
                 using (MySqlBackup mb = new MySqlBackup(cmd))
@@ -373,7 +363,6 @@ namespace Scool_cash_manager
                     mb.ExportToFile(file);
                     MessageBox.Show("Sauvegarde éffectuée avec succès !!!", "Infrmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
             }
         }
 
@@ -397,49 +386,48 @@ namespace Scool_cash_manager
 
                     Process.Start(StartInfo);
                 }
-
             }
         }
-        #endregion
+
+        #endregion la sauvergarde de la base des données
 
         #region Méthôdes sur la table de configuration
+
         public static string ObtenirNomEtablissement()
         {
-            
-            using (MySqlCommand cmd=new MySqlCommand  ())
+            using (MySqlCommand cmd = new MySqlCommand())
             {
                 Connexion.Connecter();
                 cmd.Connection = Connexion.con;
                 cmd.CommandText = "select nom_entite from configuration where id=1 ";
                 try
                 {
-                    
                     return cmd.ExecuteScalar().ToString();
-                    
                 }
                 catch (MySqlException ex)
                 {
                     MessageBox.Show(ex.Message);
                     return "";
                 }
-              
             }
         }
-        #endregion
+
+        #endregion Méthôdes sur la table de configuration
 
         #region methodes sur l'inscription
+
         public static Int32 ObtenirFraisInscrptionID(string classe)
         {
-            using (MySqlCommand cmd=new MySqlCommand ())
+            using (MySqlCommand cmd = new MySqlCommand())
             {
                 Connexion.Connecter();
                 cmd.Connection = Connexion.con;
-                cmd.CommandText = "SELECT coalesce(id) from frais_mensuel where classe_id in(select id from classe where nom='" + classe+"') and designation='inscription'";
+                cmd.CommandText = "SELECT coalesce(id) from frais_mensuel where classe_id in(select id from classe where nom='" + classe + "') and designation='inscription'";
                 try
                 {
                     if (cmd.ExecuteScalar() != null)
                     {
-                        return Int32.Parse( cmd.ExecuteScalar().ToString());
+                        return Int32.Parse(cmd.ExecuteScalar().ToString());
                     }
                     else
                     {
@@ -448,11 +436,9 @@ namespace Scool_cash_manager
                 }
                 catch (MySqlException ex)
                 {
-
                     MessageBox.Show(ex.Message);
                     return 0;
                 }
-                
             }
         }
 
@@ -465,7 +451,7 @@ namespace Scool_cash_manager
                 cmd.CommandText = "SELECT coalesce(montant) from frais_mensuel where classe_id in(select id from classe where nom='" + classe + "') and designation='inscription'";
                 try
                 {
-                    if (cmd.ExecuteScalar()!=null)
+                    if (cmd.ExecuteScalar() != null)
                     {
                         return cmd.ExecuteScalar().ToString();
                     }
@@ -476,19 +462,19 @@ namespace Scool_cash_manager
                 }
                 catch (MySqlException ex)
                 {
-
                     MessageBox.Show(ex.Message);
                     return "0";
                 }
-
             }
         }
-        #endregion
+
+        #endregion methodes sur l'inscription
 
         #region methodes sur l'accompte
+
         internal static string ObtenirNumeroRecuAccompte()
         {
-            using (MySqlCommand cmd=new MySqlCommand ())
+            using (MySqlCommand cmd = new MySqlCommand())
             {
                 Connexion.Connecter();
                 cmd.Connection = Connexion.con;
@@ -504,9 +490,11 @@ namespace Scool_cash_manager
                 }
             }
         }
-        #endregion
+
+        #endregion methodes sur l'accompte
 
         #region méthodes de la classe recu
+
         public static string ObtenirAdresse()
         {
             using (MySqlCommand cmd = new MySqlCommand())
@@ -517,7 +505,6 @@ namespace Scool_cash_manager
                 return cmd.ExecuteScalar().ToString();
             }
         }
-
 
         public static string LastInsertId()
         {
@@ -534,7 +521,6 @@ namespace Scool_cash_manager
                     return default;
                 }
             }
-
         }
 
         /// <summary>
@@ -591,11 +577,9 @@ namespace Scool_cash_manager
                     };
                     cmd.Parameters.Add(p_numero_recu);
 
-                    //on exécute la requete 
+                    //on exécute la requete
                     cmd.ExecuteNonQuery();
                     return p_numero_recu.Value.ToString();
-
-
                 }
             }
             catch (MySqlException ex)
@@ -626,11 +610,9 @@ namespace Scool_cash_manager
                     };
                     cmd.Parameters.Add(p_numero_recu);
 
-                    //on exécute la requete 
+                    //on exécute la requete
                     cmd.ExecuteNonQuery();
                     return p_numero_recu.Value.ToString();
-
-
                 }
             }
             catch (MySqlException ex)
@@ -640,6 +622,41 @@ namespace Scool_cash_manager
             }
         }
 
-        #endregion
+        internal static string ObtenirNomEleveById(string text)
+        {
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+               
+                    Connexion.Connecter();
+                    cmd.Connection = Connexion.con;
+                    cmd.CommandText = "select concat_ws(' ',e.nom,e.postnom,e.prenom,c.nom)  Noms from eleve e inner join classe c on c.id = e.classe_id where e.id =@id ";
+
+                    MySqlParameter p_id = new MySqlParameter("@id", MySqlDbType.Int64)
+                    {
+                        Value =text
+                    };
+                    cmd.Parameters.Add(p_id);
+                    try
+                    {
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        string noms = string.Empty;
+                    while (reader.Read())
+                    {
+                       noms = reader.GetString(0);
+
+
+                   }
+                    return noms;
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("le format de la chaine entré n'est pas vailde pour le matricule", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+                    return String.Empty;
+                   }                   
+            }
+                
+            }
+        }
     }
-}
+
+    #endregion méthodes de la classe recu
