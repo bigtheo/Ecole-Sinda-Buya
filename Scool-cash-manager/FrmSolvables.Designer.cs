@@ -57,18 +57,19 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 37);
+            this.panel1.Size = new System.Drawing.Size(1067, 46);
             this.panel1.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(359, 12);
+            this.label3.Location = new System.Drawing.Point(479, 15);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 13);
+            this.label3.Size = new System.Drawing.Size(141, 16);
             this.label3.TabIndex = 10;
             this.label3.Text = "Selectionner la Classe";
             // 
@@ -76,9 +77,10 @@
             // 
             this.cbx_classe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbx_classe.FormattingEnabled = true;
-            this.cbx_classe.Location = new System.Drawing.Point(476, 8);
+            this.cbx_classe.Location = new System.Drawing.Point(635, 10);
+            this.cbx_classe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbx_classe.Name = "cbx_classe";
-            this.cbx_classe.Size = new System.Drawing.Size(96, 21);
+            this.cbx_classe.Size = new System.Drawing.Size(127, 24);
             this.cbx_classe.TabIndex = 9;
             this.cbx_classe.SelectedIndexChanged += new System.EventHandler(this.Cbx_classe_SelectedIndexChanged);
             // 
@@ -86,9 +88,10 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(578, 12);
+            this.label2.Location = new System.Drawing.Point(771, 15);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 13);
+            this.label2.Size = new System.Drawing.Size(124, 16);
             this.label2.TabIndex = 8;
             this.label2.Text = "Selectionner le frais";
             // 
@@ -108,9 +111,10 @@
             "Mai",
             "Juin",
             "Juillet"});
-            this.cbx_frais.Location = new System.Drawing.Point(683, 8);
+            this.cbx_frais.Location = new System.Drawing.Point(911, 10);
+            this.cbx_frais.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbx_frais.Name = "cbx_frais";
-            this.cbx_frais.Size = new System.Drawing.Size(105, 21);
+            this.cbx_frais.Size = new System.Drawing.Size(139, 24);
             this.cbx_frais.TabIndex = 7;
             this.cbx_frais.Text = "Septembre";
             this.cbx_frais.SelectedIndexChanged += new System.EventHandler(this.Cbx_frais_SelectedIndexChanged);
@@ -122,8 +126,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(226, 32);
+            this.label1.Size = new System.Drawing.Size(280, 41);
             this.label1.TabIndex = 2;
             this.label1.Text = "Les élèves solvables";
             // 
@@ -133,9 +138,10 @@
             this.panel2.Controls.Add(this.btnDetails);
             this.panel2.Controls.Add(this.btnNouveau);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 399);
+            this.panel2.Location = new System.Drawing.Point(0, 491);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 51);
+            this.panel2.Size = new System.Drawing.Size(1067, 63);
             this.panel2.TabIndex = 20;
             // 
             // btnImprimer
@@ -146,10 +152,11 @@
             this.btnImprimer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
             this.btnImprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimer.ForeColor = System.Drawing.Color.White;
-            this.btnImprimer.Location = new System.Drawing.Point(210, 13);
-            this.btnImprimer.MaximumSize = new System.Drawing.Size(127, 31);
+            this.btnImprimer.Location = new System.Drawing.Point(280, 16);
+            this.btnImprimer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImprimer.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnImprimer.Name = "btnImprimer";
-            this.btnImprimer.Size = new System.Drawing.Size(96, 26);
+            this.btnImprimer.Size = new System.Drawing.Size(128, 32);
             this.btnImprimer.TabIndex = 3;
             this.btnImprimer.Text = "Imprimer";
             this.btnImprimer.UseVisualStyleBackColor = false;
@@ -163,10 +170,11 @@
             this.btnDetails.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
             this.btnDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetails.ForeColor = System.Drawing.Color.White;
-            this.btnDetails.Location = new System.Drawing.Point(108, 13);
-            this.btnDetails.MaximumSize = new System.Drawing.Size(127, 31);
+            this.btnDetails.Location = new System.Drawing.Point(144, 16);
+            this.btnDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDetails.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(96, 26);
+            this.btnDetails.Size = new System.Drawing.Size(128, 32);
             this.btnDetails.TabIndex = 2;
             this.btnDetails.Text = "Details";
             this.btnDetails.UseVisualStyleBackColor = false;
@@ -178,10 +186,11 @@
             this.btnNouveau.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
             this.btnNouveau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouveau.ForeColor = System.Drawing.Color.White;
-            this.btnNouveau.Location = new System.Drawing.Point(6, 12);
-            this.btnNouveau.MaximumSize = new System.Drawing.Size(127, 31);
+            this.btnNouveau.Location = new System.Drawing.Point(8, 15);
+            this.btnNouveau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNouveau.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnNouveau.Name = "btnNouveau";
-            this.btnNouveau.Size = new System.Drawing.Size(96, 26);
+            this.btnNouveau.Size = new System.Drawing.Size(128, 32);
             this.btnNouveau.TabIndex = 0;
             this.btnNouveau.Text = "Nouveau";
             this.btnNouveau.UseVisualStyleBackColor = false;
@@ -191,9 +200,10 @@
             this.lblMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(111, 222);
+            this.lblMessage.Location = new System.Drawing.Point(148, 273);
+            this.lblMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(708, 36);
+            this.lblMessage.Size = new System.Drawing.Size(885, 44);
             this.lblMessage.TabIndex = 29;
             this.lblMessage.Text = "Aucune Opération n\'a été éffectuée aujourd\'hui";
             this.lblMessage.Visible = false;
@@ -228,27 +238,30 @@
             this.dgvliste.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvliste.EnableHeadersVisualStyles = false;
             this.dgvliste.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgvliste.Location = new System.Drawing.Point(0, 37);
+            this.dgvliste.Location = new System.Drawing.Point(0, 46);
+            this.dgvliste.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvliste.MultiSelect = false;
             this.dgvliste.Name = "dgvliste";
             this.dgvliste.ReadOnly = true;
+            this.dgvliste.RowHeadersWidth = 51;
             this.dgvliste.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(3);
             this.dgvliste.RowTemplate.Height = 45;
             this.dgvliste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvliste.Size = new System.Drawing.Size(800, 362);
+            this.dgvliste.Size = new System.Drawing.Size(1067, 445);
             this.dgvliste.TabIndex = 28;
             // 
             // FrmSolvables
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.dgvliste);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmSolvables";
             this.Text = "frmSolvables";
             this.Load += new System.EventHandler(this.FrmSolvables_Load);

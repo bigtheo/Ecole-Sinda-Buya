@@ -191,6 +191,12 @@
     <Compile Include="FrmAccompte.Designer.cs">
       <DependentUpon>FrmAccompte.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAppSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAppSettings.Designer.cs">
+      <DependentUpon>FrmAppSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -438,6 +444,9 @@
     <Compile Include="Views.cs" />
     <EmbeddedResource Include="FrmAccompte.resx">
       <DependentUpon>FrmAccompte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAppSettings.resx">
+      <DependentUpon>FrmAppSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuPrincipal.resx">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>

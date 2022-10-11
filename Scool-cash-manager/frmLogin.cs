@@ -103,15 +103,18 @@ namespace Scool_cash_manager
 
         //connexion à information_schema
         public static bool Connecter()
-        {
+        {            
             string serveur = "127.0.0.1";
-            string pwd = "1993";
-            string uid = "root";
+            string pwd = System.Configuration.ConfigurationManager.AppSettings["password"]; 
+            string uid = System.Configuration.ConfigurationManager.AppSettings["userName"];
             string constring = "persistsecurityinfo=True; server=" + serveur + "; database=information_schema;uid=" + uid + ";password=" + pwd + "";
+
+            
             connection = new MySqlConnection(constring);
-            connection.Open();
+            
             try
             {
+                connection.Open();
                 return true;
             }
             catch (MySqlException ex)
@@ -123,6 +126,12 @@ namespace Scool_cash_manager
                     System.Windows.Forms.MessageBox.Show("Erreur de connexion au serveur des données !\nLe login ou le nom utilisateur est incorect\nLe code d'erreur : " + number, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     System.Windows.Forms.MessageBox.Show(ex.Message + "\nLe code d'erreur : " + number, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new FrmAppSettings().ShowDialog();
+                return false;
+            }
+            catch(System.Security.Authentication.AuthenticationException ex)
+            {
+                MessageBox.Show(ex.Message);
                 return false;
             }
         }
@@ -149,6 +158,11 @@ namespace Scool_cash_manager
                 MessageBox.Show(ex.Message);
                 return default;
             }
+        }
+
+        private void BtnSetting_Click(object sender, EventArgs e)
+        {
+            new FrmAppSettings().ShowDialog();
         }
     }
 }

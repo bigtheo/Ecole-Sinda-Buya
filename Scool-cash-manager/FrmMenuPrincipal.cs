@@ -268,9 +268,9 @@ namespace Scool_cash_manager
         //connexion à information_schema
         public static bool Connecter()
         {
-            string serveur = "127.0.0.1";
-            string pwd = "1993";
-            string uid = "root";
+            string serveur = System.Configuration.ConfigurationManager.AppSettings["serverName"];
+            string pwd = System.Configuration.ConfigurationManager.AppSettings["password"];
+            string uid = System.Configuration.ConfigurationManager.AppSettings["userName"];
             string constring = "persistsecurityinfo=True; server=" + serveur + "; database=information_schema;uid=" + uid + ";password=" + pwd + "";
             connection = new MySqlConnection(constring);
             connection.Open();

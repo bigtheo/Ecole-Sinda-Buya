@@ -41,6 +41,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.BtnSetting = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panelBarreDeTitre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -51,13 +53,14 @@
             // panelBarreDeTitre
             // 
             this.panelBarreDeTitre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(118)))), ((int)(((byte)(168)))));
+            this.panelBarreDeTitre.Controls.Add(this.BtnSetting);
             this.panelBarreDeTitre.Controls.Add(this.pictureBox1);
             this.panelBarreDeTitre.Controls.Add(this.label1);
             this.panelBarreDeTitre.Controls.Add(this.BtnFemer);
             this.panelBarreDeTitre.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBarreDeTitre.Location = new System.Drawing.Point(0, 0);
             this.panelBarreDeTitre.Name = "panelBarreDeTitre";
-            this.panelBarreDeTitre.Size = new System.Drawing.Size(456, 51);
+            this.panelBarreDeTitre.Size = new System.Drawing.Size(473, 51);
             this.panelBarreDeTitre.TabIndex = 0;
             this.panelBarreDeTitre.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBarreDeTitre_MouseDown);
             // 
@@ -88,9 +91,9 @@
             this.BtnFemer.FlatAppearance.BorderSize = 0;
             this.BtnFemer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnFemer.ForeColor = System.Drawing.Color.White;
-            this.BtnFemer.Location = new System.Drawing.Point(418, 12);
+            this.BtnFemer.Location = new System.Drawing.Point(428, 8);
             this.BtnFemer.Name = "BtnFemer";
-            this.BtnFemer.Size = new System.Drawing.Size(26, 25);
+            this.BtnFemer.Size = new System.Drawing.Size(26, 32);
             this.BtnFemer.TabIndex = 1;
             this.BtnFemer.Text = "X";
             this.BtnFemer.UseVisualStyleBackColor = true;
@@ -101,7 +104,7 @@
             this.txt_username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txt_username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_username.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.txt_username.Location = new System.Drawing.Point(82, 151);
+            this.txt_username.Location = new System.Drawing.Point(82, 185);
             this.txt_username.Name = "txt_username";
             this.txt_username.Size = new System.Drawing.Size(333, 34);
             this.txt_username.TabIndex = 1;
@@ -110,7 +113,7 @@
             // 
             this.txt_password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txt_password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_password.Location = new System.Drawing.Point(82, 186);
+            this.txt_password.Location = new System.Drawing.Point(82, 236);
             this.txt_password.Name = "txt_password";
             this.txt_password.Size = new System.Drawing.Size(333, 34);
             this.txt_password.TabIndex = 2;
@@ -120,7 +123,7 @@
             // 
             this.cbx_database.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cbx_database.FormattingEnabled = true;
-            this.cbx_database.Location = new System.Drawing.Point(82, 116);
+            this.cbx_database.Location = new System.Drawing.Point(82, 134);
             this.cbx_database.Name = "cbx_database";
             this.cbx_database.Size = new System.Drawing.Size(333, 36);
             this.cbx_database.TabIndex = 3;
@@ -130,9 +133,9 @@
             this.BtnConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnConnexion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnConnexion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(118)))), ((int)(((byte)(168)))));
-            this.BtnConnexion.Location = new System.Drawing.Point(82, 223);
+            this.BtnConnexion.Location = new System.Drawing.Point(82, 277);
             this.BtnConnexion.Name = "BtnConnexion";
-            this.BtnConnexion.Size = new System.Drawing.Size(333, 31);
+            this.BtnConnexion.Size = new System.Drawing.Size(333, 44);
             this.BtnConnexion.TabIndex = 4;
             this.BtnConnexion.Text = "Connecxion";
             this.BtnConnexion.UseVisualStyleBackColor = true;
@@ -141,7 +144,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(38, 116);
+            this.pictureBox3.Location = new System.Drawing.Point(38, 139);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(38, 29);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -151,7 +154,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(38, 151);
+            this.pictureBox2.Location = new System.Drawing.Point(38, 185);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(38, 29);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -161,7 +164,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(38, 186);
+            this.pictureBox4.Location = new System.Drawing.Point(38, 236);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(38, 29);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -178,12 +181,34 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Veuillez vous identifier";
             // 
+            // BtnSetting
+            // 
+            this.BtnSetting.FlatAppearance.BorderSize = 0;
+            this.BtnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSetting.Image = ((System.Drawing.Image)(resources.GetObject("BtnSetting.Image")));
+            this.BtnSetting.Location = new System.Drawing.Point(379, 9);
+            this.BtnSetting.Name = "BtnSetting";
+            this.BtnSetting.Size = new System.Drawing.Size(36, 34);
+            this.BtnSetting.TabIndex = 3;
+            this.BtnSetting.UseVisualStyleBackColor = true;
+            this.BtnSetting.Click += new System.EventHandler(this.BtnSetting_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 358);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(473, 22);
+            this.statusStrip1.TabIndex = 10;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(456, 328);
+            this.ClientSize = new System.Drawing.Size(473, 380);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox2);
@@ -226,5 +251,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button BtnSetting;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }

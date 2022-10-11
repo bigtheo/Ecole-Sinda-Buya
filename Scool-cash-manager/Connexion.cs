@@ -19,16 +19,16 @@ namespace Scool_cash_manager
         // la méthode qui permet l'ouverture de la connection
         public static bool Connecter()
         {
-            string serveur = "127.0.0.1";
-            pwd = "1993";
-            uid = "root";
+            string serveur = System.Configuration.ConfigurationManager.AppSettings["serverName"] ;
+            uid = System.Configuration.ConfigurationManager.AppSettings["userName"]; ;
+            pwd = System.Configuration.ConfigurationManager.AppSettings["password"];
             db = frmLogin.DatabaseName;
             string constring = "persistsecurityinfo=True; server=" + serveur + "; database="+ db + ";uid=" + uid + ";password=" + pwd + "";
-            con = new MySqlConnection(constring);
-            con.Open();
+           
             try
             {
-               
+                con = new MySqlConnection(constring);
+                con.Open();
                 return true;
             }
             catch (MySqlException ex)
@@ -40,6 +40,7 @@ namespace Scool_cash_manager
                     System.Windows.Forms.MessageBox.Show("Erreur de connexion au serveur des données !\nLe login ou le nom utilisateur est incorect\nLe code d'erreur : " + number, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     System.Windows.Forms.MessageBox.Show(ex.Message + "\nLe code d'erreur : " + number, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    new FrmAppSettings().ShowDialog();
                 return false;
             }
         }

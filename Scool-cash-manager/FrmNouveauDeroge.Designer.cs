@@ -113,7 +113,7 @@
             0,
             0});
             this.nup_jour.Minimum = new decimal(new int[] {
-            5,
+            3,
             0,
             0,
             0});
@@ -122,7 +122,7 @@
             this.nup_jour.TabIndex = 9;
             this.nup_jour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nup_jour.Value = new decimal(new int[] {
-            5,
+            3,
             0,
             0,
             0});

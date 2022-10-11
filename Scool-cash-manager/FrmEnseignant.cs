@@ -45,16 +45,16 @@ namespace Scool_cash_manager
                 {
                     DataTable table = new DataTable();
                     adapter.Fill(table);
-                    dataGridView1.DataSource = table;
+                    dgvliste.DataSource = table;
 
-                    if (dataGridView1.Rows.Count == 0)
+                    if (dgvliste.Rows.Count == 0)
                     {
-                        dataGridView1.Hide();
+                        dgvliste.Hide();
                         lblMessage.Show();
                     }
                     else
                     {
-                        dataGridView1.Show();
+                        dgvliste.Show();
                         lblMessage.Hide();
                     }
                 }
@@ -72,16 +72,16 @@ namespace Scool_cash_manager
                 {
                     DataTable table = new DataTable();
                     adapter.Fill(table);
-                    dataGridView1.DataSource = table;
+                    dgvliste.DataSource = table;
 
-                    if (dataGridView1.Rows.Count == 0)
+                    if (dgvliste.Rows.Count == 0)
                     {
-                        dataGridView1.Hide();
+                        dgvliste.Hide();
                         lblMessage.Show();
                     }
                     else
                     {
-                        dataGridView1.Show();
+                        dgvliste.Show();
                         lblMessage.Hide();
                     }
                 }
@@ -168,7 +168,7 @@ namespace Scool_cash_manager
             string t_classe = "Classe : Toutes\n";
             string t_date_du_jour = "Imprimé le  : " + DateTime.Now.ToString() + "\n";
          
-            string t_title_principal = "Liste des élèves pris en charge par les élèves";
+            string t_title_principal = "Liste des élèves pris en charge";
             doc.Add(PasserLigne);
 
             Phrase phrase_nom_ecole = new Phrase(t_nom_ecole, police_titre);
@@ -201,16 +201,19 @@ namespace Scool_cash_manager
 
             Phrase p_numero = new Phrase("N°", police_entete_tableau);
             Phrase p_Id = new Phrase("Id", police_entete_tableau);
-            Phrase p_nom = new Phrase("Noms parants", police_entete_tableau);
-            Phrase p_postnom = new Phrase("Noms enfants", police_entete_tableau);
+            Phrase p_nomParent = new Phrase("Noms parants", police_entete_tableau);
+            Phrase p_nomEnfant = new Phrase("Noms enfants", police_entete_tableau);
 
 
 
             tableau.AddCell(p_numero);
             tableau.AddCell(p_Id);
-            tableau.AddCell(p_nom);
-            tableau.AddCell(p_postnom);
+            tableau.AddCell(p_nomParent);
+            tableau.AddCell(p_nomEnfant);
+
+
             int nombre_ligne = dgvliste.Rows.Count;
+            
 
             for (int i = 0; i < nombre_ligne; i++)
             {
