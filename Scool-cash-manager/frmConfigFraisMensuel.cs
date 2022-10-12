@@ -107,5 +107,10 @@ namespace Scool_cash_manager
         }
 
         #endregion
+
+        private void btnImprimer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

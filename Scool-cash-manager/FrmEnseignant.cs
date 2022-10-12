@@ -246,12 +246,56 @@ namespace Scool_cash_manager
             {
                 case 0:
                     AfficherAffiliation();
+                    btnModifierAssociation.Enabled = true;
+                    btnImprimer.Enabled = true;
                     break;
                 case 1:
                     AfficherDerrogation();
+                    btnModifierAssociation.Enabled = false;
+                    btnImprimer.Enabled = false;
                     break;
             }
             
+        }
+    
+        private void SupprimerAssociation()
+        {
+            var sql = "delete from associer where id=@p_id";
+            Connexion.Connecter();
+
+            using (MySqlCommand cmd =new MySqlCommand (sql,Connexion.con))
+            {
+                MySqlParameter p_id = new MySqlParameter("@p_id", MySqlDbType.Int64)
+                {
+                    Value = dgvliste.CurrentRow.Cells[0].Value
+                } ;
+
+                cmd.Parameters.Add(p_id);
+
+                try
+                {
+                    int rowCount = cmd.ExecuteNonQuery();
+
+                    if (rowCount > 0)
+                        MessageBox.Show("Suppression effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information); ; ; ;
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+                }
+
+            }
+        }
+
+        private void btnModifierAssociation_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Voulez-vous vraiment supprimer ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                SupprimerAssociation();
+                AfficherAffiliation();
+            }
+
         }
     }
 }

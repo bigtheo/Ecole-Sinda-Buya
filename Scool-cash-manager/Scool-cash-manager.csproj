@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Users\IT-ENGINEERING\Desktop\SETUPS\SINDABUYA-SETUP\Derrogations\</PublishUrl>
+    <PublishUrl>C:\Users\IT-ENGINEERING\Desktop\SETUPS\SINDABUYA-SETUP\Display classe on others fees\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -29,7 +29,7 @@
     <PublisherName>LSE - Lubumashi Software Engineering</PublisherName>
     <SuiteName>cash-manager</SuiteName>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
-    <ApplicationRevision>30</ApplicationRevision>
+    <ApplicationRevision>38</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -365,11 +365,11 @@
     <Compile Include="frmJournalFrais.Designer.cs">
       <DependentUpon>frmJournalFrais.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmManuel.cs">
+    <Compile Include="FrmAutresPaiements.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmManuel.Designer.cs">
-      <DependentUpon>frmManuel.cs</DependentUpon>
+    <Compile Include="FrmAutresPaiements.Designer.cs">
+      <DependentUpon>FrmAutresPaiements.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmConfigManuels.cs">
       <SubType>Form</SubType>
@@ -532,8 +532,8 @@
     <EmbeddedResource Include="frmJournalFrais.resx">
       <DependentUpon>frmJournalFrais.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmManuel.resx">
-      <DependentUpon>frmManuel.cs</DependentUpon>
+    <EmbeddedResource Include="FrmAutresPaiements.resx">
+      <DependentUpon>FrmAutresPaiements.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConfigManuels.resx">
       <DependentUpon>FrmConfigManuels.cs</DependentUpon>

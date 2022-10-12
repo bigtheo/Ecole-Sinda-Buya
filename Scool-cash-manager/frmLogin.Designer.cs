@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.panelBarreDeTitre = new System.Windows.Forms.Panel();
+            this.BtnSetting = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnFemer = new System.Windows.Forms.Button();
@@ -41,7 +42,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.BtnSetting = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panelBarreDeTitre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,9 +60,21 @@
             this.panelBarreDeTitre.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBarreDeTitre.Location = new System.Drawing.Point(0, 0);
             this.panelBarreDeTitre.Name = "panelBarreDeTitre";
-            this.panelBarreDeTitre.Size = new System.Drawing.Size(473, 51);
+            this.panelBarreDeTitre.Size = new System.Drawing.Size(409, 51);
             this.panelBarreDeTitre.TabIndex = 0;
             this.panelBarreDeTitre.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBarreDeTitre_MouseDown);
+            // 
+            // BtnSetting
+            // 
+            this.BtnSetting.FlatAppearance.BorderSize = 0;
+            this.BtnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSetting.Image = ((System.Drawing.Image)(resources.GetObject("BtnSetting.Image")));
+            this.BtnSetting.Location = new System.Drawing.Point(318, 8);
+            this.BtnSetting.Name = "BtnSetting";
+            this.BtnSetting.Size = new System.Drawing.Size(36, 34);
+            this.BtnSetting.TabIndex = 3;
+            this.BtnSetting.UseVisualStyleBackColor = true;
+            this.BtnSetting.Click += new System.EventHandler(this.BtnSetting_Click);
             // 
             // pictureBox1
             // 
@@ -81,7 +93,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(56, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 37);
+            this.label1.Size = new System.Drawing.Size(64, 30);
             this.label1.TabIndex = 2;
             this.label1.Text = "Login";
             // 
@@ -91,7 +103,7 @@
             this.BtnFemer.FlatAppearance.BorderSize = 0;
             this.BtnFemer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnFemer.ForeColor = System.Drawing.Color.White;
-            this.BtnFemer.Location = new System.Drawing.Point(428, 8);
+            this.BtnFemer.Location = new System.Drawing.Point(360, 9);
             this.BtnFemer.Name = "BtnFemer";
             this.BtnFemer.Size = new System.Drawing.Size(26, 32);
             this.BtnFemer.TabIndex = 1;
@@ -104,18 +116,18 @@
             this.txt_username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txt_username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_username.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.txt_username.Location = new System.Drawing.Point(82, 185);
+            this.txt_username.Location = new System.Drawing.Point(82, 174);
             this.txt_username.Name = "txt_username";
-            this.txt_username.Size = new System.Drawing.Size(333, 34);
+            this.txt_username.Size = new System.Drawing.Size(304, 29);
             this.txt_username.TabIndex = 1;
             // 
             // txt_password
             // 
             this.txt_password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txt_password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_password.Location = new System.Drawing.Point(82, 236);
+            this.txt_password.Location = new System.Drawing.Point(82, 209);
             this.txt_password.Name = "txt_password";
-            this.txt_password.Size = new System.Drawing.Size(333, 34);
+            this.txt_password.Size = new System.Drawing.Size(304, 29);
             this.txt_password.TabIndex = 2;
             this.txt_password.UseSystemPasswordChar = true;
             // 
@@ -125,7 +137,7 @@
             this.cbx_database.FormattingEnabled = true;
             this.cbx_database.Location = new System.Drawing.Point(82, 134);
             this.cbx_database.Name = "cbx_database";
-            this.cbx_database.Size = new System.Drawing.Size(333, 36);
+            this.cbx_database.Size = new System.Drawing.Size(304, 29);
             this.cbx_database.TabIndex = 3;
             // 
             // BtnConnexion
@@ -133,9 +145,9 @@
             this.BtnConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnConnexion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnConnexion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(118)))), ((int)(((byte)(168)))));
-            this.BtnConnexion.Location = new System.Drawing.Point(82, 277);
+            this.BtnConnexion.Location = new System.Drawing.Point(148, 262);
             this.BtnConnexion.Name = "BtnConnexion";
-            this.BtnConnexion.Size = new System.Drawing.Size(333, 44);
+            this.BtnConnexion.Size = new System.Drawing.Size(112, 38);
             this.BtnConnexion.TabIndex = 4;
             this.BtnConnexion.Text = "Connecxion";
             this.BtnConnexion.UseVisualStyleBackColor = true;
@@ -154,7 +166,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(38, 185);
+            this.pictureBox2.Location = new System.Drawing.Point(38, 174);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(38, 29);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -164,7 +176,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(38, 236);
+            this.pictureBox4.Location = new System.Drawing.Point(38, 209);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(38, 29);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -175,39 +187,28 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(106, 75);
+            this.label2.Location = new System.Drawing.Point(127, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(256, 32);
+            this.label2.Size = new System.Drawing.Size(203, 25);
             this.label2.TabIndex = 9;
             this.label2.Text = "Veuillez vous identifier";
-            // 
-            // BtnSetting
-            // 
-            this.BtnSetting.FlatAppearance.BorderSize = 0;
-            this.BtnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSetting.Image = ((System.Drawing.Image)(resources.GetObject("BtnSetting.Image")));
-            this.BtnSetting.Location = new System.Drawing.Point(379, 9);
-            this.BtnSetting.Name = "BtnSetting";
-            this.BtnSetting.Size = new System.Drawing.Size(36, 34);
-            this.BtnSetting.TabIndex = 3;
-            this.BtnSetting.UseVisualStyleBackColor = true;
-            this.BtnSetting.Click += new System.EventHandler(this.BtnSetting_Click);
             // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 358);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 320);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(473, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(409, 22);
             this.statusStrip1.TabIndex = 10;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AcceptButton = this.BtnConnexion;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(473, 380);
+            this.ClientSize = new System.Drawing.Size(409, 342);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox4);

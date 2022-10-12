@@ -129,7 +129,7 @@ namespace Scool_cash_manager
 
         private void BtnAchatManuel_Click(object sender, EventArgs e)
         {
-            OuvrirFormulaire(new frmManuel());
+            OuvrirFormulaire(new FrmAutresPaiements());
             CacherSousMenu();
         }
 

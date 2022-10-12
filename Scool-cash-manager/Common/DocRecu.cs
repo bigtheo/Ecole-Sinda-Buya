@@ -221,7 +221,7 @@ namespace Scool_cash_manager.Common
             #endregion
 
             
-            PrintPDFToASpecificPrinter();
+            PrintPDFToDefaultPrinter();
 
         }
 
