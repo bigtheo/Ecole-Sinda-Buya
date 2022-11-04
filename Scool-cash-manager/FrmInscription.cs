@@ -25,16 +25,11 @@ namespace Scool_cash_manager
 
         private void FrmInscription_Load(object sender, EventArgs e)
         {
-            //affichage des infos de la liste d'élève
-            Views.AfficherTout("v_liste_elve limit 50", dgvliste);
-            //charger les classe dans le comboBox
+           
             Operations.ChargerClassesDansComboBox(cbx_classe);
-            //on affiche le message aucune inscription dans le cas correspondant
-            if (dgvliste.Rows.Count == 0)
-            {
-                dgvliste.Hide();
-                lblMessage.Show();
-            }
+
+            AfficherListeEleve();
+          
         }
 
         #endregion au chargement du foprmulaire...
@@ -84,14 +79,16 @@ namespace Scool_cash_manager
         #region au changement de la valeur dans le comboBox
         private void Cbx_classe_SelectedIndexChanged(object sender, EventArgs e)
         {
+            AfficherListeEleve();
+            
+        }
 
-            using (MySqlCommand cmd = new MySqlCommand())
+        void AfficherListeEleve()
+        {
+            var sql = "ps_listeDesEleves";
+            using (MySqlCommand cmd = new MySqlCommand(sql,Connexion.con))
             {
-                Connexion.Connecter();
-                cmd.Connection = Connexion.con;
-                cmd.CommandText = "SELECT* from v_liste_elve where classe=@p_classe";
-                cmd.CommandType = System.Data.CommandType.Text;
-
+                cmd.CommandType = CommandType.StoredProcedure;
                 MySqlParameter p_classe = new MySqlParameter("@p_classe", MySqlDbType.VarChar, 15)
                 {
                     Value = cbx_classe.Text
@@ -108,11 +105,7 @@ namespace Scool_cash_manager
                         dataAdapter.Dispose();
                         cmd.Dispose();
                     }
-                    else // si la classe vaut vide on affiche tous...
-                    {
-                        Views.AfficherTout("v_liste_elve", dgvliste);
-                    }
-                    
+
 
                     //on cache la grille dans le cas où aucune donnée n'est trouvée
                     if (dgvliste.Rows.Count < 1)
@@ -202,33 +195,30 @@ namespace Scool_cash_manager
             #endregion
 
             #region le tableau
-            PdfPTable tableau = new PdfPTable(6)
+            PdfPTable tableau = new PdfPTable(5)
             {
                 WidthPercentage = 100
             }; //un tableau de 5 colonnes N°, nom, postnom et prenom
-            tableau.SetWidths(new float[] { 6, 6, 22,5, 7, 20 });
+            tableau.SetWidths(new float[] { 6,6, 22,5, 7 });
             
             Phrase p_numero = new Phrase("N°", police_entete_tableau);
-            Phrase p_Id = new Phrase("Id", police_entete_tableau);
+            Phrase p_id = new Phrase("Id", police_entete_tableau);
             Phrase p_nom = new Phrase("Noms", police_entete_tableau);
             Phrase p_postnom = new Phrase("Sexe", police_entete_tableau);
             Phrase p_prenom = new Phrase("Classe", police_entete_tableau);
-            Phrase p_adresse = new Phrase("Adresse", police_entete_tableau);
 
            
 
             tableau.AddCell(p_numero);
-            tableau.AddCell(p_Id);
+            tableau.AddCell(p_id);
             tableau.AddCell(p_nom);
             tableau.AddCell(p_postnom);
             tableau.AddCell(p_prenom);
-            tableau.AddCell(p_adresse);
             int nombre_ligne = dgvliste.Rows.Count;
      
             for (int i = 0; i <nombre_ligne; i++)
             {
 
-                tableau.AddCell(new Phrase((i+1).ToString(),police_Cellule));
                 tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[0].Value.ToString(), police_Cellule));
                 tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[1].Value.ToString(), police_Cellule));
                 tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[2].Value.ToString(), police_Cellule));
