@@ -15,7 +15,7 @@ namespace Scool_cash_manager
         private void AfficherLeFichier(string filename)
         {
             
-            axFoxitCtl1.OpenFile(filename);
+            pdfViewerControl1.Load(filename);
       
         }
 

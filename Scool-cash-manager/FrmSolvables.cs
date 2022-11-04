@@ -321,7 +321,29 @@ namespace Scool_cash_manager
 
                 #endregion
 
+                #region les ayant payé les accomptes du mois
+                //les inscriptions tardives
+                pdfcell_colspan = new PdfPCell(new Phrase("Ayant payé les accomptes", police_entete_tableau))
+                {
+                    Colspan = 5,
+                    HorizontalAlignment = V
+                };
+                table = GetTableAvance();
+                if (table.Rows.Count > 0)
+                    tableau.AddCell(pdfcell_colspan);
+                j = 0;
+                foreach (DataRow row in table.Rows)
+                {
+                    tableau.AddCell((j + 1).ToString());
+                    tableau.AddCell(new Phrase(row[0].ToString(), police_Cellule));
+                    tableau.AddCell(new Phrase(row[1].ToString(), police_Cellule));
+                    tableau.AddCell(new Phrase(row[2].ToString(), police_Cellule));
+                    tableau.AddCell(new Phrase(row[3].ToString(), police_Cellule));
+                    j++;
+                }
 
+
+                #endregion
                 doc.Add(tableau);
 
                 #endregion le tableau
@@ -483,6 +505,30 @@ namespace Scool_cash_manager
 
             #endregion
 
+            #region les ayant payé les accomptes du mois
+            //les inscriptions tardives
+            pdfcell_colspan = new PdfPCell(new Phrase("Ayant payé les accomptes", police_entete_tableau))
+            {
+                Colspan = 5,
+                HorizontalAlignment = V
+            };
+            table = GetTableAvance();
+            if (table.Rows.Count > 0)
+                tableau.AddCell(pdfcell_colspan);
+            j = 0;
+            foreach (DataRow row in table.Rows)
+            {
+                tableau.AddCell((j + 1).ToString());
+                tableau.AddCell(new Phrase(row[0].ToString(), police_Cellule));
+                tableau.AddCell(new Phrase(row[1].ToString(), police_Cellule));
+                tableau.AddCell(new Phrase(row[2].ToString(), police_Cellule));
+                tableau.AddCell(new Phrase(row[3].ToString(), police_Cellule));
+                j++;
+            }
+
+
+            #endregion
+
 
             doc.Add(tableau);
 
@@ -492,7 +538,7 @@ namespace Scool_cash_manager
             this.Cursor = Cursors.Default;
         }
 
-        private DataTable GetTableAvanceSuperierMoitie()
+        private DataTable GetTableAvance()
         {
             using (MySqlCommand cmd = new MySqlCommand())
             {
@@ -502,7 +548,7 @@ namespace Scool_cash_manager
                     "INNER JOIN accompte as a on a.eleve_id = e.id " +
                     "INNER JOIN classe as c On c.id = e.classe_id " +
                     "INNER join frais_mensuel as f on f.id = a.frais_mensuel_id where " +
-                    " f.designation = @mois and c.nom = @classe  group by(e.id) ";
+                    " f.designation = @mois and c.nom = @classe ";
 
                 MySqlParameter p_classe = new MySqlParameter("@classe", MySqlDbType.VarChar)
                 {

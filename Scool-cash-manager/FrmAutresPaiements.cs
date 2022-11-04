@@ -14,6 +14,7 @@ namespace Scool_cash_manager
         public FrmAutresPaiements()
         {
             InitializeComponent();
+            PopulateFrais();
         }
 
         private void FrmManuel_Load(object sender, EventArgs e)
@@ -174,9 +175,58 @@ namespace Scool_cash_manager
             }
         }
 
+        private void GetEleveAyantPayeUnFrais()
+        {
+            Connexion.Connecter();
+            var sql = "select e.id,concat_ws(' ',e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' , f.Intitule,f.montant from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id inner join classe c on c.id =e.classe_id where f.intitule=@p_frais";
+
+            using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
+            {
+                MySqlParameter p_frais = new MySqlParameter("@p_frais", MySqlDbType.VarChar)
+                {
+                    Value = cbx_frais.Text
+                };
+                cmd.Parameters.Add(p_frais);
+                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                {
+                    DataTable table = new DataTable();
+
+                    try
+                    {
+                        da.Fill(table);
+                        dgvliste.DataSource = table;
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+
+
+                }
+            }
+        }
+
         private void dtp_date_ValueChanged(object sender, EventArgs e)
         {
             AfficherEleveSolvableFrais();
+        }
+        void PopulateFrais()
+        {
+            var sql = "select intitule from autres_frais";
+            using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
+            {
+                MySqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    cbx_frais.Items.Add(dr[0]);
+                }
+            }
+        }
+
+        private void cbx_frais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetEleveAyantPayeUnFrais();
         }
     }
 }

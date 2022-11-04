@@ -16,6 +16,7 @@ namespace Scool_cash_manager
         {
             InitializeComponent();
             ListerAccompteVerifie();
+            
         }
 
         #region barre de titre
@@ -274,5 +275,8 @@ namespace Scool_cash_manager
         }
 
         #endregion annulation des opération
+
+
+      
     }
 }
