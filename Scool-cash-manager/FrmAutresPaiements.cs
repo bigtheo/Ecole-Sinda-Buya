@@ -147,7 +147,7 @@ namespace Scool_cash_manager
         private void AfficherEleveSolvableFrais()
         {
             Connexion.Connecter();
-            var sql = "select e.id,concat_ws(' ',e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' , f.Intitule,f.montant from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id\r\nInner join eleve e on e.id = p.eleve_id inner join classe c on c.id =e.classe_id where date(p.date_paie) = date(@p_date)";
+            var sql = "select e.id,concat_ws(' ',e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' , f.Intitule,f.montant \r\nfrom autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where date(p.date_paie) = date(@p_date)\r\n\r\nUNION\r\n\r\nselect '01','Total','--', '--' , '--',ifnull(sum(f.montant),0)\r\nfrom autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where date(p.date_paie) = date(@p_date)";
             
             using (MySqlCommand cmd=new MySqlCommand (sql,Connexion.con))
             {
@@ -178,7 +178,7 @@ namespace Scool_cash_manager
         private void GetEleveAyantPayeUnFrais()
         {
             Connexion.Connecter();
-            var sql = "select e.id,concat_ws(' ',e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' , f.Intitule,f.montant from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id inner join classe c on c.id =e.classe_id where f.intitule=@p_frais";
+            var sql = "select e.id,concat_ws(' ',e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' , f.Intitule,f.montant from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\nUNION\r\nselect '01','Total','--', '--' , 'Total',ifnull(sum(f.montant),0) from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\n";
 
             using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
             {
