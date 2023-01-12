@@ -42,6 +42,10 @@
             this.btnNouveau = new System.Windows.Forms.Button();
             this.dgvliste = new System.Windows.Forms.DataGridView();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_total_solvable = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_total_insolvable = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvliste)).BeginInit();
@@ -50,6 +54,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.panel1.Controls.Add(this.lbl_total_insolvable);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.lbl_total_solvable);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.cbx_classe);
             this.panel1.Controls.Add(this.label2);
@@ -57,16 +65,16 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 37);
+            this.panel1.Size = new System.Drawing.Size(996, 91);
             this.panel1.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(393, 12);
+            this.label3.Location = new System.Drawing.Point(589, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 13);
             this.label3.TabIndex = 6;
@@ -76,7 +84,7 @@
             // 
             this.cbx_classe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbx_classe.FormattingEnabled = true;
-            this.cbx_classe.Location = new System.Drawing.Point(510, 8);
+            this.cbx_classe.Location = new System.Drawing.Point(706, 18);
             this.cbx_classe.Name = "cbx_classe";
             this.cbx_classe.Size = new System.Drawing.Size(62, 21);
             this.cbx_classe.TabIndex = 5;
@@ -86,7 +94,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(578, 12);
+            this.label2.Location = new System.Drawing.Point(774, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 4;
@@ -108,7 +116,7 @@
             "Mai",
             "Juin",
             "Juillet"});
-            this.cbx_frais.Location = new System.Drawing.Point(683, 8);
+            this.cbx_frais.Location = new System.Drawing.Point(879, 18);
             this.cbx_frais.Name = "cbx_frais";
             this.cbx_frais.Size = new System.Drawing.Size(105, 21);
             this.cbx_frais.TabIndex = 3;
@@ -123,7 +131,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(247, 32);
+            this.label1.Size = new System.Drawing.Size(246, 32);
             this.label1.TabIndex = 2;
             this.label1.Text = "Les élèves Insolvables";
             // 
@@ -133,9 +141,9 @@
             this.panel2.Controls.Add(this.btnDetails);
             this.panel2.Controls.Add(this.btnNouveau);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 399);
+            this.panel2.Location = new System.Drawing.Point(0, 593);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 51);
+            this.panel2.Size = new System.Drawing.Size(996, 51);
             this.panel2.TabIndex = 20;
             // 
             // btnImprimer
@@ -216,14 +224,15 @@
             this.dgvliste.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvliste.EnableHeadersVisualStyles = false;
             this.dgvliste.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgvliste.Location = new System.Drawing.Point(0, 37);
+            this.dgvliste.Location = new System.Drawing.Point(0, 91);
             this.dgvliste.MultiSelect = false;
             this.dgvliste.Name = "dgvliste";
             this.dgvliste.ReadOnly = true;
+            this.dgvliste.RowHeadersWidth = 51;
             this.dgvliste.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(3);
             this.dgvliste.RowTemplate.Height = 45;
             this.dgvliste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvliste.Size = new System.Drawing.Size(800, 362);
+            this.dgvliste.Size = new System.Drawing.Size(996, 502);
             this.dgvliste.TabIndex = 21;
             // 
             // lblMessage
@@ -231,19 +240,67 @@
             this.lblMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(149, 222);
+            this.lblMessage.Location = new System.Drawing.Point(247, 319);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(547, 36);
             this.lblMessage.TabIndex = 22;
             this.lblMessage.Text = "Aucun(e) Insolvable n\'a été trouvé(e)";
             this.lblMessage.Visible = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(45)))), ((int)(((byte)(184)))));
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(12, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 17);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Total solvable";
+            // 
+            // lbl_total_solvable
+            // 
+            this.lbl_total_solvable.AutoSize = true;
+            this.lbl_total_solvable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(45)))), ((int)(((byte)(184)))));
+            this.lbl_total_solvable.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total_solvable.ForeColor = System.Drawing.Color.White;
+            this.lbl_total_solvable.Location = new System.Drawing.Point(120, 43);
+            this.lbl_total_solvable.Name = "lbl_total_solvable";
+            this.lbl_total_solvable.Size = new System.Drawing.Size(45, 17);
+            this.lbl_total_solvable.TabIndex = 8;
+            this.lbl_total_solvable.Text = "O CDF";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(45)))), ((int)(((byte)(184)))));
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(12, 66);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(98, 17);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Total Insolvable";
+            // 
+            // lbl_total_insolvable
+            // 
+            this.lbl_total_insolvable.AutoSize = true;
+            this.lbl_total_insolvable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(45)))), ((int)(((byte)(184)))));
+            this.lbl_total_insolvable.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total_insolvable.ForeColor = System.Drawing.Color.White;
+            this.lbl_total_insolvable.Location = new System.Drawing.Point(120, 66);
+            this.lbl_total_insolvable.Name = "lbl_total_insolvable";
+            this.lbl_total_insolvable.Size = new System.Drawing.Size(45, 17);
+            this.lbl_total_insolvable.TabIndex = 10;
+            this.lbl_total_insolvable.Text = "O CDF";
+            // 
             // FrmInsolvables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(996, 644);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.dgvliste);
             this.Controls.Add(this.panel2);
@@ -275,5 +332,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbx_classe;
+        private System.Windows.Forms.Label lbl_total_insolvable;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbl_total_solvable;
+        private System.Windows.Forms.Label label4;
     }
 }

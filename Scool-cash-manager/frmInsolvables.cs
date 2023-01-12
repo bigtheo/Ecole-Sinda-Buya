@@ -15,6 +15,9 @@ namespace Scool_cash_manager
         {
             InitializeComponent();
             Operations.ChargerClassesDansComboBox(cbx_classe);
+            cbx_classe.SelectedIndex = 0;
+            TrouverNombreDesSolvables();
+
         }
 
         #region au chargement du formulaire ...
@@ -32,6 +35,7 @@ namespace Scool_cash_manager
                 dgvliste.Show();
                 lblMessage.Hide();
             }
+            
         }
 
         private void ListerInsolvable()
@@ -82,16 +86,69 @@ namespace Scool_cash_manager
             }
         }
 
+        private void TrouverNombreDesSolvables()
+        {
+            string sql = "select count(*) Nombre from paiement_mensuel p inner join frais_mensuel fm on fm.id =p.frais_mensuel_id where fm.designation =@p_mois;";
+
+            using (MySqlCommand cmd=new MySqlCommand (sql,Connexion.con))
+            {
+                MySqlParameter p_mois = new MySqlParameter("@p_mois", MySqlDbType.VarChar)
+                {
+                    Value = cbx_frais.Text
+                };
+                cmd.Parameters.Add(p_mois);
+
+                try
+                {
+                    lbl_total_solvable.Text =Convert.ToInt16(cmd.ExecuteScalar()).ToString();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
+            
+         }
+        private void TrouverNombreDesInsSolvables()
+        {
+            string sql = "SELECT count(*) from eleve as e \r\nINNER JOIN classe as c ON e.classe_id=c.id\r\nINNER JOIN paiement_mensuel as pm ON pm.eleve_id=e.id\r\nINNER JOIN frais_mensuel as fm ON pm.frais_mensuel_id=fm.id\r\nWHERE e.id not in\r\n(\r\nselect e.id from eleve AS e \r\nINNER JOIN paiement_mensuel as pm ON pm.eleve_id=e.id \r\nINNER JOIN frais_mensuel as fm ON pm.frais_mensuel_id=fm.id\r\nINNER JOIN classe as c on e.classe_id=c.id\r\nWHERE fm.designation=@p_mois \r\n) ";
+
+            using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
+            {
+                MySqlParameter p_mois = new MySqlParameter("@p_mois", MySqlDbType.VarChar)
+                {
+                    Value = cbx_frais.Text
+                };
+                cmd.Parameters.Add(p_mois);
+
+                try
+                {
+                    lbl_total_insolvable.Text = Convert.ToInt16(cmd.ExecuteScalar()).ToString();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+
+        }
+
         #endregion au chargement du formulaire ...
 
         private void Cbx_frais_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListerInsolvable();
+            TrouverNombreDesSolvables();
+            TrouverNombreDesInsSolvables();
         }
 
         private void Cbx_classe_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListerInsolvable();
+            TrouverNombreDesSolvables();
+            TrouverNombreDesInsSolvables();
         }
 
         private void BtnImprimer_Click(object sender, EventArgs e)

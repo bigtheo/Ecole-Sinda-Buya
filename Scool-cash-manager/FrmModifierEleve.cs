@@ -412,6 +412,9 @@ namespace Scool_cash_manager
                         cbx_section.Text = dataRow["nom_section"].ToString();
                         cbx_classe.Text = dataRow["classe"].ToString();
                     }
+                    dataAdapter.Dispose();
+                    cmd.Dispose();
+                    
                 }
                 catch (MySqlException ex)
                 {

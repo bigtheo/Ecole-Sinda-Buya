@@ -27,7 +27,7 @@ namespace Scool_cash_manager
         {
            
             Operations.ChargerClassesDansComboBox(cbx_classe);
-
+            cbx_classe.SelectedIndex = 0;
             AfficherListeEleve();
           
         }

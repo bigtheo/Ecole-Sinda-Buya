@@ -17,6 +17,38 @@ namespace Scool_cash_manager
             PopulateFrais();
         }
 
+        private void SupprimerRecu()
+        {
+            if (long.TryParse(dgvliste.CurrentRow.Cells[0].Value.ToString(), out long numero_recu))
+            {
+                try
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = Connexion.con;
+                        cmd.CommandText = "delete from autres_paiements where id=@id";
+                        DialogResult result = MessageBox.Show($"Voulez-vous vraiment supprimer le reçu N° {numero_recu}", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        MySqlParameter p_id = new MySqlParameter("@id", MySqlDbType.Int64);
+                        p_id.Value = numero_recu;
+                        cmd.Parameters.Add(p_id);
+                        if (result == DialogResult.Yes)
+                        {
+                            int rowsAffected = cmd.ExecuteNonQuery();
+                            MessageBox.Show($"opération effectuée avec succès, {rowsAffected} ligne(s) affectées", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("conversion impossible", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void FrmManuel_Load(object sender, EventArgs e)
         {
             AfficherEleveSolvableFrais();
@@ -178,7 +210,7 @@ namespace Scool_cash_manager
         private void GetEleveAyantPayeUnFrais()
         {
             Connexion.Connecter();
-            var sql = "select e.id,concat_ws(' ',e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' , f.Intitule,f.montant from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\nUNION\r\nselect '01','Total','--', '--' , 'Total',ifnull(sum(f.montant),0) from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\n";
+            var sql = "select p.id,concat_ws(' ',e.id,e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' , f.Intitule,f.montant from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\nUNION\r\nselect '01','Total','--', '--' , 'Total',ifnull(sum(f.montant),0) from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\n";
 
             using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
             {
@@ -227,6 +259,13 @@ namespace Scool_cash_manager
         private void cbx_frais_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetEleveAyantPayeUnFrais();
+        }
+
+        private void BtnAnnuler_Click(object sender, EventArgs e)
+        {
+          
+                SupprimerRecu();
+                GetEleveAyantPayeUnFrais();
         }
     }
 }
