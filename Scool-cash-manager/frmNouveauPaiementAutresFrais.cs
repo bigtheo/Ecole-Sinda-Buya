@@ -17,6 +17,37 @@ namespace Scool_cash_manager
             InitializeComponent();
         }
 
+        private bool Adejapaye()
+        {
+            Connexion.Connecter();
+            var sql = "select   count(*) Nombre from autres_paiements p inner join autres_frais f on f.id = p.frais_id inner join eleve e on e.id = p.eleve_id where e.id = @p_id and f.intitule = @p_frais ";
+            using (MySqlCommand cmd=new MySqlCommand (sql,Connexion.con))
+            {
+                MySqlParameter p_id = new MySqlParameter("@p_id", MySqlDbType.Int32)
+                {
+                    Value = nupdown_id.Value
+                };
+
+                MySqlParameter p_frais = new MySqlParameter("@p_frais", MySqlDbType.VarChar)
+                {
+                    Value = cbxFrais.Text
+                };
+
+                cmd.Parameters.Add(p_id);
+                cmd.Parameters.Add(p_frais);
+
+                try
+                {
+                    return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                }
+                catch (MySqlException ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+            }
+        }
         #region barre de titre
 
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -281,6 +312,11 @@ namespace Scool_cash_manager
 
         private void BtnEnregistrer_Click(object sender, EventArgs e)
         {
+            if (Adejapaye())
+            {
+                MessageBox.Show("Cet élève a déjà payé ce frais", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error); ; ;
+                return;
+            }
             if (!Ck_Accompte.Checked)
             {
                 EnregistrerTotalAutresFrais();

@@ -54,6 +54,7 @@ namespace Scool_cash_manager
             AfficherEleveSolvableFrais();
         }
 
+        
         private void BtnNouveau_Click(object sender, EventArgs e)
         {
             new frmNouveauPaiementAutresFrais().ShowDialog();
@@ -179,7 +180,7 @@ namespace Scool_cash_manager
         private void AfficherEleveSolvableFrais()
         {
             Connexion.Connecter();
-            var sql = "select e.id,concat_ws(' ',e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' , f.Intitule,f.montant \r\nfrom autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where date(p.date_paie) = date(@p_date)\r\n\r\nUNION\r\n\r\nselect '01','Total','--', '--' , '--',ifnull(sum(f.montant),0)\r\nfrom autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where date(p.date_paie) = date(@p_date)";
+            var sql = "select p.id,concat_ws(' ',e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' , f.Intitule,f.montant \r\nfrom autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id Inner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where date(p.date_paie) = date(@p_date)\r\n\r\nUNION\r\nselect '01','Total (payé en entière) ','--', '--' , '--',ifnull(sum(f.montant),0) \r\nfrom autres_paiements p Inner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where date(p.date_paie) = date(@p_date)\r\n\r\nUNION \r\nselect  a.id,concat_ws(' ', e.nom,e.postnom,e.prenom) Noms, c.nom classe ,a.date_paie 'Date Heure',concat_ws(' ', f.intitule, 'avance'),a.montant  from accomptes_autres_paiements a\r\n inner join eleve e on e.id = a.eleve_id inner join classe c on c.id = e.classe_id\r\n inner join autres_frais f on f.id = a.frais_id where date(a.date_paie) = date(@p_date)\r\n\r\nUNION\r\n\r\n select '01','Total (accompte) ','--', '--' , '--',ifnull(sum(montant),0) Montant\r\nfrom accomptes_autres_paiements where date(date_paie) = date(@p_date);";
             
             using (MySqlCommand cmd=new MySqlCommand (sql,Connexion.con))
             {
@@ -210,7 +211,7 @@ namespace Scool_cash_manager
         private void GetEleveAyantPayeUnFrais()
         {
             Connexion.Connecter();
-            var sql = "select p.id,concat_ws(' ',e.id,e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' , f.Intitule,f.montant from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\nUNION\r\nselect '01','Total','--', '--' , 'Total',ifnull(sum(f.montant),0) from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\n";
+            var sql = "select p.id,concat_ws(' ',p.id,e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' , f.Intitule,f.montant from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\nUNION\r\nselect '01','Total','--', '--' , 'Total',ifnull(sum(f.montant),0) from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\n";
 
             using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
             {
