@@ -62,7 +62,7 @@ namespace Scool_cash_manager.Common
             switch (typeRecu)
             {
                 case TypeRecu.Inscription:
-                    Entete = "Frais de Démarrage";
+                    Entete = "Inscription gratuite";
                     Numero = Operations.ObtenirNumeroRecuMensuel();
                     IdEleve = long.Parse(Operations.ObtenirIDdernierEleve());
                     break;

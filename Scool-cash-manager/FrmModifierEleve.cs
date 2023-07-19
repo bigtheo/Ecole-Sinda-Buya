@@ -195,68 +195,6 @@ namespace Scool_cash_manager
             }
         }
 
-        private bool UpdatePhoto()
-        {
-            using (MySqlCommand cmd = new MySqlCommand())
-            {
-                Connexion.Connecter();
-                cmd.Connection = Connexion.con;
-                cmd.CommandText = "UPDATE  images_eleves set image=@image where eleve_id=@eleve_id";
-                MySqlParameter p_image = new MySqlParameter("@image", MySqlDbType.LongBlob);
-                MySqlParameter p_eleve_id = new MySqlParameter("@eleve_id", MySqlDbType.Int32);
-              
-                byte[] image;
-                if (pbxPhoto.Image != null)
-                {
-                    MemoryStream memory = new MemoryStream();
-                    pbxPhoto.Image.Save(memory, pbxPhoto.Image.RawFormat);
-                    image = memory.ToArray();
-                }
-                else
-                {
-                    DialogResult result = MessageBox.Show("La photo n'est pas ajoutée,\nVoulez-vous enregistrer sans photoe ? ", "Avertissement", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-
-                    if (result == DialogResult.OK)
-                    {
-                        image = null;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-
-                }
-                p_image.Value = image;
-                p_eleve_id.Value = FrmInscription.id_eleve;
-                cmd.Parameters.Add(p_eleve_id);
-                cmd.Parameters.Add(p_image);
-
-
-                if (cmd.ExecuteNonQuery() == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    cmd.CommandText = "INSERT INTO images_eleves(id,nom,image,eleve_id) values(@id,@nom,@image,@eleve_id)";
-                    MySqlParameter p_nom = new MySqlParameter("@nom", MySqlDbType.TinyText);
-                    MySqlParameter p_id = new MySqlParameter("@id", MySqlDbType.TinyText)
-                    {
-                        Value = null
-                    };
-                    p_nom.Value = txt_nom.Text + txt_postnom.Text + txt_prenom.Text;
-
-                    cmd.Parameters.Add(p_id);
-                    cmd.Parameters.Add(p_nom);
-
-                    if (cmd.ExecuteNonQuery() == 1)
-                    {
-                        return true;
-                    }
-                    return true;
-                }
-            }
-        }
         #endregion Mise à jour...
 
         #region appel des méthôdes
@@ -267,9 +205,7 @@ namespace Scool_cash_manager
             {
                 if (
                     UpdateEleve() && UpdatedPere() && 
-                    UpdatedMere() && UpdatePhoto() &&
-                    UpdatePaiement()
-                    )
+                    UpdatedMere())
                 {
                     MessageBox.Show("Information Mise à jour avec succès !!!");
                     CreerRecu();
@@ -625,7 +561,7 @@ namespace Scool_cash_manager
         {
             DocRecu pdf = new DocRecu(DocRecu.TypeRecu.Inscription)
             {
-                Designation = "Inscription",
+                Designation = "Accessoires",
                 Noms = $"{txt_nom.Text} {txt_postnom.Text} ",
                 Montant = decimal.Parse(Operations.ObtenirMontantInscription(cbx_classe.Text)),
                 Classe = cbx_classe.Text
