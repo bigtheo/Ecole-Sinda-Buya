@@ -615,9 +615,9 @@ namespace Scool_cash_manager
         {
             DocRecu pdf = new DocRecu(DocRecu.TypeRecu.Inscription)
             {
-                Designation = "Accessoires",
+                Designation = "Inscription",
                 Noms = $"{txt_nom.Text} {txt_postnom.Text} ",
-                Montant = nupMontant.Value,
+                Montant = 0,
                 Classe = cbx_classe.Text,
                 Numero = Operations.ObtenirNumeroRecuMensuel()
             };

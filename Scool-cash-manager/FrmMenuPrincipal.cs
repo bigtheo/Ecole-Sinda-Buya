@@ -99,8 +99,16 @@ namespace Scool_cash_manager
 
         private void BtnPaiemlentInscription_Click(object sender, EventArgs e)
         {
-            OuvrirFormulaire(new FrmInscription());
-            CacherSousMenu();
+            if (cbx_databases.Text.Contains("2022"))
+            {
+                MessageBox.Show("Vous ne pouvez pas incrire l'année passée", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning) ;
+            }
+            else
+            {
+                OuvrirFormulaire(new FrmInscription());
+                CacherSousMenu();
+            }
+            
         }
 
         private void BtnFraisPaiementMensuel_Click(object sender, EventArgs e)
