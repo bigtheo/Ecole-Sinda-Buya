@@ -46,6 +46,15 @@
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.BtnUpdate = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_code = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_designation = new System.Windows.Forms.TextBox();
+            this.BtnAnnuler = new System.Windows.Forms.Button();
+            this.nup_montant = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -54,6 +63,8 @@
             this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupdownMontant)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nup_montant)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -84,6 +95,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(0, 46);
@@ -109,6 +121,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.BtnAnnuler);
             this.panel3.Controls.Add(this.btnImprimer);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(4, 400);
@@ -285,6 +298,107 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Frais";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.nup_montant);
+            this.tabPage3.Controls.Add(this.BtnUpdate);
+            this.tabPage3.Controls.Add(this.label2);
+            this.tabPage3.Controls.Add(this.txt_code);
+            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Controls.Add(this.label7);
+            this.tabPage3.Controls.Add(this.txt_designation);
+            this.tabPage3.Location = new System.Drawing.Point(4, 37);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1059, 467);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Modification";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // BtnUpdate
+            // 
+            this.BtnUpdate.Location = new System.Drawing.Point(495, 238);
+            this.BtnUpdate.Name = "BtnUpdate";
+            this.BtnUpdate.Size = new System.Drawing.Size(117, 39);
+            this.BtnUpdate.TabIndex = 13;
+            this.BtnUpdate.Text = "Enregistrer";
+            this.BtnUpdate.UseVisualStyleBackColor = true;
+            this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(264, 119);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 28);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Code";
+            // 
+            // txt_code
+            // 
+            this.txt_code.Location = new System.Drawing.Point(332, 116);
+            this.txt_code.Name = "txt_code";
+            this.txt_code.Size = new System.Drawing.Size(280, 34);
+            this.txt_code.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(238, 194);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 28);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Montant";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(217, 155);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(112, 28);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Desgnation";
+            // 
+            // txt_designation
+            // 
+            this.txt_designation.Location = new System.Drawing.Point(332, 153);
+            this.txt_designation.Name = "txt_designation";
+            this.txt_designation.Size = new System.Drawing.Size(280, 34);
+            this.txt_designation.TabIndex = 7;
+            // 
+            // BtnAnnuler
+            // 
+            this.BtnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(201)))));
+            this.BtnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.BtnAnnuler.FlatAppearance.BorderSize = 0;
+            this.BtnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
+            this.BtnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAnnuler.ForeColor = System.Drawing.Color.White;
+            this.BtnAnnuler.Location = new System.Drawing.Point(143, 18);
+            this.BtnAnnuler.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnAnnuler.MaximumSize = new System.Drawing.Size(169, 38);
+            this.BtnAnnuler.Name = "BtnAnnuler";
+            this.BtnAnnuler.Size = new System.Drawing.Size(128, 38);
+            this.BtnAnnuler.TabIndex = 5;
+            this.BtnAnnuler.Text = "Supprimer";
+            this.BtnAnnuler.UseVisualStyleBackColor = false;
+            this.BtnAnnuler.Click += new System.EventHandler(this.BtnAnnuler_Click);
+            // 
+            // nup_montant
+            // 
+            this.nup_montant.BeforeTouchSize = new System.Drawing.Size(280, 34);
+            this.nup_montant.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.nup_montant.Location = new System.Drawing.Point(332, 198);
+            this.nup_montant.Name = "nup_montant";
+            this.nup_montant.Size = new System.Drawing.Size(280, 34);
+            this.nup_montant.TabIndex = 15;
+            this.nup_montant.Text = "0,00 FC";
+            this.nup_montant.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // FrmConfigManuels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -308,6 +422,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupdownMontant)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nup_montant)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -329,5 +446,14 @@
         private System.Windows.Forms.Button btnImprimer;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox CbxFrais;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button BtnUpdate;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txt_code;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_designation;
+        private System.Windows.Forms.Button BtnAnnuler;
+        private Syncfusion.Windows.Forms.Tools.CurrencyTextBox nup_montant;
     }
 }

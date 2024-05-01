@@ -289,7 +289,7 @@ namespace Scool_cash_manager
             string t_classe = "Classe : Toutes\n";
             string t_date_du_jour = "Imprimé le  : " + DateTime.Now.ToString() + "\n";
 
-            string t_title_principal = "Liste des élèves pris en charge";
+            string t_title_principal = "Liste des élèves dérrogés";
             doc.Add(PasserLigne);
 
             Phrase phrase_nom_ecole = new Phrase(t_nom_ecole, police_titre);

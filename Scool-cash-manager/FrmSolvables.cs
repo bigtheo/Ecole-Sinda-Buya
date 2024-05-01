@@ -554,6 +554,30 @@ namespace Scool_cash_manager
             #endregion
 
 
+            #region les ayant demandé la derrogation
+            //les inscriptions tardives
+            pdfcell_colspan = new PdfPCell(new Phrase("Elèves dérogés", police_entete_tableau))
+            {
+                Colspan = 5,
+                HorizontalAlignment = V
+            };
+            table = GetTableDerrogation();
+            if (table.Rows.Count > 0)
+                tableau.AddCell(pdfcell_colspan);
+            j = 0;
+            foreach (DataRow row in table.Rows)
+            {
+                tableau.AddCell((j + 1).ToString());
+                tableau.AddCell(new Phrase(row[0].ToString(), police_Cellule));
+                tableau.AddCell(new Phrase(row[1].ToString(), police_Cellule));
+                tableau.AddCell(new Phrase(row[2].ToString(), police_Cellule));
+                tableau.AddCell(new Phrase(row[3].ToString(), police_Cellule));
+                j++;
+            }
+
+
+            #endregion
+
             doc.Add(tableau);
 
             #endregion le tableau
@@ -593,6 +617,8 @@ namespace Scool_cash_manager
                 }
             }
         }
+
+
 
         private DataTable GetTableEnfantAffilie()
         {

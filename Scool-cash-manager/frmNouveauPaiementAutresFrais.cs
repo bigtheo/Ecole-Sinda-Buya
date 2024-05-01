@@ -2,6 +2,7 @@
 using Scool_cash_manager.Common;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -439,6 +440,54 @@ namespace Scool_cash_manager
                 txt_montant_accompte.Clear();
             }
             
+        }
+
+        private void BtnRechercher_Click(object sender, EventArgs e)
+        {
+            PopulateItem();
+        }
+
+        private void PopulateItem()
+        {
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    Connexion.Connecter();
+                    cmd.Connection = Connexion.con;
+                    cmd.CommandText = "select concat_ws(' ',e.id,e.nom,e.postnom,e.prenom) as noms,c.nom,s.nom_section from eleve as e inner join classe c on c.id=e.classe_id inner join section as s on s.id=c.section_id where e.nom like @nom or e.postnom like @nom or e.prenom like @nom limit 50";
+
+                    cmd.Parameters.AddWithValue("@nom", "%" + txt_nom.Text + "%");
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        layout_panel.Controls.Clear();
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        int i = 1;
+                        foreach (DataRow row in table.Rows)
+                        {
+                            ListeItem element = new ListeItem();
+                            element.Noms = row[0].ToString();
+                            element.Classe = row[1].ToString();
+                            element.Section = row[2].ToString();
+
+                            if (i % 2 == 0)
+                                element.IconBackground = Color.FromArgb(45, 137, 239);
+                            else
+                                element.IconBackground = Color.FromArgb(192, 0, 192);
+
+                            layout_panel.Controls.Add(element);
+
+                            i++;
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -54,7 +54,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1092, 46);
             this.panel1.TabIndex = 3;
@@ -64,7 +64,7 @@
             this.cbx_frais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbx_frais.FormattingEnabled = true;
             this.cbx_frais.Location = new System.Drawing.Point(780, 12);
-            this.cbx_frais.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbx_frais.Margin = new System.Windows.Forms.Padding(4);
             this.cbx_frais.Name = "cbx_frais";
             this.cbx_frais.Size = new System.Drawing.Size(148, 24);
             this.cbx_frais.TabIndex = 8;
@@ -101,7 +101,7 @@
             this.panel2.Controls.Add(this.btnNouveau);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 642);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1092, 63);
             this.panel2.TabIndex = 25;
@@ -115,7 +115,7 @@
             this.BtnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAnnuler.ForeColor = System.Drawing.Color.White;
             this.BtnAnnuler.Location = new System.Drawing.Point(281, 15);
-            this.BtnAnnuler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnAnnuler.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAnnuler.MaximumSize = new System.Drawing.Size(169, 38);
             this.BtnAnnuler.Name = "BtnAnnuler";
             this.BtnAnnuler.Size = new System.Drawing.Size(128, 32);
@@ -133,7 +133,7 @@
             this.btnImprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimer.ForeColor = System.Drawing.Color.White;
             this.btnImprimer.Location = new System.Drawing.Point(145, 15);
-            this.btnImprimer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImprimer.Margin = new System.Windows.Forms.Padding(4);
             this.btnImprimer.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnImprimer.Name = "btnImprimer";
             this.btnImprimer.Size = new System.Drawing.Size(128, 32);
@@ -150,7 +150,7 @@
             this.btnNouveau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouveau.ForeColor = System.Drawing.Color.White;
             this.btnNouveau.Location = new System.Drawing.Point(8, 15);
-            this.btnNouveau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNouveau.Margin = new System.Windows.Forms.Padding(4);
             this.btnNouveau.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnNouveau.Name = "btnNouveau";
             this.btnNouveau.Size = new System.Drawing.Size(128, 32);
@@ -203,7 +203,7 @@
             this.dgvliste.EnableHeadersVisualStyles = false;
             this.dgvliste.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvliste.Location = new System.Drawing.Point(0, 46);
-            this.dgvliste.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvliste.Margin = new System.Windows.Forms.Padding(4);
             this.dgvliste.MultiSelect = false;
             this.dgvliste.Name = "dgvliste";
             this.dgvliste.ReadOnly = true;
@@ -227,7 +227,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmAutresPaiements";
             this.Text = "frmManuel";
             this.Load += new System.EventHandler(this.FrmManuel_Load);
