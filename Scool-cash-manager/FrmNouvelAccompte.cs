@@ -205,7 +205,11 @@ namespace Scool_cash_manager
 
         private void NupId_ValueChanged(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             AppelMethodes();
+            GetEleveHistoriqueFraisConnexes();
+            this.Cursor = Cursors.Default;
+              
         }
 
         private void AppelMethodes()
@@ -364,6 +368,42 @@ namespace Scool_cash_manager
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+
+        private void GetEleveHistoriqueFraisConnexes()
+        {
+
+            var sql = "select p.id,p.date_paie,af.intitule,af.Montant from autres_paiements p inner join autres_Frais af on af.id = p.frais_id where eleve_id=@p_id\r\nUNION \r\nSelect '****','******************',' ***Accomptes***','******'\r\n\r\nUnion \r\nselect p.id,p.date_paie,af.intitule,sum(p.montant) from accomptes_autres_paiements p inner join autres_Frais af on af.id = p.frais_id where eleve_id=@p_id \r\nand af.id not in (select frais_id from autres_paiements where eleve_id=@p_id )group by(af.id)";
+            using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
+            {
+                MySqlParameter p_id = new MySqlParameter("@p_id", MySqlDbType.Int32)
+                {
+                    Value = nupdown_id.Value
+                };
+                cmd.Parameters.Add(p_id);
+
+                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                {
+                    DataTable table = new DataTable();
+                    try
+                    {
+                        da.Fill(table);
+                        sfDataGrid1.DataSource = table;
+
+
+                    }
+                    catch (MySqlException ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+
+                }
+            };
+
+
+
         }
     }
 }

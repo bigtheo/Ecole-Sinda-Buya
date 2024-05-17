@@ -77,7 +77,7 @@
             this.dgvliste.EnableHeadersVisualStyles = false;
             this.dgvliste.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvliste.Location = new System.Drawing.Point(0, 55);
-            this.dgvliste.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvliste.Margin = new System.Windows.Forms.Padding(4);
             this.dgvliste.MultiSelect = false;
             this.dgvliste.Name = "dgvliste";
             this.dgvliste.ReadOnly = true;
@@ -98,7 +98,7 @@
             this.panel2.Controls.Add(this.btnNouveau);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 642);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1092, 63);
             this.panel2.TabIndex = 21;
@@ -113,7 +113,7 @@
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.ForeColor = System.Drawing.Color.White;
             this.btnAnnuler.Location = new System.Drawing.Point(280, 15);
-            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(4);
             this.btnAnnuler.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(128, 32);
@@ -131,7 +131,7 @@
             this.btnImprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimer.ForeColor = System.Drawing.Color.White;
             this.btnImprimer.Location = new System.Drawing.Point(144, 15);
-            this.btnImprimer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImprimer.Margin = new System.Windows.Forms.Padding(4);
             this.btnImprimer.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnImprimer.Name = "btnImprimer";
             this.btnImprimer.Size = new System.Drawing.Size(128, 32);
@@ -148,7 +148,7 @@
             this.btnNouveau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouveau.ForeColor = System.Drawing.Color.White;
             this.btnNouveau.Location = new System.Drawing.Point(8, 15);
-            this.btnNouveau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNouveau.Margin = new System.Windows.Forms.Padding(4);
             this.btnNouveau.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnNouveau.Name = "btnNouveau";
             this.btnNouveau.Size = new System.Drawing.Size(128, 32);
@@ -190,7 +190,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1092, 55);
             this.panel1.TabIndex = 3;
@@ -201,7 +201,7 @@
             this.dtp_date.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_date.Location = new System.Drawing.Point(953, 9);
-            this.dtp_date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtp_date.Margin = new System.Windows.Forms.Padding(4);
             this.dtp_date.Name = "dtp_date";
             this.dtp_date.Size = new System.Drawing.Size(124, 29);
             this.dtp_date.TabIndex = 6;
@@ -231,7 +231,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmAccompte";
             this.Text = "FrmAccompte";
             ((System.ComponentModel.ISupportInitialize)(this.dgvliste)).EndInit();

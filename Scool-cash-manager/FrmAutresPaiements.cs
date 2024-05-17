@@ -211,7 +211,7 @@ namespace Scool_cash_manager
         private void GetEleveAyantPayeUnFrais()
         {
             Connexion.Connecter();
-            var sql = "select p.id,concat_ws(' ',p.id,e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' , f.Intitule,f.montant from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\nUNION\r\nselect '01','Total','--', '--' , 'Total',ifnull(sum(f.montant),0) from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\n";
+            var sql = "select p.id,concat_ws(' ',p.id,e.nom,e.postnom,e.prenom)Noms,c.nom classe,p.date_paie 'Date et heure' ,\r\n f.Intitule,f.montant from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id Inner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais \r\nUNION\r\nselect '01','Total','--', '--' , 'Total',ifnull(sum(f.montant),0) from autres_paiements p \r\nInner join autres_frais f on f.id = p.frais_id \r\nInner join eleve e on e.id = p.eleve_id \r\ninner join classe c on c.id =e.classe_id where f.intitule=@p_frais\r\n\r\nUNION \r\nSELECT \t'***','***','accompte','***','**','***'\r\nUNION\r\n\r\nselect e.id,concat_ws(' ',e.nom,e.postnom,e.prenom) Noms,c.nom Classe,aap.date_paie,af.intitule,aap.montant from accomptes_autres_paiements ap \r\ninner join eleve e on e.id = ap.eleve_id \r\ninner join classe c on c.id = e.classe_id\r\ninner join accomptes_autres_paiements aap on aap.eleve_id = e.id\r\ninner join autres_frais af on af.id = aap.frais_id where af.intitule =@p_frais";
 
             using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
             {
@@ -254,6 +254,8 @@ namespace Scool_cash_manager
                 {
                     cbx_frais.Items.Add(dr[0]);
                 }
+
+                dr.Close();
             }
         }
 

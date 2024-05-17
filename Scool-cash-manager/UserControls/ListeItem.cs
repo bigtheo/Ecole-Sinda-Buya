@@ -49,5 +49,6 @@ namespace Scool_cash_manager
         }
 
         #endregion Proprités
+
     }
 }

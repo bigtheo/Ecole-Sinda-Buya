@@ -16,6 +16,8 @@ namespace Scool_cash_manager
         public frmNouveauPaiementAutresFrais()
         {
             InitializeComponent();
+            
+            
         }
 
         private bool Adejapaye()
@@ -93,7 +95,9 @@ namespace Scool_cash_manager
         //au changement de l'ide du manuel..
         private void Nupd_id_manuel_ValueChanged(object sender, EventArgs e)
         {
+            GetEleveHistoriqueFraisConnexes();
             GetInfoManuels();
+            
         }
 
         private void GetInfoManuels()
@@ -172,7 +176,10 @@ namespace Scool_cash_manager
         {
             this.Cursor = Cursors.WaitCursor;
             TrouverNomClasseEleveParID();
+          
             GetTotalDejaPaye();
+
+            GetEleveHistoriqueFraisConnexes();
             this.Cursor = Cursors.Default;
         }
 
@@ -357,6 +364,41 @@ namespace Scool_cash_manager
 
         #endregion Enregistrement de l'achat du(es) manuel(s)
 
+
+        private void GetEleveHistoriqueFraisConnexes()
+        {
+
+            var sql = "select p.id,p.date_paie,af.intitule,af.Montant from autres_paiements p inner join autres_Frais af on af.id = p.frais_id where eleve_id=@p_id\r\nUNION \r\nSelect '****','******************',' ***Accomptes***','******'\r\n\r\nUnion \r\nselect p.id,p.date_paie,af.intitule,sum(p.montant) from accomptes_autres_paiements p inner join autres_Frais af on af.id = p.frais_id where eleve_id=@p_id \r\nand af.id not in (select frais_id from autres_paiements where eleve_id=@p_id )group by(af.id)";
+            using (MySqlCommand cmd = new MySqlCommand(sql, Connexion.con))
+            { 
+                MySqlParameter p_id = new MySqlParameter("@p_id", MySqlDbType.Int32)
+                {
+                    Value = nupdown_id.Value
+                };
+                cmd.Parameters.Add(p_id);
+
+                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                {
+                    DataTable table = new DataTable();
+                    try
+                    {
+                        da.Fill(table);
+                        sfDataGrid1.DataSource = table;
+                       
+
+                    }
+                    catch (MySqlException ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+
+                }
+            };
+
+            
+
+        }
         private void GetMontantApayer()
         {
             Connexion.Connecter();
@@ -399,8 +441,10 @@ namespace Scool_cash_manager
                 {
                     Txt_total_deja_paye.Text = Convert.ToString(dr.GetDecimal(0));
                 }
+                dr.Close();
             };
         }
+        
         private void CbxFrais_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetMontantApayer();
@@ -488,6 +532,21 @@ namespace Scool_cash_manager
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void sfDataGrid1_QueryRowHeight(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowHeightEventArgs e)
+        {
+           
+        }
+
+        private void sfDataGrid1_AutoGeneratingColumn(object sender, Syncfusion.WinForms.DataGrid.Events.AutoGeneratingColumnArgs e)
+        {
+           
         }
     }
 }

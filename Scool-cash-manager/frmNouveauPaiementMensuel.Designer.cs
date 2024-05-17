@@ -73,7 +73,7 @@
             this.panelBarreDeTitre.Controls.Add(this.label1);
             this.panelBarreDeTitre.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBarreDeTitre.Location = new System.Drawing.Point(576, 0);
-            this.panelBarreDeTitre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelBarreDeTitre.Margin = new System.Windows.Forms.Padding(4);
             this.panelBarreDeTitre.Name = "panelBarreDeTitre";
             this.panelBarreDeTitre.Size = new System.Drawing.Size(677, 102);
             this.panelBarreDeTitre.TabIndex = 4;
@@ -88,8 +88,8 @@
             this.BtnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnRechercher.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnRechercher.ForeColor = System.Drawing.Color.White;
-            this.BtnRechercher.Location = new System.Drawing.Point(548, 37);
-            this.BtnRechercher.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnRechercher.Location = new System.Drawing.Point(608, 36);
+            this.BtnRechercher.Margin = new System.Windows.Forms.Padding(4);
             this.BtnRechercher.Name = "BtnRechercher";
             this.BtnRechercher.Size = new System.Drawing.Size(56, 33);
             this.BtnRechercher.TabIndex = 2;
@@ -101,9 +101,9 @@
             // 
             this.txt_nom.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_nom.Location = new System.Drawing.Point(23, 37);
-            this.txt_nom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_nom.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nom.Name = "txt_nom";
-            this.txt_nom.Size = new System.Drawing.Size(516, 32);
+            this.txt_nom.Size = new System.Drawing.Size(577, 32);
             this.txt_nom.TabIndex = 1;
             this.txt_nom.TextChanged += new System.EventHandler(this.txt_nom_TextChanged);
             this.txt_nom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_nom_KeyDown);
@@ -132,7 +132,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(576, 618);
             this.panel2.TabIndex = 5;
@@ -151,7 +151,7 @@
             this.panelFormulaire.Controls.Add(this.txt_noms);
             this.panelFormulaire.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelFormulaire.Location = new System.Drawing.Point(0, 0);
-            this.panelFormulaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelFormulaire.Margin = new System.Windows.Forms.Padding(4);
             this.panelFormulaire.Name = "panelFormulaire";
             this.panelFormulaire.Size = new System.Drawing.Size(576, 201);
             this.panelFormulaire.TabIndex = 40;
@@ -160,7 +160,7 @@
             // 
             this.txt_frais_mensuel.Enabled = false;
             this.txt_frais_mensuel.Location = new System.Drawing.Point(161, 128);
-            this.txt_frais_mensuel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_frais_mensuel.Margin = new System.Windows.Forms.Padding(4);
             this.txt_frais_mensuel.Name = "txt_frais_mensuel";
             this.txt_frais_mensuel.Size = new System.Drawing.Size(405, 27);
             this.txt_frais_mensuel.TabIndex = 37;
@@ -177,7 +177,7 @@
             0,
             0});
             this.nupdown_montant.Location = new System.Drawing.Point(161, 162);
-            this.nupdown_montant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nupdown_montant.Margin = new System.Windows.Forms.Padding(4);
             this.nupdown_montant.Maximum = new decimal(new int[] {
             500000,
             0,
@@ -202,7 +202,7 @@
             // 
             this.nupdown_id.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nupdown_id.Location = new System.Drawing.Point(161, 18);
-            this.nupdown_id.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nupdown_id.Margin = new System.Windows.Forms.Padding(4);
             this.nupdown_id.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -257,7 +257,7 @@
             // 
             this.txt_classe.Enabled = false;
             this.txt_classe.Location = new System.Drawing.Point(161, 92);
-            this.txt_classe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_classe.Margin = new System.Windows.Forms.Padding(4);
             this.txt_classe.Name = "txt_classe";
             this.txt_classe.Size = new System.Drawing.Size(405, 27);
             this.txt_classe.TabIndex = 2;
@@ -266,7 +266,7 @@
             // 
             this.txt_noms.Enabled = false;
             this.txt_noms.Location = new System.Drawing.Point(161, 58);
-            this.txt_noms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_noms.Margin = new System.Windows.Forms.Padding(4);
             this.txt_noms.Name = "txt_noms";
             this.txt_noms.Size = new System.Drawing.Size(405, 27);
             this.txt_noms.TabIndex = 1;
@@ -301,7 +301,7 @@
             this.dgvliste.EnableHeadersVisualStyles = false;
             this.dgvliste.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvliste.Location = new System.Drawing.Point(23, 208);
-            this.dgvliste.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvliste.Margin = new System.Windows.Forms.Padding(4);
             this.dgvliste.MultiSelect = false;
             this.dgvliste.Name = "dgvliste";
             this.dgvliste.ReadOnly = true;
@@ -346,7 +346,7 @@
             this.panel3.Controls.Add(this.btnEnregistrer);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 534);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(576, 84);
             this.panel3.TabIndex = 26;
@@ -354,13 +354,14 @@
             // btnEnregistrer
             // 
             this.btnEnregistrer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(201)))));
+            this.btnEnregistrer.Enabled = false;
             this.btnEnregistrer.FlatAppearance.BorderSize = 0;
             this.btnEnregistrer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.btnEnregistrer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
             this.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrer.ForeColor = System.Drawing.Color.White;
             this.btnEnregistrer.Location = new System.Drawing.Point(236, 18);
-            this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(183, 48);
             this.btnEnregistrer.TabIndex = 0;
@@ -375,7 +376,7 @@
             this.layout_panel.Controls.Add(this.flowLayoutPanel1);
             this.layout_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layout_panel.Location = new System.Drawing.Point(576, 102);
-            this.layout_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.layout_panel.Margin = new System.Windows.Forms.Padding(4);
             this.layout_panel.Name = "layout_panel";
             this.layout_panel.Size = new System.Drawing.Size(677, 516);
             this.layout_panel.TabIndex = 6;
@@ -400,7 +401,7 @@
             this.Controls.Add(this.panelBarreDeTitre);
             this.Controls.Add(this.panel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmNouveauPaiementMensuel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nouveau paiement mensuel";

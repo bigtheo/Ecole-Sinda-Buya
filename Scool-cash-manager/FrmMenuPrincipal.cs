@@ -114,8 +114,8 @@ namespace Scool_cash_manager
         private void BtnFraisPaiementMensuel_Click(object sender, EventArgs e)
         {
 
-            new frmNouveauPaiementAutresFrais().ShowDialog();
-          //  OuvrirFormulaire(new frmNouveauPaiementAutresFrais());
+            
+           OuvrirFormulaire(new FrmFraisMensuel());
             CacherSousMenu();
         }
 
