@@ -321,29 +321,6 @@ namespace Scool_cash_manager
 
                 #endregion
 
-                #region les ayant payé les accomptes du mois
-                //les inscriptions tardives
-                pdfcell_colspan = new PdfPCell(new Phrase("Ayant payé les accomptes", police_entete_tableau))
-                {
-                    Colspan = 5,
-                    HorizontalAlignment = V
-                };
-                table = GetTableAvance();
-                if (table.Rows.Count > 0)
-                    tableau.AddCell(pdfcell_colspan);
-                j = 0;
-                foreach (DataRow row in table.Rows)
-                {
-                    tableau.AddCell((j + 1).ToString());
-                    tableau.AddCell(new Phrase(row[0].ToString(), police_Cellule));
-                    tableau.AddCell(new Phrase(row[1].ToString(), police_Cellule));
-                    tableau.AddCell(new Phrase(row[2].ToString(), police_Cellule));
-                    tableau.AddCell(new Phrase(row[3].ToString(), police_Cellule));
-                    j++;
-                }
-
-
-                #endregion
                 doc.Add(tableau);
 
                 #endregion le tableau
@@ -529,55 +506,6 @@ namespace Scool_cash_manager
 
             #endregion
 
-            #region les ayant payé les accomptes du mois
-            //les inscriptions tardives
-            pdfcell_colspan = new PdfPCell(new Phrase("Ayant payé les accomptes", police_entete_tableau))
-            {
-                Colspan = 5,
-                HorizontalAlignment = V
-            };
-            table = GetTableAvance();
-            if (table.Rows.Count > 0)
-                tableau.AddCell(pdfcell_colspan);
-            j = 0;
-            foreach (DataRow row in table.Rows)
-            {
-                tableau.AddCell((j + 1).ToString());
-                tableau.AddCell(new Phrase(row[0].ToString(), police_Cellule));
-                tableau.AddCell(new Phrase(row[1].ToString(), police_Cellule));
-                tableau.AddCell(new Phrase(row[2].ToString(), police_Cellule));
-                tableau.AddCell(new Phrase(row[3].ToString(), police_Cellule));
-                j++;
-            }
-
-
-            #endregion
-
-
-            #region les ayant demandé la derrogation
-            //les inscriptions tardives
-            pdfcell_colspan = new PdfPCell(new Phrase("Elèves dérogés", police_entete_tableau))
-            {
-                Colspan = 5,
-                HorizontalAlignment = V
-            };
-            table = GetTableDerrogation();
-            if (table.Rows.Count > 0)
-                tableau.AddCell(pdfcell_colspan);
-            j = 0;
-            foreach (DataRow row in table.Rows)
-            {
-                tableau.AddCell((j + 1).ToString());
-                tableau.AddCell(new Phrase(row[0].ToString(), police_Cellule));
-                tableau.AddCell(new Phrase(row[1].ToString(), police_Cellule));
-                tableau.AddCell(new Phrase(row[2].ToString(), police_Cellule));
-                tableau.AddCell(new Phrase(row[3].ToString(), police_Cellule));
-                j++;
-            }
-
-
-            #endregion
-
             doc.Add(tableau);
 
             #endregion le tableau
@@ -585,40 +513,6 @@ namespace Scool_cash_manager
             doc.Close();
             this.Cursor = Cursors.Default;
         }
-
-        private DataTable GetTableAvance()
-        {
-            using (MySqlCommand cmd = new MySqlCommand())
-            {
-                Connexion.Connecter();
-                cmd.Connection = Connexion.con;
-                cmd.CommandText = "select e.id,concat_ws(' ',e.nom,e.postnom,e.prenom) as Noms,c.nom as Classe,e.genre as classe from eleve as e  " +
-                    "INNER JOIN accompte as a on a.eleve_id = e.id " +
-                    "INNER JOIN classe as c On c.id = e.classe_id " +
-                    "INNER join frais_mensuel as f on f.id = a.frais_mensuel_id where " +
-                    " f.designation = @mois and c.nom = @classe ";
-
-                MySqlParameter p_classe = new MySqlParameter("@classe", MySqlDbType.VarChar)
-                {
-                    Value = cbx_classe.Text
-                };
-                MySqlParameter p_mois = new MySqlParameter("@mois", MySqlDbType.VarChar)
-                {
-                    Value = cbx_frais.Text
-                };
-                cmd.Parameters.Add(p_classe);
-                cmd.Parameters.Add(p_mois);
-
-                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
-                {
-                    DataTable table = new DataTable();
-                    da.Fill(table);
-                    return table;
-                }
-            }
-        }
-
-
 
         private DataTable GetTableEnfantAffilie()
         {
