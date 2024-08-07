@@ -3,8 +3,10 @@ using iTextSharp.text.pdf;
 using MySql.Data.MySqlClient;
 using Scool_cash_manager.Common;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Scool_cash_manager
@@ -18,7 +20,17 @@ namespace Scool_cash_manager
 
         private void BtnNouveau_Click(object sender, EventArgs e)
         {
-            new frmNouveauEleve().ShowDialog();
+            var isAllow = FrmMenuPrincipal.selectedDatabase.EndsWith("2024");
+
+            if(isAllow)
+            {
+                new frmNouveauEleve().ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Imposssible de d'inscrire, veuillez selection l'année scolaire encours","Information",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+    
         }
 
         #region au chargement du foprmulaire...
@@ -33,7 +45,6 @@ namespace Scool_cash_manager
         }
 
         #endregion au chargement du foprmulaire...
-
 
         #region au click sure les boutons modifier, nouveau,details et Imprimer
         private void BtnModifier_Click(object sender, EventArgs e)

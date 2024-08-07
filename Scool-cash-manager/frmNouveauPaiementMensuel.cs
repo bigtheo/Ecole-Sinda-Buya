@@ -397,10 +397,6 @@ namespace Scool_cash_manager
             TrouverMontantParClasseFraisMensuelID();
         }
 
-        private void PictureBox1_Click(object sender, EventArgs e)
-        {
-        }
-
         #region Rechercher des informations sur les élèves
 
         private void PopulateItem()
@@ -448,10 +444,6 @@ namespace Scool_cash_manager
 
         #endregion Rechercher des informations sur les élèves
 
-        private void txt_nom_TextChanged(object sender, EventArgs e)
-        {
-        }
-
         private void BtnRechercher_Click(object sender, EventArgs e)
         {
             PopulateItem();
@@ -467,7 +459,15 @@ namespace Scool_cash_manager
 
         private void txt_nom_KeyDown(object sender, KeyEventArgs e)
         {
-            NextEnter(e.KeyCode);
+            if (e.KeyCode == Keys.Enter)
+            {
+                PopulateItem();
+            }
+        }
+
+        private void txt_nom_MouseDown(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

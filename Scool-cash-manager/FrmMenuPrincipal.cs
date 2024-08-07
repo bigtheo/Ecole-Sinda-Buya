@@ -8,6 +8,7 @@ namespace Scool_cash_manager
     public partial class FrmMenuPrincipal : Form
     {
         private static MySqlConnection connection;
+        public static string selectedDatabase;
         public FrmMenuPrincipal()
         {
             InitializeComponent();
@@ -17,6 +18,7 @@ namespace Scool_cash_manager
             cbx_databases.DataSource = DatabaseList();
             cbx_databases.Text = frmLogin.DatabaseName;
             lbl_selectedDB.Text = cbx_databases.Text;
+            selectedDatabase = cbx_databases.Text;
         }
 
         #region slide menu et sous menu
@@ -331,6 +333,7 @@ namespace Scool_cash_manager
             Connexion.Connecter();
             OuvrirFormulaire(new FrmTableauDeBord());
             lbl_selectedDB.Text = cbx_databases.Text;
+            selectedDatabase = lbl_selectedDB.Text;
         }
         #endregion
     }

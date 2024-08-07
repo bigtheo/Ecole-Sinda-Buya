@@ -347,7 +347,7 @@ namespace Scool_cash_manager
 
                     if (cmd.ExecuteNonQuery() == 1)
                     {
-                        MessageBox.Show("Inscription reussie !!!  ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                       Console.WriteLine("Inscription reussie !!");
                     }
                 }
                 catch (MySqlException ex) ///EN CAS D'ERREUR

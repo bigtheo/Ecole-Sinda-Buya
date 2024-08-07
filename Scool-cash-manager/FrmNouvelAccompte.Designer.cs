@@ -52,21 +52,21 @@
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.sfDataGrid1 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.panel3 = new System.Windows.Forms.Panel();
             this.BtnRechercher = new System.Windows.Forms.Button();
             this.txt_nom = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.layout_panel = new System.Windows.Forms.FlowLayoutPanel();
-            this.sfDataGrid1 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.panelBarreDeTitre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMontantPaye)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupdown_id)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupmontantApayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nup_prix)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).BeginInit();
             this.panel3.SuspendLayout();
             this.layout_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelBarreDeTitre
@@ -333,6 +333,29 @@
             this.panel2.Size = new System.Drawing.Size(893, 620);
             this.panel2.TabIndex = 24;
             // 
+            // sfDataGrid1
+            // 
+            this.sfDataGrid1.AccessibleName = "Table";
+            this.sfDataGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sfDataGrid1.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            this.sfDataGrid1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sfDataGrid1.Location = new System.Drawing.Point(343, 0);
+            this.sfDataGrid1.Name = "sfDataGrid1";
+            this.sfDataGrid1.PreviewRowHeight = 35;
+            this.sfDataGrid1.Size = new System.Drawing.Size(543, 620);
+            this.sfDataGrid1.Style.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
+            this.sfDataGrid1.Style.BorderColor = System.Drawing.Color.LightGray;
+            this.sfDataGrid1.Style.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            gridBordersInfo1.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Standard, System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204))))));
+            gridBordersInfo1.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Standard, System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204))))));
+            this.sfDataGrid1.Style.CellStyle.Borders = gridBordersInfo1;
+            this.sfDataGrid1.Style.CellStyle.Font.Facename = "Segoe UI";
+            this.sfDataGrid1.Style.CellStyle.Font.Size = 13F;
+            this.sfDataGrid1.TabIndex = 67;
+            this.sfDataGrid1.Text = "sfDataGrid1";
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(223)))), ((int)(((byte)(236)))));
@@ -372,6 +395,7 @@
             this.txt_nom.Name = "txt_nom";
             this.txt_nom.Size = new System.Drawing.Size(243, 32);
             this.txt_nom.TabIndex = 1;
+            this.txt_nom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_nom_KeyDown);
             // 
             // label10
             // 
@@ -398,29 +422,6 @@
             this.layout_panel.Size = new System.Drawing.Size(465, 620);
             this.layout_panel.TabIndex = 64;
             // 
-            // sfDataGrid1
-            // 
-            this.sfDataGrid1.AccessibleName = "Table";
-            this.sfDataGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sfDataGrid1.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            this.sfDataGrid1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sfDataGrid1.Location = new System.Drawing.Point(343, 0);
-            this.sfDataGrid1.Name = "sfDataGrid1";
-            this.sfDataGrid1.PreviewRowHeight = 35;
-            this.sfDataGrid1.Size = new System.Drawing.Size(543, 620);
-            this.sfDataGrid1.Style.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
-            this.sfDataGrid1.Style.BorderColor = System.Drawing.Color.LightGray;
-            this.sfDataGrid1.Style.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            gridBordersInfo1.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Standard, System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204))))));
-            gridBordersInfo1.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Standard, System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204))))));
-            this.sfDataGrid1.Style.CellStyle.Borders = gridBordersInfo1;
-            this.sfDataGrid1.Style.CellStyle.Font.Facename = "Segoe UI";
-            this.sfDataGrid1.Style.CellStyle.Font.Size = 13F;
-            this.sfDataGrid1.TabIndex = 67;
-            this.sfDataGrid1.Text = "sfDataGrid1";
-            // 
             // FrmNouvelAccompte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
@@ -446,10 +447,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nup_prix)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.layout_panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.sfDataGrid1)).EndInit();
             this.ResumeLayout(false);
 
         }

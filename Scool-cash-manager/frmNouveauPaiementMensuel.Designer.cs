@@ -105,8 +105,8 @@
             this.txt_nom.Name = "txt_nom";
             this.txt_nom.Size = new System.Drawing.Size(577, 32);
             this.txt_nom.TabIndex = 1;
-            this.txt_nom.TextChanged += new System.EventHandler(this.txt_nom_TextChanged);
             this.txt_nom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_nom_KeyDown);
+            this.txt_nom.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txt_nom_MouseDown);
             // 
             // label1
             // 

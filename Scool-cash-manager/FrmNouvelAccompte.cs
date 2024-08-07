@@ -405,5 +405,13 @@ namespace Scool_cash_manager
 
 
         }
+
+        private void txt_nom_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                PopulateItem();
+            }
+        }
     }
 }
