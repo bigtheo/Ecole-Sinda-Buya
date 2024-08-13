@@ -50,9 +50,9 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(819, 41);
+            this.panel1.Size = new System.Drawing.Size(1092, 50);
             this.panel1.TabIndex = 3;
             // 
             // label1
@@ -62,8 +62,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(298, 32);
+            this.label1.Size = new System.Drawing.Size(366, 41);
             this.label1.TabIndex = 1;
             this.label1.Text = "Paiement du frais mensuel";
             // 
@@ -74,9 +75,10 @@
             this.panel2.Controls.Add(this.btnDetails);
             this.panel2.Controls.Add(this.btnNouveau);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 522);
+            this.panel2.Location = new System.Drawing.Point(0, 642);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(819, 51);
+            this.panel2.Size = new System.Drawing.Size(1092, 63);
             this.panel2.TabIndex = 23;
             // 
             // BtnDuplicata
@@ -87,10 +89,11 @@
             this.BtnDuplicata.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
             this.BtnDuplicata.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnDuplicata.ForeColor = System.Drawing.Color.White;
-            this.BtnDuplicata.Location = new System.Drawing.Point(312, 12);
-            this.BtnDuplicata.MaximumSize = new System.Drawing.Size(127, 31);
+            this.BtnDuplicata.Location = new System.Drawing.Point(416, 15);
+            this.BtnDuplicata.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnDuplicata.MaximumSize = new System.Drawing.Size(169, 38);
             this.BtnDuplicata.Name = "BtnDuplicata";
-            this.BtnDuplicata.Size = new System.Drawing.Size(96, 26);
+            this.BtnDuplicata.Size = new System.Drawing.Size(128, 32);
             this.BtnDuplicata.TabIndex = 4;
             this.BtnDuplicata.Text = "Duplicata";
             this.BtnDuplicata.UseVisualStyleBackColor = false;
@@ -104,10 +107,11 @@
             this.btnImprimer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
             this.btnImprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimer.ForeColor = System.Drawing.Color.White;
-            this.btnImprimer.Location = new System.Drawing.Point(210, 12);
-            this.btnImprimer.MaximumSize = new System.Drawing.Size(127, 31);
+            this.btnImprimer.Location = new System.Drawing.Point(280, 15);
+            this.btnImprimer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImprimer.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnImprimer.Name = "btnImprimer";
-            this.btnImprimer.Size = new System.Drawing.Size(96, 26);
+            this.btnImprimer.Size = new System.Drawing.Size(128, 32);
             this.btnImprimer.TabIndex = 3;
             this.btnImprimer.Text = "Imprimer";
             this.btnImprimer.UseVisualStyleBackColor = false;
@@ -120,10 +124,11 @@
             this.btnDetails.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
             this.btnDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetails.ForeColor = System.Drawing.Color.White;
-            this.btnDetails.Location = new System.Drawing.Point(108, 12);
-            this.btnDetails.MaximumSize = new System.Drawing.Size(127, 31);
+            this.btnDetails.Location = new System.Drawing.Point(144, 15);
+            this.btnDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDetails.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(96, 26);
+            this.btnDetails.Size = new System.Drawing.Size(128, 32);
             this.btnDetails.TabIndex = 2;
             this.btnDetails.Text = "Details";
             this.btnDetails.UseVisualStyleBackColor = false;
@@ -136,10 +141,11 @@
             this.btnNouveau.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
             this.btnNouveau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouveau.ForeColor = System.Drawing.Color.White;
-            this.btnNouveau.Location = new System.Drawing.Point(6, 12);
-            this.btnNouveau.MaximumSize = new System.Drawing.Size(127, 31);
+            this.btnNouveau.Location = new System.Drawing.Point(8, 15);
+            this.btnNouveau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNouveau.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnNouveau.Name = "btnNouveau";
-            this.btnNouveau.Size = new System.Drawing.Size(96, 26);
+            this.btnNouveau.Size = new System.Drawing.Size(128, 32);
             this.btnNouveau.TabIndex = 0;
             this.btnNouveau.Text = "Nouveau";
             this.btnNouveau.UseVisualStyleBackColor = false;
@@ -150,9 +156,10 @@
             this.lblMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(120, 222);
+            this.lblMessage.Location = new System.Drawing.Point(160, 273);
+            this.lblMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(708, 36);
+            this.lblMessage.Size = new System.Drawing.Size(885, 44);
             this.lblMessage.TabIndex = 29;
             this.lblMessage.Text = "Aucune Opération n\'a été éffectuée aujourd\'hui";
             this.lblMessage.Visible = false;
@@ -187,27 +194,30 @@
             this.dgvliste.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvliste.EnableHeadersVisualStyles = false;
             this.dgvliste.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgvliste.Location = new System.Drawing.Point(0, 41);
+            this.dgvliste.Location = new System.Drawing.Point(0, 50);
+            this.dgvliste.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvliste.MultiSelect = false;
             this.dgvliste.Name = "dgvliste";
             this.dgvliste.ReadOnly = true;
+            this.dgvliste.RowHeadersWidth = 51;
             this.dgvliste.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(3);
             this.dgvliste.RowTemplate.Height = 45;
             this.dgvliste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvliste.Size = new System.Drawing.Size(819, 481);
+            this.dgvliste.Size = new System.Drawing.Size(1092, 592);
             this.dgvliste.TabIndex = 28;
             // 
             // FrmFraisMensuel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(819, 573);
+            this.ClientSize = new System.Drawing.Size(1092, 705);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.dgvliste);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmFraisMensuel";
             this.Text = "frmFraisMensuel";
             this.Load += new System.EventHandler(this.FrmFraisMensuel_Load);

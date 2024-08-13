@@ -37,16 +37,20 @@ namespace Scool_cash_manager
                 cmd.CommandText = "JournalMensuelEtInscription";
                 cmd.CommandType = CommandType.StoredProcedure;
                 //les parametres
-                MySqlParameter p_date = new MySqlParameter("@p_date", MySqlDbType.Date)
-                {
-                    Value = DateTime.Now.Date
-                };
-                cmd.Parameters.Add(p_date);
                 using (MySqlDataAdapter adapter=new MySqlDataAdapter (cmd))
                 {
                     DataTable table = new DataTable();
-                    adapter.Fill(table);
-                    dgvliste.DataSource = table;
+                    try
+                    {
+                        adapter.Fill(table);
+                        dgvliste.DataSource = table;
+                    }
+                    catch (MySqlException ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+                    
 
                 }
                 
