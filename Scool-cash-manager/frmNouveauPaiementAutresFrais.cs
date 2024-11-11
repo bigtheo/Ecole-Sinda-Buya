@@ -414,7 +414,7 @@ namespace Scool_cash_manager
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    txt_montant.Text = dr.GetString(0);
+                    txt_montant.Text =Convert.ToString(dr.GetDecimal(0));
                 }
             };
         }

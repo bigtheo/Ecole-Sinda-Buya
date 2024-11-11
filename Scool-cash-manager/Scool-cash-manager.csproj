@@ -29,8 +29,8 @@
     <PublisherName>LSE - Lubumashi Software Engineering</PublisherName>
     <SuiteName>cash-manager</SuiteName>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
-    <ApplicationRevision>75</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>81</ApplicationRevision>
+    <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>

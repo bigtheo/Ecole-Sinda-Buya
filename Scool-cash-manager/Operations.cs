@@ -352,7 +352,7 @@ namespace Scool_cash_manager
         public static void Backup()
         {
             string nomDelaDbase = $"{new FrmMenuPrincipal().cbx_databases.Text}";
-            string nom_du_fichier = DateTime.Now.Date.ToString($"backup  dd MMM yyyy HH mm") + ".sql";
+            string nom_du_fichier = DateTime.Now.Date.ToString($" ddMMMyyyyHHmm") + ".sql";
             string file = DocRecu.Folder + $"\\{nomDelaDbase} " + nom_du_fichier;
 
             using (MySqlCommand cmd = new MySqlCommand())

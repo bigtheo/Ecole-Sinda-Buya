@@ -20,16 +20,16 @@ namespace Scool_cash_manager
 
         private void FrmJournalCentralise_Load(object sender, EventArgs e)
         {
-            Lister_journalCentralise();
+            Lister_journalCentralise(1);
         }
 
-        private void Lister_journalCentralise()
+        private void Lister_journalCentralise(Int16 section_id)
         {
             using (MySqlCommand cmd = new MySqlCommand())
             {
                 Connexion.Connecter();
                 cmd.Connection = Connexion.con;
-                cmd.CommandText = "Ps_JournalCentralise";
+                cmd.CommandText = "Ps_JournalCentraliseMaternelle";
                 cmd.CommandType = CommandType.StoredProcedure;
                 //le parametre
                 MySqlParameter p_date = new MySqlParameter("@p_date", MySqlDbType.Date)
@@ -37,24 +37,37 @@ namespace Scool_cash_manager
                     Direction = ParameterDirection.Input,
                     Value = dtp_date.Value
                 };
+                MySqlParameter p_section_id = new MySqlParameter("@p_section", MySqlDbType.Int16)
+                {
+                    Direction = ParameterDirection.Input,
+                    Value = section_id
+                };
                 cmd.Parameters.Add(p_date);
+                cmd.Parameters.Add(p_section_id);
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                 {
-                    DataTable table = new DataTable();
-                    adapter.Fill(table);
-                    dgvliste.DataSource = table;
-
-                    if (dgvliste.Rows.Count == 0)
+                    try
                     {
-                        dgvliste.Hide();
-                        lblMessage.Show();
-                    }
-                    else
-                    {
+                     DataTable table = new DataTable();
+                        adapter.Fill(table);
+                       dgvliste.DataSource = table;
+                     if (dgvliste.Rows.Count == 0)
+                         {
+                            dgvliste.Hide();
+                            lblMessage.Show();
+                         }
+                        else
+                       {
                         dgvliste.Show();
                         lblMessage.Hide();
+                       }
                     }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message,"erreur");
+                    }
+                   
                 }
             }
         }
@@ -63,11 +76,16 @@ namespace Scool_cash_manager
 
         private void Dtp_date_ValueChanged(object sender, EventArgs e)
         {
-            Lister_journalCentralise();
+            Lister_journalCentralise(1);
         }
 
         private void BtnImprimer_Click(object sender, EventArgs e)
         {
+            ImprimerJournalCentralise();
+        }
+
+    private void ImprimerJournalCentralise()
+    {
 
             #region Création du document
             this.Cursor = Cursors.WaitCursor;
@@ -140,35 +158,41 @@ namespace Scool_cash_manager
 
             PdfPTable tableau;
 
-         
-                tableau = new PdfPTable(3)
-                {
-                    WidthPercentage = 40
-                }; //un tableau de 5 colonnes N°, nom, postnom et prenom
 
-                tableau.SetWidths(new float[] { 5, 30, 12});
-                Phrase p_numero = new Phrase("N° ", police_entete_tableau);
-                Phrase p_intitule = new Phrase("Intitulé du frais", police_entete_tableau);
-                Phrase p_montant = new Phrase("Montant", police_entete_tableau);
+            tableau = new PdfPTable(3)
+            {
+                WidthPercentage = 40
+            }; //un tableau de 5 colonnes N°, nom, postnom et prenom
 
-                tableau.AddCell(p_numero);
-                tableau.AddCell(p_intitule);
-                tableau.AddCell(p_montant);
-   
+            tableau.SetWidths(new float[] { 5, 30, 12 });
+            Phrase p_numero = new Phrase("N° ", police_entete_tableau);
+            Phrase p_intitule = new Phrase("Intitulé du frais", police_entete_tableau);
+            Phrase p_montant = new Phrase("Montant", police_entete_tableau);
 
-                int nombre_ligne = dgvliste.Rows.Count;
-
-                for (int i = 0; i < nombre_ligne; i++)
-                {
+            tableau.AddCell(p_numero);
+            tableau.AddCell(p_intitule);
+            tableau.AddCell(p_montant);
 
 
-                    tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[0].Value.ToString(), police_Cellule));
-                    tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[1].Value.ToString(), police_Cellule));
-                    tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[2].Value.ToString(), police_Cellule));
-                   
-            }         
+            int nombre_ligne = dgvliste.Rows.Count;
+
+            for (int i = 0; i < nombre_ligne; i++)
+            {
+
+
+                tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[0].Value.ToString(), police_Cellule));
+                tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[1].Value.ToString(), police_Cellule));
+                tableau.AddCell(new Phrase(dgvliste.Rows[i].Cells[2].Value.ToString(), police_Cellule));
+
+            }
 
             doc.Add(tableau);
+
+
+
+
+
+
             doc.Close();
             this.Cursor = Cursors.Default;
             new FrmApercuAvantImpression(DocRecu.RapportfileName).Show();
@@ -177,5 +201,6 @@ namespace Scool_cash_manager
 
 
         #endregion
+
     }
 }

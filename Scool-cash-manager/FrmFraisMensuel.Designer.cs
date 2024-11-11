@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BtnDuplicata = new System.Windows.Forms.Button();
             this.btnImprimer = new System.Windows.Forms.Button();
             this.btnDetails = new System.Windows.Forms.Button();
             this.btnNouveau = new System.Windows.Forms.Button();
-            this.lblMessage = new System.Windows.Forms.Label();
             this.dgvliste = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -51,10 +51,23 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1092, 50);
             this.panel1.TabIndex = 3;
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(127, -3);
+            this.lblMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(885, 44);
+            this.lblMessage.TabIndex = 29;
+            this.lblMessage.Text = "Aucune Opération n\'a été éffectuée aujourd\'hui";
+            this.lblMessage.Visible = false;
             // 
             // label1
             // 
@@ -77,7 +90,7 @@
             this.panel2.Controls.Add(this.btnNouveau);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 642);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1092, 63);
             this.panel2.TabIndex = 23;
@@ -91,7 +104,7 @@
             this.BtnDuplicata.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnDuplicata.ForeColor = System.Drawing.Color.White;
             this.BtnDuplicata.Location = new System.Drawing.Point(416, 15);
-            this.BtnDuplicata.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnDuplicata.Margin = new System.Windows.Forms.Padding(4);
             this.BtnDuplicata.MaximumSize = new System.Drawing.Size(169, 38);
             this.BtnDuplicata.Name = "BtnDuplicata";
             this.BtnDuplicata.Size = new System.Drawing.Size(128, 32);
@@ -109,7 +122,7 @@
             this.btnImprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimer.ForeColor = System.Drawing.Color.White;
             this.btnImprimer.Location = new System.Drawing.Point(280, 15);
-            this.btnImprimer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImprimer.Margin = new System.Windows.Forms.Padding(4);
             this.btnImprimer.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnImprimer.Name = "btnImprimer";
             this.btnImprimer.Size = new System.Drawing.Size(128, 32);
@@ -126,7 +139,7 @@
             this.btnDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetails.ForeColor = System.Drawing.Color.White;
             this.btnDetails.Location = new System.Drawing.Point(144, 15);
-            this.btnDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDetails.Margin = new System.Windows.Forms.Padding(4);
             this.btnDetails.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(128, 32);
@@ -143,7 +156,7 @@
             this.btnNouveau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouveau.ForeColor = System.Drawing.Color.White;
             this.btnNouveau.Location = new System.Drawing.Point(8, 15);
-            this.btnNouveau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNouveau.Margin = new System.Windows.Forms.Padding(4);
             this.btnNouveau.MaximumSize = new System.Drawing.Size(169, 38);
             this.btnNouveau.Name = "btnNouveau";
             this.btnNouveau.Size = new System.Drawing.Size(128, 32);
@@ -151,19 +164,6 @@
             this.btnNouveau.Text = "Nouveau";
             this.btnNouveau.UseVisualStyleBackColor = false;
             this.btnNouveau.Click += new System.EventHandler(this.BtnNouveau_Click);
-            // 
-            // lblMessage
-            // 
-            this.lblMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(127, -3);
-            this.lblMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(885, 44);
-            this.lblMessage.TabIndex = 29;
-            this.lblMessage.Text = "Aucune Opération n\'a été éffectuée aujourd\'hui";
-            this.lblMessage.Visible = false;
             // 
             // dgvliste
             // 
@@ -175,28 +175,28 @@
             this.dgvliste.BackgroundColor = System.Drawing.Color.White;
             this.dgvliste.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvliste.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvliste.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvliste.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvliste.ColumnHeadersHeight = 35;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvliste.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvliste.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvliste.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvliste.EnableHeadersVisualStyles = false;
             this.dgvliste.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvliste.Location = new System.Drawing.Point(0, 50);
-            this.dgvliste.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvliste.Margin = new System.Windows.Forms.Padding(4);
             this.dgvliste.MultiSelect = false;
             this.dgvliste.Name = "dgvliste";
             this.dgvliste.ReadOnly = true;
@@ -217,7 +217,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmFraisMensuel";
             this.Text = "frmFraisMensuel";
             this.Load += new System.EventHandler(this.FrmFraisMensuel_Load);
